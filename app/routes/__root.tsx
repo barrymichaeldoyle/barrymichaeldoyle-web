@@ -2,6 +2,8 @@ import type { ReactNode } from 'react';
 import { Outlet, createRootRoute, HeadContent, Scripts } from '@tanstack/react-router';
 
 import appCss from '@/styles/app.css?url';
+import { ThemeProvider } from '@/components/theme/provider';
+import { ThemeToggle } from '@/components/theme/toggle';
 
 export const Route = createRootRoute({
   head: () => ({
@@ -30,7 +32,12 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
         <HeadContent />
       </head>
       <body>
-        {children}
+        <ThemeProvider storageKey="bmd-theme">
+          <header className="absolute right-0 top-0 p-1">
+            <ThemeToggle />
+          </header>
+          <main>{children}</main>
+        </ThemeProvider>
         <Scripts />
       </body>
     </html>
