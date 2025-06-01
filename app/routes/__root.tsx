@@ -36,7 +36,7 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
           <header className="absolute right-0 top-0 p-1">
             <ThemeToggle />
           </header>
-          <main>{children}</main>
+          {children}
         </ThemeProvider>
         <Scripts />
       </body>
