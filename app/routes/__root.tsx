@@ -1,5 +1,10 @@
 import type { ReactNode } from 'react';
-import { Outlet, createRootRoute, HeadContent, Scripts } from '@tanstack/react-router';
+import {
+  Outlet,
+  createRootRoute,
+  HeadContent,
+  Scripts,
+} from '@tanstack/react-router';
 
 import appCss from '@/styles/app.css?url';
 import { ThemeProvider } from '@/components/theme/provider';
@@ -32,11 +37,17 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
         <HeadContent />
       </head>
       <body>
+        <div className="particle-overlay"></div>
         <ThemeProvider storageKey="bmd-theme">
           <header className="absolute right-0 top-0 p-1">
             <ThemeToggle />
           </header>
           {children}
+          <footer className="border-t border-border bg-card py-4">
+            <div className="container mx-auto px-4 text-center text-muted-foreground">
+              <p>&copy; {new Date().getFullYear()} Barry Michael Doyle</p>
+            </div>
+          </footer>
         </ThemeProvider>
         <Scripts />
       </body>

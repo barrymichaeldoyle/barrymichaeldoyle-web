@@ -1,46 +1,69 @@
+/**
+ * @cursor-style-guide
+ * Theme: Supports both light and dark modes
+ * Color System: Uses OKLCH colors for better color consistency
+ * Dark Mode: Implemented via .dark class and CSS variables
+ * Interactive Elements: Should maintain consistent behavior across themes
+ * Accessibility: Maintain WCAG AA contrast in both modes
+ */
+
 @import 'tailwindcss' source('../');
 @import 'tw-animate-css';
 
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: oklch(0.9816 0.0017 247.839);
-  --foreground: oklch(0.1649 0.0352 281.8285);
+  /* Base colors */
+  --background: oklch(0.98 0.003 280);
+  --foreground: oklch(0.16 0.035 282);
+
+  /* Component backgrounds */
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.1649 0.0352 281.8285);
+  --card-foreground: oklch(0.16 0.035 282);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.1649 0.0352 281.8285);
-  --primary: oklch(0.45 0.32 299.0954);
+  --popover-foreground: oklch(0.16 0.035 282);
+
+  /* Brand colors - consistent purple theme */
+  --primary: oklch(0.5 0.32 299);
   --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.9595 0.02 286.0164);
-  --secondary-foreground: oklch(0.1649 0.0352 281.8285);
-  --muted: oklch(0.9595 0.02 286.0164);
-  --muted-foreground: oklch(0.1649 0.0352 281.8285);
-  --accent: oklch(0.8903 0.1739 171.269);
-  --accent-foreground: oklch(0.1649 0.0352 281.8285);
-  --destructive: oklch(0.6535 0.2348 34.037);
+  --secondary: oklch(0.96 0.02 286);
+  --secondary-foreground: oklch(0.16 0.035 282);
+  --accent: oklch(0.7 0.174 299);
+  --accent-foreground: oklch(0.16 0.035 282);
+  --destructive: oklch(0.65 0.235 34);
   --destructive-foreground: oklch(1 0 0);
-  --border: oklch(0.9205 0.0086 225.0878);
-  --input: oklch(0.9205 0.0086 225.0878);
-  --ring: oklch(0.6726 0.2904 341.4084);
-  --chart-1: oklch(0.6726 0.2904 341.4084);
-  --chart-2: oklch(0.5488 0.2944 299.0954);
-  --chart-3: oklch(0.8442 0.1457 209.2851);
-  --chart-4: oklch(0.8903 0.1739 171.269);
-  --chart-5: oklch(0.9168 0.1915 101.407);
-  --sidebar: oklch(0.9595 0.02 286.0164);
-  --sidebar-foreground: oklch(0.1649 0.0352 281.8285);
-  --sidebar-primary: oklch(0.6726 0.2904 341.4084);
-  --sidebar-primary-foreground: oklch(1 0 0);
-  --sidebar-accent: oklch(0.8903 0.1739 171.269);
-  --sidebar-accent-foreground: oklch(0.1649 0.0352 281.8285);
-  --sidebar-border: oklch(0.9205 0.0086 225.0878);
-  --sidebar-ring: oklch(0.6726 0.2904 341.4084);
+
+  /* UI elements */
+  --muted: oklch(0.96 0.02 286);
+  --muted-foreground: oklch(0.45 0.035 282);
+  --border: oklch(0.92 0.009 280);
+  --input: oklch(0.92 0.009 280);
+  --ring: oklch(0.6 0.29 299);
+
+  /* Chart colors - consistent purple spectrum */
+  --chart-1: oklch(0.67 0.29 299);
+  --chart-2: oklch(0.55 0.294 299);
+  --chart-3: oklch(0.84 0.146 299);
+  --chart-4: oklch(0.7 0.174 299);
+  --chart-5: oklch(0.92 0.192 299);
+
+  /* Button effects */
+  --button-glow: 0 0 25px oklch(0.5 0.32 299 / 0.12);
+  --button-glow-hover:
+    0 0 15px oklch(0.5 0.32 299 / 0.25), 0 0 30px oklch(0.5 0.32 299 / 0.18),
+    0 0 45px oklch(0.5 0.32 299 / 0.12);
+  --button-border-glow: oklch(0.5 0.32 299 / 0.25);
+
+  /* Typography */
   --font-sans: Outfit, sans-serif;
   --font-serif: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
   --font-mono: Fira Code, monospace;
+
+  /* Radius */
   --radius: 0.5rem;
-  --shadow-2xs: 0px 4px 8px -2px hsl(0 0% 0% / 0.05);
+
+  /* Shadows - cleaned up duplicates */
+  --shadow-2xs: 0px 2px 4px -1px hsl(0 0% 0% / 0.03);
   --shadow-xs: 0px 4px 8px -2px hsl(0 0% 0% / 0.05);
   --shadow-sm:
     0px 4px 8px -2px hsl(0 0% 0% / 0.1), 0px 1px 2px -3px hsl(0 0% 0% / 0.1);
@@ -56,65 +79,50 @@
 }
 
 .dark {
-  --background: oklch(0.1649 0.0352 281.8285);
-  --foreground: oklch(0.9513 0.0074 260.7315);
-  --card: oklch(0.2542 0.0611 281.1423);
-  --card-foreground: oklch(0.9513 0.0074 260.7315);
-  --popover: oklch(0.2542 0.0611 281.1423);
-  --popover-foreground: oklch(0.9513 0.0074 260.7315);
-  --primary: oklch(0.55 0.32 299.0954);
-  --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.2542 0.0611 281.1423);
-  --secondary-foreground: oklch(0.85 0.015 260.7315);
-  --muted: oklch(0.2542 0.0611 281.1423);
-  --muted-foreground: oklch(0.85 0.08 299.0954);
-  --accent: oklch(0.8903 0.1739 171.269);
-  --accent-foreground: oklch(0.1649 0.0352 281.8285);
-  --destructive: oklch(0.6535 0.2348 34.037);
-  --destructive-foreground: oklch(1 0 0);
-  --border: oklch(0.3279 0.0832 280.789 / 0.8);
-  --input: oklch(0.3279 0.0832 280.789);
-  --ring: oklch(0.75 0.32 299.0954);
-  --chart-1: oklch(0.6726 0.2904 341.4084);
-  --chart-2: oklch(0.5488 0.2944 299.0954);
-  --chart-3: oklch(0.8442 0.1457 209.2851);
-  --chart-4: oklch(0.8903 0.1739 171.269);
-  --chart-5: oklch(0.9168 0.1915 101.407);
-  --sidebar: oklch(0.1649 0.0352 281.8285);
-  --sidebar-foreground: oklch(0.9513 0.0074 260.7315);
-  --sidebar-primary: oklch(0.6726 0.2904 341.4084);
-  --sidebar-primary-foreground: oklch(1 0 0);
-  --sidebar-accent: oklch(0.8903 0.1739 171.269);
-  --sidebar-accent-foreground: oklch(0.1649 0.0352 281.8285);
-  --sidebar-border: oklch(0.3279 0.0832 280.789);
-  --sidebar-ring: oklch(0.6726 0.2904 341.4084);
-  --font-sans: Outfit, sans-serif;
-  --font-serif: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
-  --font-mono: Fira Code, monospace;
-  --radius: 0.5rem;
-  --shadow-2xs: 0px 4px 8px -2px hsl(0 0% 0% / 0.05);
-  --shadow-xs: 0px 4px 8px -2px hsl(0 0% 0% / 0.05);
-  --shadow-sm:
-    0px 4px 8px -2px hsl(0 0% 0% / 0.1), 0px 1px 2px -3px hsl(0 0% 0% / 0.1);
-  --shadow:
-    0px 4px 8px -2px hsl(0 0% 0% / 0.1), 0px 1px 2px -3px hsl(0 0% 0% / 0.1);
-  --shadow-md:
-    0px 4px 8px -2px hsl(0 0% 0% / 0.1), 0px 2px 4px -3px hsl(0 0% 0% / 0.1);
-  --shadow-lg:
-    0px 4px 8px -2px hsl(0 0% 0% / 0.1), 0px 4px 6px -3px hsl(0 0% 0% / 0.1);
-  --shadow-xl:
-    0px 4px 8px -2px hsl(0 0% 0% / 0.1), 0px 8px 10px -3px hsl(0 0% 0% / 0.1);
-  --shadow-2xl: 0px 4px 8px -2px hsl(0 0% 0% / 0.25);
-  --card-glow:
-    0 0 25px oklch(0.75 0.32 299.0954 / 0.15),
-    0 0 40px oklch(0.75 0.32 299.0954 / 0.1);
-  --card-border-glow: oklch(0.75 0.32 299.0954 / 0.3);
-  --hover-glow:
-    0 0 30px oklch(0.75 0.32 299.0954 / 0.25),
-    0 0 50px oklch(0.75 0.32 299.0954 / 0.15);
+  /* Base colors */
+  --background: oklch(0.16 0.035 282);
+  --foreground: oklch(0.95 0.007 261);
+
+  /* Component backgrounds */
+  --card: oklch(0.22 0.061 281);
+  --card-foreground: oklch(0.95 0.007 261);
+  --popover: oklch(0.22 0.061 281);
+  --popover-foreground: oklch(0.95 0.007 261);
+
+  /* Brand colors - consistent purple theme */
+  --primary: oklch(0.6 0.32 299);
+  --primary-foreground: oklch(0.98 0 0);
+  --secondary: oklch(0.3 0.061 281);
+  --secondary-foreground: oklch(0.9 0.015 261);
+  --accent: oklch(0.7 0.174 299);
+  --accent-foreground: oklch(0.98 0 0);
+  --destructive: oklch(0.65 0.235 34);
+  --destructive-foreground: oklch(0.98 0 0);
+
+  /* UI elements */
+  --muted: oklch(0.3 0.061 281);
+  --muted-foreground: oklch(0.75 0.08 299);
+  --border: oklch(0.33 0.083 281);
+  --input: oklch(0.33 0.083 281);
+  --ring: oklch(0.6 0.32 299);
+
+  /* Chart colors - consistent purple spectrum */
+  --chart-1: oklch(0.67 0.29 299);
+  --chart-2: oklch(0.55 0.294 299);
+  --chart-3: oklch(0.84 0.146 299);
+  --chart-4: oklch(0.7 0.174 299);
+  --chart-5: oklch(0.92 0.192 299);
+
+  /* Button effects - enhanced for dark mode */
+  --button-glow: 0 0 25px oklch(0.6 0.32 299 / 0.15);
+  --button-glow-hover:
+    0 0 20px oklch(0.6 0.32 299 / 0.45), 0 0 40px oklch(0.6 0.32 299 / 0.35),
+    0 0 60px oklch(0.6 0.32 299 / 0.25);
+  --button-border-glow: oklch(0.6 0.32 299 / 0.35);
 }
 
 @theme inline {
+  /* Map CSS variables to theme properties */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -139,24 +147,19 @@
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
 
-  --font-sans: var(--font-sans);
-  --font-mono: var(--font-mono);
-  --font-serif: var(--font-serif);
+  /* Button effects */
+  --color-button-glow: var(--button-glow);
+  --color-button-glow-hover: var(--button-glow-hover);
+  --color-button-border-glow: var(--button-border-glow);
 
+  /* Radius */
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
 
+  /* Shadows */
   --shadow-2xs: var(--shadow-2xs);
   --shadow-xs: var(--shadow-xs);
   --shadow-sm: var(--shadow-sm);
@@ -168,103 +171,517 @@
 }
 
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
   body {
     @apply bg-background text-foreground;
-  }
-  .card {
-    box-shadow: var(--card-glow);
-    border: 1px solid var(--card-border-glow);
-    backdrop-filter: blur(8px);
     position: relative;
-    overflow: hidden;
-    transition: all 0.3s ease;
+    overflow-x: hidden;
   }
-  .card:hover {
-    box-shadow: var(--hover-glow);
-    transform: translateY(-2px);
-    animation: borderPulse 2s infinite;
+
+  /* ===== PARTICLE SYSTEM ===== */
+
+  /* Base particle layer - tiny floating dots */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image:
+      /* Small scattered particles */
+      radial-gradient(
+        circle 0.8px at 12% 23%,
+        oklch(0.6 0.32 299 / 0.4),
+        transparent
+      ),
+      radial-gradient(
+        circle 1.2px at 68% 7%,
+        oklch(0.7 0.174 299 / 0.3),
+        transparent
+      ),
+      radial-gradient(
+        circle 0.5px at 34% 67%,
+        oklch(0.84 0.146 299 / 0.5),
+        transparent
+      ),
+      radial-gradient(
+        circle 2px at 89% 34%,
+        oklch(0.92 0.192 299 / 0.35),
+        transparent
+      ),
+      radial-gradient(
+        circle 0.7px at 23% 89%,
+        oklch(0.6 0.32 299 / 0.45),
+        transparent
+      ),
+      radial-gradient(
+        circle 1.5px at 78% 56%,
+        oklch(0.7 0.174 299 / 0.25),
+        transparent
+      ),
+      radial-gradient(
+        circle 0.9px at 45% 12%,
+        oklch(0.84 0.146 299 / 0.4),
+        transparent
+      ),
+      radial-gradient(
+        circle 1.8px at 67% 78%,
+        oklch(0.92 0.192 299 / 0.3),
+        transparent
+      ),
+      radial-gradient(
+        circle 0.6px at 91% 45%,
+        oklch(0.6 0.32 299 / 0.35),
+        transparent
+      ),
+      radial-gradient(
+        circle 1.3px at 5% 67%,
+        oklch(0.7 0.174 299 / 0.4),
+        transparent
+      );
+    animation: float-gentle 60s ease-in-out infinite;
+    pointer-events: none;
+    z-index: -3;
   }
-  .card::before {
+
+  /* Medium particle layer - more visible orbs */
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image:
+      /* Medium scattered particles */
+      radial-gradient(
+        circle 2.5px at 18% 34%,
+        oklch(0.6 0.32 299 / 0.25),
+        transparent
+      ),
+      radial-gradient(
+        circle 3.2px at 73% 18%,
+        oklch(0.7 0.174 299 / 0.2),
+        transparent
+      ),
+      radial-gradient(
+        circle 1.8px at 42% 81%,
+        oklch(0.84 0.146 299 / 0.3),
+        transparent
+      ),
+      radial-gradient(
+        circle 4px at 86% 52%,
+        oklch(0.92 0.192 299 / 0.18),
+        transparent
+      ),
+      radial-gradient(
+        circle 2.2px at 9% 73%,
+        oklch(0.6 0.32 299 / 0.28),
+        transparent
+      ),
+      radial-gradient(
+        circle 3.5px at 67% 91%,
+        oklch(0.7 0.174 299 / 0.22),
+        transparent
+      ),
+      radial-gradient(
+        circle 2.8px at 31% 45%,
+        oklch(0.84 0.146 299 / 0.25),
+        transparent
+      ),
+      radial-gradient(
+        circle 1.5px at 94% 23%,
+        oklch(0.92 0.192 299 / 0.32),
+        transparent
+      );
+    animation: float-drift 80s ease-in-out infinite reverse;
+    animation-delay: -20s;
+    pointer-events: none;
+    z-index: -2;
+  }
+
+  /* Large particle overlay using a pseudo-element container */
+  .particle-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .particle-overlay::before {
     content: '';
     position: absolute;
     top: 0;
-    left: -100%;
+    left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      oklch(0.75 0.32 299.0954 / 0.2),
-      transparent
-    );
-    transition: 0.5s;
-    pointer-events: none;
+    background-image:
+      /* Large floating orbs */
+      radial-gradient(
+        circle 5px at 25% 15%,
+        oklch(0.6 0.32 299 / 0.3),
+        transparent
+      ),
+      radial-gradient(
+        circle 6.5px at 78% 38%,
+        oklch(0.7 0.174 299 / 0.24),
+        transparent
+      ),
+      radial-gradient(
+        circle 4.2px at 52% 72%,
+        oklch(0.84 0.146 299 / 0.36),
+        transparent
+      ),
+      radial-gradient(
+        circle 7px at 13% 89%,
+        oklch(0.92 0.192 299 / 0.2),
+        transparent
+      ),
+      radial-gradient(
+        circle 5.5px at 89% 67%,
+        oklch(0.6 0.32 299 / 0.28),
+        transparent
+      ),
+      radial-gradient(
+        circle 3.8px at 41% 23%,
+        oklch(0.7 0.174 299 / 0.32),
+        transparent
+      );
+    animation: float-slow 100s linear infinite;
+    animation-delay: -30s;
   }
-  .card:hover::before {
-    left: 100%;
-    transition: 0.5s;
-  }
-  .card::after {
+
+  .particle-overlay::after {
     content: '';
     position: absolute;
-    inset: 0;
-    border: 1px solid var(--card-border-glow);
-    border-radius: inherit;
-    opacity: 0.5;
-    background: linear-gradient(
-      180deg,
-      oklch(0.75 0.32 299.0954 / 0.1) 0%,
-      transparent 15%,
-      transparent 85%,
-      oklch(0.75 0.32 299.0954 / 0.1) 100%
-    );
-    pointer-events: none;
-  }
-  .company-name {
-    color: var(--muted-foreground);
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    position: relative;
-    display: inline-block;
-  }
-  .company-name::after {
-    content: '';
-    position: absolute;
+    top: 0;
     left: 0;
-    bottom: -2px;
     width: 100%;
-    height: 1px;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      var(--primary),
-      transparent
-    );
-    transform: scaleX(0);
-    transition: transform 0.3s ease;
+    height: 100%;
+    background-image:
+      /* Sparkle layer */
+      radial-gradient(
+        circle 0.3px at 33% 44%,
+        oklch(0.92 0.192 299 / 0.8),
+        transparent
+      ),
+      radial-gradient(
+        circle 0.4px at 76% 12%,
+        oklch(0.84 0.146 299 / 0.7),
+        transparent
+      ),
+      radial-gradient(
+        circle 0.2px at 15% 78%,
+        oklch(0.7 0.174 299 / 0.9),
+        transparent
+      ),
+      radial-gradient(
+        circle 0.6px at 92% 33%,
+        oklch(0.6 0.32 299 / 0.6),
+        transparent
+      ),
+      radial-gradient(
+        circle 0.3px at 48% 91%,
+        oklch(0.92 0.192 299 / 0.7),
+        transparent
+      ),
+      radial-gradient(
+        circle 0.5px at 67% 54%,
+        oklch(0.84 0.146 299 / 0.8),
+        transparent
+      ),
+      radial-gradient(
+        circle 0.2px at 24% 67%,
+        oklch(0.7 0.174 299 / 0.6),
+        transparent
+      ),
+      radial-gradient(
+        circle 0.4px at 81% 89%,
+        oklch(0.6 0.32 299 / 0.7),
+        transparent
+      );
+    animation: sparkle-dance 25s ease-in-out infinite;
+    animation-delay: -8s;
   }
-  .company-name:hover::after {
-    transform: scaleX(1);
-  }
-  @keyframes borderPulse {
-    0% {
-      border-color: var(--card-border-glow);
-      box-shadow: var(--card-glow);
+
+  /* ===== ANIMATIONS ===== */
+
+  @keyframes float-gentle {
+    0%,
+    100% {
+      transform: translate(0, 0) rotate(0deg);
+      opacity: 0.6;
+    }
+    25% {
+      transform: translate(20px, -30px) rotate(90deg);
+      opacity: 0.8;
     }
     50% {
-      border-color: oklch(0.75 0.32 299.0954 / 0.5);
-      box-shadow: var(--hover-glow);
+      transform: translate(-15px, -60px) rotate(180deg);
+      opacity: 0.4;
     }
-    100% {
-      border-color: var(--card-border-glow);
-      box-shadow: var(--card-glow);
+    75% {
+      transform: translate(-35px, -30px) rotate(270deg);
+      opacity: 0.9;
     }
   }
-  .date {
-    color: var(--secondary-foreground);
-    font-weight: 500;
+
+  @keyframes float-drift {
+    0%,
+    100% {
+      transform: translate(0, 0) scale(1) rotate(0deg);
+      opacity: 0.7;
+    }
+    20% {
+      transform: translate(30px, -20px) scale(1.1) rotate(72deg);
+      opacity: 0.5;
+    }
+    40% {
+      transform: translate(-10px, -50px) scale(0.9) rotate(144deg);
+      opacity: 0.9;
+    }
+    60% {
+      transform: translate(-40px, -35px) scale(1.05) rotate(216deg);
+      opacity: 0.6;
+    }
+    80% {
+      transform: translate(-20px, -10px) scale(0.95) rotate(288deg);
+      opacity: 0.8;
+    }
+  }
+
+  @keyframes float-slow {
+    0% {
+      transform: translate(0, 0) rotate(0deg);
+    }
+    25% {
+      transform: translate(40px, -25px) rotate(90deg);
+    }
+    50% {
+      transform: translate(20px, -70px) rotate(180deg);
+    }
+    75% {
+      transform: translate(-30px, -45px) rotate(270deg);
+    }
+    100% {
+      transform: translate(0, -80px) rotate(360deg);
+    }
+  }
+
+  @keyframes sparkle-dance {
+    0%,
+    100% {
+      opacity: 0.3;
+      transform: scale(1) rotate(0deg);
+    }
+    12% {
+      opacity: 0.8;
+      transform: scale(1.4) rotate(45deg);
+    }
+    25% {
+      opacity: 0.1;
+      transform: scale(0.6) rotate(90deg);
+    }
+    37% {
+      opacity: 0.9;
+      transform: scale(1.2) rotate(135deg);
+    }
+    50% {
+      opacity: 0.2;
+      transform: scale(0.8) rotate(180deg);
+    }
+    62% {
+      opacity: 0.7;
+      transform: scale(1.3) rotate(225deg);
+    }
+    75% {
+      opacity: 0.4;
+      transform: scale(0.9) rotate(270deg);
+    }
+    87% {
+      opacity: 0.6;
+      transform: scale(1.1) rotate(315deg);
+    }
+  }
+
+  /* ===== DARK MODE ADJUSTMENTS ===== */
+
+  .dark body::before {
+    background-image:
+      radial-gradient(
+        circle 0.8px at 12% 23%,
+        oklch(0.6 0.32 299 / 0.6),
+        transparent
+      ),
+      radial-gradient(
+        circle 1.2px at 68% 7%,
+        oklch(0.7 0.174 299 / 0.5),
+        transparent
+      ),
+      radial-gradient(
+        circle 0.5px at 34% 67%,
+        oklch(0.84 0.146 299 / 0.7),
+        transparent
+      ),
+      radial-gradient(
+        circle 2px at 89% 34%,
+        oklch(0.92 0.192 299 / 0.55),
+        transparent
+      ),
+      radial-gradient(
+        circle 0.7px at 23% 89%,
+        oklch(0.6 0.32 299 / 0.65),
+        transparent
+      ),
+      radial-gradient(
+        circle 1.5px at 78% 56%,
+        oklch(0.7 0.174 299 / 0.45),
+        transparent
+      ),
+      radial-gradient(
+        circle 0.9px at 45% 12%,
+        oklch(0.84 0.146 299 / 0.6),
+        transparent
+      ),
+      radial-gradient(
+        circle 1.8px at 67% 78%,
+        oklch(0.92 0.192 299 / 0.5),
+        transparent
+      ),
+      radial-gradient(
+        circle 0.6px at 91% 45%,
+        oklch(0.6 0.32 299 / 0.55),
+        transparent
+      ),
+      radial-gradient(
+        circle 1.3px at 5% 67%,
+        oklch(0.7 0.174 299 / 0.6),
+        transparent
+      );
+  }
+
+  .dark body::after {
+    background-image:
+      radial-gradient(
+        circle 2.5px at 18% 34%,
+        oklch(0.6 0.32 299 / 0.4),
+        transparent
+      ),
+      radial-gradient(
+        circle 3.2px at 73% 18%,
+        oklch(0.7 0.174 299 / 0.35),
+        transparent
+      ),
+      radial-gradient(
+        circle 1.8px at 42% 81%,
+        oklch(0.84 0.146 299 / 0.45),
+        transparent
+      ),
+      radial-gradient(
+        circle 4px at 86% 52%,
+        oklch(0.92 0.192 299 / 0.3),
+        transparent
+      ),
+      radial-gradient(
+        circle 2.2px at 9% 73%,
+        oklch(0.6 0.32 299 / 0.42),
+        transparent
+      ),
+      radial-gradient(
+        circle 3.5px at 67% 91%,
+        oklch(0.7 0.174 299 / 0.38),
+        transparent
+      ),
+      radial-gradient(
+        circle 2.8px at 31% 45%,
+        oklch(0.84 0.146 299 / 0.4),
+        transparent
+      ),
+      radial-gradient(
+        circle 1.5px at 94% 23%,
+        oklch(0.92 0.192 299 / 0.48),
+        transparent
+      );
+  }
+
+  .dark .particle-overlay::before {
+    background-image:
+      radial-gradient(
+        circle 5px at 25% 15%,
+        oklch(0.6 0.32 299 / 0.25),
+        transparent
+      ),
+      radial-gradient(
+        circle 6.5px at 78% 38%,
+        oklch(0.7 0.174 299 / 0.2),
+        transparent
+      ),
+      radial-gradient(
+        circle 4.2px at 52% 72%,
+        oklch(0.84 0.146 299 / 0.3),
+        transparent
+      ),
+      radial-gradient(
+        circle 7px at 13% 89%,
+        oklch(0.92 0.192 299 / 0.18),
+        transparent
+      ),
+      radial-gradient(
+        circle 5.5px at 89% 67%,
+        oklch(0.6 0.32 299 / 0.22),
+        transparent
+      ),
+      radial-gradient(
+        circle 3.8px at 41% 23%,
+        oklch(0.7 0.174 299 / 0.28),
+        transparent
+      );
+  }
+
+  .dark .particle-overlay::after {
+    background-image:
+      radial-gradient(
+        circle 0.3px at 33% 44%,
+        oklch(0.92 0.192 299 / 0.9),
+        transparent
+      ),
+      radial-gradient(
+        circle 0.4px at 76% 12%,
+        oklch(0.84 0.146 299 / 0.8),
+        transparent
+      ),
+      radial-gradient(
+        circle 0.2px at 15% 78%,
+        oklch(0.7 0.174 299 / 1),
+        transparent
+      ),
+      radial-gradient(
+        circle 0.6px at 92% 33%,
+        oklch(0.6 0.32 299 / 0.7),
+        transparent
+      ),
+      radial-gradient(
+        circle 0.3px at 48% 91%,
+        oklch(0.92 0.192 299 / 0.8),
+        transparent
+      ),
+      radial-gradient(
+        circle 0.5px at 67% 54%,
+        oklch(0.84 0.146 299 / 0.9),
+        transparent
+      ),
+      radial-gradient(
+        circle 0.2px at 24% 67%,
+        oklch(0.7 0.174 299 / 0.7),
+        transparent
+      ),
+      radial-gradient(
+        circle 0.4px at 81% 89%,
+        oklch(0.6 0.32 299 / 0.8),
+        transparent
+      );
   }
 }

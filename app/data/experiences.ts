@@ -8,15 +8,15 @@ interface Experience {
 
 export const experiences: Experience[] = [
   {
-    company: 'SecuritEase International Australia Pty Ltd',
-    role: 'Staff Frontend Engineer',
+    company: 'SecuritEase International Australia (Pty) Ltd',
+    role: 'Lead Frontend Engineer',
     period: 'Mar 2023 - Present',
     years: `${new Date().getFullYear() - 2023}+ years`,
     achievements: [],
   },
   {
     company: 'Universal Healthcare Group',
-    role: 'Staff Frontend Engineer',
+    role: 'Lead Frontend Engineer',
     period: 'Mar 2019 - Feb 2023',
     years: '4 years',
     achievements: [],

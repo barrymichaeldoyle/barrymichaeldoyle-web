@@ -4,19 +4,67 @@ import { cva, type VariantProps } from 'class-variance-authority';
 
 import { cn } from '@/lib/utils';
 
+// Common styles that are reused across variants
+export const commonButtonHoverEffects =
+  'hover:scale-[1.02] active:scale-[0.98] origin-center will-change-transform';
+export const commonButtonGlowEffects =
+  'shadow-[var(--button-glow)] hover:shadow-[var(--button-glow-hover)] hover:border-[var(--button-border-glow)]';
+
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
+  cn(
+    // Base styles
+    'inline-flex items-center justify-center gap-2',
+    'whitespace-nowrap rounded-md text-sm font-medium',
+    'border transform-gpu cursor-pointer',
+
+    // Transitions
+    'transition-all duration-300',
+
+    // States
+    'disabled:pointer-events-none disabled:opacity-50',
+    'outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
+    'aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive',
+
+    // SVG handling
+    '[&_svg]:pointer-events-none [&_svg]:shrink-0',
+    '[&_svg:not([class*="size-"])]:size-4',
+    'shrink-0'
+  ),
   {
     variants: {
       variant: {
-        default: 'bg-primary text-primary-foreground shadow-xs hover:bg-primary/90',
-        destructive:
-          'bg-destructive text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60',
-        outline:
-          'border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50',
-        secondary: 'bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80',
-        ghost: 'hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50',
-        link: 'text-primary underline-offset-4 hover:underline',
+        default: cn(
+          'bg-primary text-primary-foreground',
+          'hover:bg-primary/90 border-transparent',
+          commonButtonGlowEffects,
+          commonButtonHoverEffects
+        ),
+        destructive: cn(
+          'bg-destructive text-white dark:bg-destructive/60',
+          'hover:bg-destructive/90 border-transparent hover:border-destructive/30',
+          'shadow-xs hover:shadow-[0_0_15px_rgba(239,68,68,0.35),0_0_30px_rgba(239,68,68,0.25)]',
+          'focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40',
+          commonButtonHoverEffects
+        ),
+        outline: cn(
+          'border-border bg-background dark:bg-input/30 dark:border-input',
+          'hover:bg-accent hover:text-accent-foreground dark:hover:bg-input/50',
+          commonButtonGlowEffects,
+          commonButtonHoverEffects
+        ),
+        secondary: cn(
+          'bg-secondary text-secondary-foreground',
+          'hover:bg-secondary/80 border-transparent',
+          'hover:shadow-[0_0_15px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_0_15px_rgba(255,255,255,0.1)]',
+          commonButtonHoverEffects
+        ),
+        ghost: cn(
+          'border-transparent',
+          'hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50',
+          'hover:shadow-[var(--button-glow-hover)]',
+          commonButtonHoverEffects
+        ),
+        link: 'text-primary underline-offset-4 hover:underline border-transparent',
       },
       size: {
         default: 'h-9 px-4 py-2 has-[>svg]:px-3',
@@ -32,16 +80,18 @@ const buttonVariants = cva(
   }
 );
 
+type ButtonProps = ComponentProps<'button'> &
+  VariantProps<typeof buttonVariants> & {
+    asChild?: boolean;
+  };
+
 function Button({
   className,
   variant,
   size,
   asChild = false,
   ...props
-}: ComponentProps<'button'> &
-  VariantProps<typeof buttonVariants> & {
-    asChild?: boolean;
-  }) {
+}: ButtonProps) {
   const Comp = asChild ? Slot : 'button';
 
   return (
@@ -54,3 +104,4 @@ function Button({
 }
 
 export { Button, buttonVariants };
+export type { ButtonProps };
