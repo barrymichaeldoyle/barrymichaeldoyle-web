@@ -3,8 +3,6 @@ import type { LucideProps } from 'lucide-react';
 export function LinkedIn(props: LucideProps) {
   return (
     <svg
-      width={size}
-      height={size}
       viewBox="0 0 382 382"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
