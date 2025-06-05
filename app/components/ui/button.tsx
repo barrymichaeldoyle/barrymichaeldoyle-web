@@ -47,9 +47,9 @@ const buttonVariants = cva(
           commonButtonGlowEffects
         ),
         secondary: cn(
-          'bg-secondary text-secondary-foreground',
-          'hover:bg-secondary/80 border-transparent',
-          'hover:shadow-[0_0_15px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_0_15px_rgba(255,255,255,0.1)]'
+          'bg-secondary text-secondary-foreground border-muted-foreground',
+          'hover:bg-secondary/80 dark:border-secondary',
+          commonButtonGlowEffects
         ),
         ghost: cn(
           'border-transparent',

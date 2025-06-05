@@ -62,20 +62,21 @@
   /* Radius */
   --radius: 0.5rem;
 
-  /* Shadows - cleaned up duplicates */
+  /* Shadows */
   --shadow-2xs: 0px 2px 4px -1px hsl(0 0% 0% / 0.03);
   --shadow-xs: 0px 4px 8px -2px hsl(0 0% 0% / 0.05);
   --shadow-sm:
     0px 4px 8px -2px hsl(0 0% 0% / 0.1), 0px 1px 2px -3px hsl(0 0% 0% / 0.1);
   --shadow:
-    0px 4px 8px -2px hsl(0 0% 0% / 0.1), 0px 1px 2px -3px hsl(0 0% 0% / 0.1);
-  --shadow-md:
     0px 4px 8px -2px hsl(0 0% 0% / 0.1), 0px 2px 4px -3px hsl(0 0% 0% / 0.1);
+  --shadow-md:
+    0px 6px 12px -2px hsl(0 0% 0% / 0.1), 0px 3px 6px -3px hsl(0 0% 0% / 0.1);
   --shadow-lg:
-    0px 4px 8px -2px hsl(0 0% 0% / 0.1), 0px 4px 6px -3px hsl(0 0% 0% / 0.1);
+    0px 8px 16px -4px hsl(0 0% 0% / 0.1), 0px 4px 8px -3px hsl(0 0% 0% / 0.1);
   --shadow-xl:
-    0px 4px 8px -2px hsl(0 0% 0% / 0.1), 0px 8px 10px -3px hsl(0 0% 0% / 0.1);
-  --shadow-2xl: 0px 4px 8px -2px hsl(0 0% 0% / 0.25);
+    0px 12px 24px -4px hsl(0 0% 0% / 0.1), 0px 6px 12px -3px hsl(0 0% 0% / 0.1);
+  --shadow-2xl:
+    0px 16px 32px -4px hsl(0 0% 0% / 0.1), 0px 8px 16px -3px hsl(0 0% 0% / 0.1);
 }
 
 .dark {
@@ -171,6 +172,10 @@
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-background text-foreground;
     position: relative;
@@ -180,13 +185,13 @@
   /* ===== PARTICLE SYSTEM ===== */
 
   /* Base particle layer - tiny floating dots */
-  body::before {
+  .hero-particles::before {
     content: '';
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     background-image:
       /* Small scattered particles */
       radial-gradient(
@@ -238,6 +243,57 @@
         circle 1.3px at 5% 67%,
         oklch(0.7 0.174 299 / 0.4),
         transparent
+      ),
+      /* Additional small particles for increased intensity */
+        radial-gradient(
+          circle 0.4px at 56% 34%,
+          oklch(0.6 0.32 299 / 0.45),
+          transparent
+        ),
+      radial-gradient(
+        circle 1.1px at 82% 78%,
+        oklch(0.7 0.174 299 / 0.35),
+        transparent
+      ),
+      radial-gradient(
+        circle 0.8px at 19% 45%,
+        oklch(0.84 0.146 299 / 0.4),
+        transparent
+      ),
+      radial-gradient(
+        circle 1.4px at 73% 23%,
+        oklch(0.92 0.192 299 / 0.3),
+        transparent
+      ),
+      radial-gradient(
+        circle 0.6px at 37% 91%,
+        oklch(0.6 0.32 299 / 0.5),
+        transparent
+      ),
+      radial-gradient(
+        circle 1.7px at 94% 67%,
+        oklch(0.7 0.174 299 / 0.25),
+        transparent
+      ),
+      radial-gradient(
+        circle 0.3px at 61% 8%,
+        oklch(0.84 0.146 299 / 0.55),
+        transparent
+      ),
+      radial-gradient(
+        circle 1.9px at 28% 56%,
+        oklch(0.92 0.192 299 / 0.4),
+        transparent
+      ),
+      radial-gradient(
+        circle 0.7px at 85% 12%,
+        oklch(0.6 0.32 299 / 0.3),
+        transparent
+      ),
+      radial-gradient(
+        circle 1.2px at 14% 82%,
+        oklch(0.7 0.174 299 / 0.45),
+        transparent
       );
     animation: float-gentle 60s ease-in-out infinite;
     pointer-events: none;
@@ -245,13 +301,13 @@
   }
 
   /* Medium particle layer - more visible orbs */
-  body::after {
+  .hero-particles::after {
     content: '';
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     background-image:
       /* Medium scattered particles */
       radial-gradient(
@@ -293,6 +349,47 @@
         circle 1.5px at 94% 23%,
         oklch(0.92 0.192 299 / 0.32),
         transparent
+      ),
+      /* Additional medium particles for increased intensity */
+        radial-gradient(
+          circle 2.1px at 54% 67%,
+          oklch(0.6 0.32 299 / 0.3),
+          transparent
+        ),
+      radial-gradient(
+        circle 3.8px at 26% 8%,
+        oklch(0.7 0.174 299 / 0.18),
+        transparent
+      ),
+      radial-gradient(
+        circle 2.4px at 78% 43%,
+        oklch(0.84 0.146 299 / 0.28),
+        transparent
+      ),
+      radial-gradient(
+        circle 1.9px at 15% 29%,
+        oklch(0.92 0.192 299 / 0.35),
+        transparent
+      ),
+      radial-gradient(
+        circle 3.1px at 89% 78%,
+        oklch(0.6 0.32 299 / 0.22),
+        transparent
+      ),
+      radial-gradient(
+        circle 2.7px at 48% 15%,
+        oklch(0.7 0.174 299 / 0.26),
+        transparent
+      ),
+      radial-gradient(
+        circle 1.6px at 65% 85%,
+        oklch(0.84 0.146 299 / 0.33),
+        transparent
+      ),
+      radial-gradient(
+        circle 3.4px at 7% 56%,
+        oklch(0.92 0.192 299 / 0.19),
+        transparent
       );
     animation: float-drift 80s ease-in-out infinite reverse;
     animation-delay: -20s;
@@ -300,18 +397,24 @@
     z-index: -2;
   }
 
+  /* Container for hero particles */
+  .hero-particles {
+    position: relative;
+    overflow: hidden;
+  }
+
   /* Large particle overlay using a pseudo-element container */
-  .particle-overlay {
-    position: fixed;
+  .hero-particle-overlay {
+    position: absolute;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     pointer-events: none;
     z-index: -1;
   }
 
-  .particle-overlay::before {
+  .hero-particle-overlay::before {
     content: '';
     position: absolute;
     top: 0;
@@ -349,12 +452,53 @@
         circle 3.8px at 41% 23%,
         oklch(0.7 0.174 299 / 0.32),
         transparent
+      ),
+      /* Additional large particles for increased intensity */
+        radial-gradient(
+          circle 4.8px at 67% 8%,
+          oklch(0.6 0.32 299 / 0.26),
+          transparent
+        ),
+      radial-gradient(
+        circle 6.2px at 19% 54%,
+        oklch(0.7 0.174 299 / 0.22),
+        transparent
+      ),
+      radial-gradient(
+        circle 5.1px at 85% 29%,
+        oklch(0.84 0.146 299 / 0.3),
+        transparent
+      ),
+      radial-gradient(
+        circle 3.5px at 34% 87%,
+        oklch(0.92 0.192 299 / 0.35),
+        transparent
+      ),
+      radial-gradient(
+        circle 7.3px at 73% 61%,
+        oklch(0.6 0.32 299 / 0.18),
+        transparent
+      ),
+      radial-gradient(
+        circle 4.6px at 8% 31%,
+        oklch(0.7 0.174 299 / 0.29),
+        transparent
+      ),
+      radial-gradient(
+        circle 5.8px at 91% 83%,
+        oklch(0.84 0.146 299 / 0.25),
+        transparent
+      ),
+      radial-gradient(
+        circle 6.8px at 46% 12%,
+        oklch(0.92 0.192 299 / 0.21),
+        transparent
       );
     animation: float-slow 100s linear infinite;
     animation-delay: -30s;
   }
 
-  .particle-overlay::after {
+  .hero-particle-overlay::after {
     content: '';
     position: absolute;
     top: 0;
@@ -401,6 +545,57 @@
       radial-gradient(
         circle 0.4px at 81% 89%,
         oklch(0.6 0.32 299 / 0.7),
+        transparent
+      ),
+      /* Additional sparkles for increased intensity */
+        radial-gradient(
+          circle 0.25px at 58% 23%,
+          oklch(0.92 0.192 299 / 0.85),
+          transparent
+        ),
+      radial-gradient(
+        circle 0.35px at 11% 47%,
+        oklch(0.84 0.146 299 / 0.75),
+        transparent
+      ),
+      radial-gradient(
+        circle 0.45px at 84% 68%,
+        oklch(0.7 0.174 299 / 0.65),
+        transparent
+      ),
+      radial-gradient(
+        circle 0.2px at 37% 8%,
+        oklch(0.6 0.32 299 / 0.9),
+        transparent
+      ),
+      radial-gradient(
+        circle 0.6px at 72% 81%,
+        oklch(0.92 0.192 299 / 0.55),
+        transparent
+      ),
+      radial-gradient(
+        circle 0.3px at 26% 34%,
+        oklch(0.84 0.146 299 / 0.8),
+        transparent
+      ),
+      radial-gradient(
+        circle 0.4px at 89% 17%,
+        oklch(0.7 0.174 299 / 0.7),
+        transparent
+      ),
+      radial-gradient(
+        circle 0.25px at 63% 93%,
+        oklch(0.6 0.32 299 / 0.85),
+        transparent
+      ),
+      radial-gradient(
+        circle 0.5px at 14% 62%,
+        oklch(0.92 0.192 299 / 0.6),
+        transparent
+      ),
+      radial-gradient(
+        circle 0.35px at 95% 45%,
+        oklch(0.84 0.146 299 / 0.75),
         transparent
       );
     animation: sparkle-dance 25s ease-in-out infinite;
@@ -509,179 +704,15 @@
 
   /* ===== DARK MODE ADJUSTMENTS ===== */
 
-  .dark body::before {
-    background-image:
-      radial-gradient(
-        circle 0.8px at 12% 23%,
-        oklch(0.6 0.32 299 / 0.6),
-        transparent
-      ),
-      radial-gradient(
-        circle 1.2px at 68% 7%,
-        oklch(0.7 0.174 299 / 0.5),
-        transparent
-      ),
-      radial-gradient(
-        circle 0.5px at 34% 67%,
-        oklch(0.84 0.146 299 / 0.7),
-        transparent
-      ),
-      radial-gradient(
-        circle 2px at 89% 34%,
-        oklch(0.92 0.192 299 / 0.55),
-        transparent
-      ),
-      radial-gradient(
-        circle 0.7px at 23% 89%,
-        oklch(0.6 0.32 299 / 0.65),
-        transparent
-      ),
-      radial-gradient(
-        circle 1.5px at 78% 56%,
-        oklch(0.7 0.174 299 / 0.45),
-        transparent
-      ),
-      radial-gradient(
-        circle 0.9px at 45% 12%,
-        oklch(0.84 0.146 299 / 0.6),
-        transparent
-      ),
-      radial-gradient(
-        circle 1.8px at 67% 78%,
-        oklch(0.92 0.192 299 / 0.5),
-        transparent
-      ),
-      radial-gradient(
-        circle 0.6px at 91% 45%,
-        oklch(0.6 0.32 299 / 0.55),
-        transparent
-      ),
-      radial-gradient(
-        circle 1.3px at 5% 67%,
-        oklch(0.7 0.174 299 / 0.6),
-        transparent
-      );
+  .dark .hero-particles::before {
   }
 
-  .dark body::after {
-    background-image:
-      radial-gradient(
-        circle 2.5px at 18% 34%,
-        oklch(0.6 0.32 299 / 0.4),
-        transparent
-      ),
-      radial-gradient(
-        circle 3.2px at 73% 18%,
-        oklch(0.7 0.174 299 / 0.35),
-        transparent
-      ),
-      radial-gradient(
-        circle 1.8px at 42% 81%,
-        oklch(0.84 0.146 299 / 0.45),
-        transparent
-      ),
-      radial-gradient(
-        circle 4px at 86% 52%,
-        oklch(0.92 0.192 299 / 0.3),
-        transparent
-      ),
-      radial-gradient(
-        circle 2.2px at 9% 73%,
-        oklch(0.6 0.32 299 / 0.42),
-        transparent
-      ),
-      radial-gradient(
-        circle 3.5px at 67% 91%,
-        oklch(0.7 0.174 299 / 0.38),
-        transparent
-      ),
-      radial-gradient(
-        circle 2.8px at 31% 45%,
-        oklch(0.84 0.146 299 / 0.4),
-        transparent
-      ),
-      radial-gradient(
-        circle 1.5px at 94% 23%,
-        oklch(0.92 0.192 299 / 0.48),
-        transparent
-      );
+  .dark .hero-particles::after {
   }
 
-  .dark .particle-overlay::before {
-    background-image:
-      radial-gradient(
-        circle 5px at 25% 15%,
-        oklch(0.6 0.32 299 / 0.25),
-        transparent
-      ),
-      radial-gradient(
-        circle 6.5px at 78% 38%,
-        oklch(0.7 0.174 299 / 0.2),
-        transparent
-      ),
-      radial-gradient(
-        circle 4.2px at 52% 72%,
-        oklch(0.84 0.146 299 / 0.3),
-        transparent
-      ),
-      radial-gradient(
-        circle 7px at 13% 89%,
-        oklch(0.92 0.192 299 / 0.18),
-        transparent
-      ),
-      radial-gradient(
-        circle 5.5px at 89% 67%,
-        oklch(0.6 0.32 299 / 0.22),
-        transparent
-      ),
-      radial-gradient(
-        circle 3.8px at 41% 23%,
-        oklch(0.7 0.174 299 / 0.28),
-        transparent
-      );
+  .dark .hero-particle-overlay::before {
   }
 
-  .dark .particle-overlay::after {
-    background-image:
-      radial-gradient(
-        circle 0.3px at 33% 44%,
-        oklch(0.92 0.192 299 / 0.9),
-        transparent
-      ),
-      radial-gradient(
-        circle 0.4px at 76% 12%,
-        oklch(0.84 0.146 299 / 0.8),
-        transparent
-      ),
-      radial-gradient(
-        circle 0.2px at 15% 78%,
-        oklch(0.7 0.174 299 / 1),
-        transparent
-      ),
-      radial-gradient(
-        circle 0.6px at 92% 33%,
-        oklch(0.6 0.32 299 / 0.7),
-        transparent
-      ),
-      radial-gradient(
-        circle 0.3px at 48% 91%,
-        oklch(0.92 0.192 299 / 0.8),
-        transparent
-      ),
-      radial-gradient(
-        circle 0.5px at 67% 54%,
-        oklch(0.84 0.146 299 / 0.9),
-        transparent
-      ),
-      radial-gradient(
-        circle 0.2px at 24% 67%,
-        oklch(0.7 0.174 299 / 0.7),
-        transparent
-      ),
-      radial-gradient(
-        circle 0.4px at 81% 89%,
-        oklch(0.6 0.32 299 / 0.8),
-        transparent
-      );
+  .dark .hero-particle-overlay::after {
   }
 }
