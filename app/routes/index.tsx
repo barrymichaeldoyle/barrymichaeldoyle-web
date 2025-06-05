@@ -7,15 +7,10 @@ import {
   Linkedin,
   Mail,
   MapPin,
-  User,
 } from 'lucide-react';
 
 import { Badge } from '@/components/ui/badge';
-import {
-  Button,
-  commonButtonGlowEffects,
-  commonButtonHoverEffects,
-} from '@/components/ui/button';
+import { Button, commonButtonGlowEffects } from '@/components/ui/button';
 import {
   Card,
   CardContent,

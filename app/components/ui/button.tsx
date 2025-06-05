@@ -4,9 +4,6 @@ import { cva, type VariantProps } from 'class-variance-authority';
 
 import { cn } from '@/lib/utils';
 
-// Common styles that are reused across variants
-export const commonButtonHoverEffects =
-  'hover:scale-[1.02] active:scale-[0.98] origin-center will-change-transform';
 export const commonButtonGlowEffects =
   'shadow-[var(--button-glow)] hover:shadow-[var(--button-glow-hover)] hover:border-[var(--button-border-glow)]';
 
@@ -36,33 +33,28 @@ const buttonVariants = cva(
         default: cn(
           'bg-primary text-primary-foreground',
           'hover:bg-primary/90 border-transparent',
-          commonButtonGlowEffects,
-          commonButtonHoverEffects
+          commonButtonGlowEffects
         ),
         destructive: cn(
           'bg-destructive text-white dark:bg-destructive/60',
           'hover:bg-destructive/90 border-transparent hover:border-destructive/30',
           'shadow-xs hover:shadow-[0_0_15px_rgba(239,68,68,0.35),0_0_30px_rgba(239,68,68,0.25)]',
-          'focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40',
-          commonButtonHoverEffects
+          'focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40'
         ),
         outline: cn(
           'border-border bg-background dark:bg-input/30 dark:border-input',
-          'hover:bg-accent hover:text-accent-foreground dark:hover:bg-input/50',
-          commonButtonGlowEffects,
-          commonButtonHoverEffects
+          'hover:bg-input/50 accent hover:text-accent-foreground dark:hover:bg-input/50',
+          commonButtonGlowEffects
         ),
         secondary: cn(
           'bg-secondary text-secondary-foreground',
           'hover:bg-secondary/80 border-transparent',
-          'hover:shadow-[0_0_15px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_0_15px_rgba(255,255,255,0.1)]',
-          commonButtonHoverEffects
+          'hover:shadow-[0_0_15px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_0_15px_rgba(255,255,255,0.1)]'
         ),
         ghost: cn(
           'border-transparent',
           'hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50',
-          'hover:shadow-[var(--button-glow-hover)]',
-          commonButtonHoverEffects
+          'hover:shadow-[var(--button-glow-hover)]'
         ),
         link: 'text-primary underline-offset-4 hover:underline border-transparent',
       },
