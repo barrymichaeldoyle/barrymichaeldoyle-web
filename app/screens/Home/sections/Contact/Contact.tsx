@@ -19,10 +19,10 @@ export function ContactSection() {
           <a
             href={socials.linkedin}
             target="_blank"
-            className="text-primary-foreground hover:underline inline-flex items-center"
+            className="text-[#0A66C2] dark:text-primary-foreground font-medium hover:underline inline-flex items-center relative top-0.25 px-0.25"
           >
             <LinkedIn className="w-3 h-3 mr-1" />
-            <span className="text-sm mt-0.25">LinkedIn</span>
+            <span className="text-sm">LinkedIn</span>
           </a>
           , or hit me up with an email.
         </p>

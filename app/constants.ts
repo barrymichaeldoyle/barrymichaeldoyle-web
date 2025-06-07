@@ -13,3 +13,11 @@ export const socials: Record<string, string> = {
   stackoverflow: 'https://stackoverflow.com/users/2111515/barry-michael-doyle',
   email: 'mailto:barry@barrymichaeldoyle.com',
 };
+
+/**
+ * Colors for the social icons.
+ */
+export const colors: Record<string, string> = {
+  linkedin: '#0A66C2',
+  stackoverflow: '#EC7C22',
+};

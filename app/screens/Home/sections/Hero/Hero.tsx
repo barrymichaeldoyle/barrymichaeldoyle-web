@@ -52,12 +52,6 @@ export function HeroSection() {
             <a href="#experience">View Experience</a>
           </Button>
           <Button variant="secondary" size="lg" asChild>
-            <a href={socials.github} target="_blank">
-              <Github className="w-4 h-4 mr-2" />
-              GitHub
-            </a>
-          </Button>
-          <Button variant="secondary" size="lg" asChild>
             <a href={socials.linkedin} target="_blank">
               <LinkedIn className="w-4 h-4 mr-2" />
               LinkedIn

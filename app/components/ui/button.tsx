@@ -47,7 +47,7 @@ const buttonVariants = cva(
           commonButtonGlowEffects
         ),
         secondary: cn(
-          'bg-secondary text-secondary-foreground border-muted-foreground',
+          'bg-card text-secondary-foreground border-muted-foreground',
           'hover:bg-secondary/80 dark:border-secondary',
           commonButtonGlowEffects
         ),

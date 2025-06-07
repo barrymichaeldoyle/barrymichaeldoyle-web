@@ -5,11 +5,16 @@ import {
   HeadContent,
   Scripts,
 } from '@tanstack/react-router';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 import appCss from '@/styles/app.css?url';
 import { ThemeProvider } from '@/components/theme/provider';
 import { Footer } from '@/components/layout/Footer';
 import { Header } from '@/components/layout/Header';
+
+// Create a client
+const queryClient = new QueryClient();
 
 export const Route = createRootRoute({
   head: () => ({
@@ -40,9 +45,12 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
       <body>
         <div className="particle-overlay"></div>
         <ThemeProvider storageKey="bmd-theme">
-          <Header />
-          {children}
-          <Footer />
+          <QueryClientProvider client={queryClient}>
+            <Header />
+            {children}
+            <Footer />
+            <ReactQueryDevtools initialIsOpen={false} />
+          </QueryClientProvider>
         </ThemeProvider>
         <Scripts />
       </body>

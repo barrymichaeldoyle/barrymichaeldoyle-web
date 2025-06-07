@@ -1,59 +1,95 @@
+import { Github, Mail, MapPin } from 'lucide-react';
+import { Fragment } from 'react';
+
 import { Button } from '@/components/ui/button';
 import { LinkedIn } from '@/components/icons/LinkedIn';
-import { Github, Mail } from 'lucide-react';
-import { socials, TITLES, YEARS_EXPERIENCE } from '@/constants';
 import { StackOverflow } from '@/components/icons/StackOverflow';
+import { StackOverflowFlair } from '@/components/StackOverflowFlair/StackOverflowFlair';
+import { socials, TITLES, YEARS_EXPERIENCE } from '@/constants';
 
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-card py-8">
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col items-center space-y-6">
-          {/* Social Links */}
-          <div className="flex items-center space-x-4">
-            <Button variant="ghost" size="icon" asChild>
-              <a
-                href={socials.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="GitHub"
-              >
-                <Github />
-              </a>
-            </Button>
-            <Button variant="ghost" size="icon" asChild>
-              <a
-                href={socials.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn"
-              >
-                <LinkedIn />
-              </a>
-            </Button>
-            <Button variant="ghost" size="icon" asChild>
-              <a
-                href={socials.stackoverflow}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="StackOverflow"
-              >
-                <StackOverflow />
-              </a>
-            </Button>
-            <Button variant="ghost" size="icon" asChild>
-              <a href={socials.email} aria-label="Email">
-                <Mail />
-              </a>
-            </Button>
+    <footer className="border-t border-border bg-card">
+      <div className="container mx-auto px-4 py-12">
+        {/* Main Footer Content */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start mb-8">
+          {/* Professional Info */}
+          <div className="text-center md:text-left">
+            <h3 className="font-semibold text-lg mb-3 text-foreground">
+              Barry Michael Doyle
+            </h3>
+            <div className="space-y-2 text-sm text-muted-foreground">
+              <div className="flex items-center gap-2 justify-center md:justify-start">
+                <MapPin className="w-4 h-4 flex-shrink-0" />
+                <span>Cape Town, South Africa</span>
+              </div>
+              <p>{YEARS_EXPERIENCE}+ Years Professional Experience</p>
+            </div>
           </div>
 
-          {/* Copyright */}
-          <div className="text-center text-muted-foreground">
-            <p>&copy; {new Date().getFullYear()} Barry Michael Doyle</p>
-            <p className="text-sm mt-1">{TITLES.join(' | ')}</p>
-            <p className="text-sm mt-1">
-              {YEARS_EXPERIENCE}+ Years Professional Experience
+          {/* Social Links & StackOverflow Flair */}
+          <div className="flex flex-col items-center space-y-4">
+            <div className="flex items-center space-x-3">
+              <Button variant="secondary" size="icon" asChild>
+                <a
+                  href={socials.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub"
+                >
+                  <Github />
+                </a>
+              </Button>
+              <Button variant="secondary" size="icon" asChild>
+                <a
+                  href={socials.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                >
+                  <LinkedIn />
+                </a>
+              </Button>
+              <Button variant="secondary" size="icon" asChild>
+                <a
+                  href={socials.stackoverflow}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="StackOverflow"
+                >
+                  <StackOverflow />
+                </a>
+              </Button>
+              <Button variant="secondary" size="icon" asChild>
+                <a href={socials.email} aria-label="Email">
+                  <Mail />
+                </a>
+              </Button>
+            </div>
+            <StackOverflowFlair />
+          </div>
+
+          {/* Professional Titles */}
+          <div className="text-center md:text-right">
+            <h4 className="font-semibold text-sm mb-3 text-foreground">
+              Professional Roles
+            </h4>
+            <div className="space-y-1 text-sm text-muted-foreground">
+              {TITLES.map(title => (
+                <div key={title} className="whitespace-nowrap">
+                  {title}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Copyright */}
+        <div className="pt-6 border-t border-border">
+          <div className="text-center text-sm text-muted-foreground">
+            <p>
+              &copy; {new Date().getFullYear()} Barry Michael Doyle. All rights
+              reserved.
             </p>
           </div>
         </div>

@@ -12,12 +12,7 @@ export const experiences: Experience[] = [
     role: 'Lead Frontend Engineer',
     period: 'Mar 2023 - Present',
     years: `${new Date().getFullYear() - 2023}+ years`,
-    achievements: [
-      'Did cool things',
-      'Then did cooler things!',
-      'Then did less cool things',
-      "now I'm sad :(",
-    ],
+    achievements: [],
   },
   {
     company: 'Universal Healthcare Group',
