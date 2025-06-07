@@ -56,7 +56,7 @@ export function StackOverflowFlair() {
       >
         <StackOverflow className="w-4 h-4" />
 
-        <span className="font-medium text-sm">
+        <span className="font-medium text-xs">
           {data.reputation.toLocaleString()}
         </span>
 

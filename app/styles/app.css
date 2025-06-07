@@ -182,6 +182,12 @@
     overflow-x: hidden;
   }
 
+  /* ===== COMMON LINK STYLES ===== */
+
+  .link {
+    @apply text-foreground font-medium transition-colors duration-200 hover:underline inline-flex items-center relative gap-1;
+  }
+
   /* ===== PARTICLE SYSTEM ===== */
 
   /* Base particle layer - tiny floating dots */

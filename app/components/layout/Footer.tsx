@@ -1,11 +1,12 @@
-import { Github, Mail, MapPin } from 'lucide-react';
-import { Fragment } from 'react';
+import { Mail, MapPin, Code2 } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { LinkedIn } from '@/components/icons/LinkedIn';
 import { StackOverflow } from '@/components/icons/StackOverflow';
 import { StackOverflowFlair } from '@/components/StackOverflowFlair/StackOverflowFlair';
-import { socials, TITLES, YEARS_EXPERIENCE } from '@/constants';
+import { links, TITLES, YEARS_EXPERIENCE } from '@/constants';
+
+import { GitHub } from '../icons/GitHub';
 
 export function Footer() {
   return (
@@ -32,17 +33,17 @@ export function Footer() {
             <div className="flex items-center space-x-3">
               <Button variant="secondary" size="icon" asChild>
                 <a
-                  href={socials.github}
+                  href={links.github}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="GitHub"
                 >
-                  <Github />
+                  <GitHub />
                 </a>
               </Button>
               <Button variant="secondary" size="icon" asChild>
                 <a
-                  href={socials.linkedin}
+                  href={links.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="LinkedIn"
@@ -52,7 +53,7 @@ export function Footer() {
               </Button>
               <Button variant="secondary" size="icon" asChild>
                 <a
-                  href={socials.stackoverflow}
+                  href={links.stackoverflow}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="StackOverflow"
@@ -61,7 +62,7 @@ export function Footer() {
                 </a>
               </Button>
               <Button variant="secondary" size="icon" asChild>
-                <a href={socials.email} aria-label="Email">
+                <a href={links.email} aria-label="Email">
                   <Mail />
                 </a>
               </Button>
@@ -84,13 +85,29 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Copyright */}
+        {/* Copyright & Open Source */}
         <div className="pt-6 border-t border-border">
-          <div className="text-center text-sm text-muted-foreground">
-            <p>
-              &copy; {new Date().getFullYear()} Barry Michael Doyle. All rights
-              reserved.
-            </p>
+          <div className="flex flex-col items-center space-y-3">
+            {/* Open Source Link */}
+            <div className="text-center">
+              <a
+                href={links.repo}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link text-xs"
+              >
+                <Code2 className="w-3 h-3" />
+                <span>Open Source on GitHub</span>
+              </a>
+            </div>
+
+            {/* Copyright */}
+            <div className="text-center text-sm text-muted-foreground">
+              <p>
+                &copy; {new Date().getFullYear()} Barry Michael Doyle. All
+                rights reserved.
+              </p>
+            </div>
           </div>
         </div>
       </div>

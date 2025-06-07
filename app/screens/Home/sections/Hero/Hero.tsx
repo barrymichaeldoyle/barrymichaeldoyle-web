@@ -1,10 +1,10 @@
-import { Calendar, Github, MapPin } from 'lucide-react';
+import { Calendar, MapPin } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 import { Button, commonButtonGlowEffects } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { LinkedIn } from '@/components/icons/LinkedIn';
-import { socials, TITLES, YEARS_EXPERIENCE } from '@/constants';
+import { links, TITLES, YEARS_EXPERIENCE } from '@/constants';
 
 export function HeroSection() {
   return (
@@ -52,7 +52,7 @@ export function HeroSection() {
             <a href="#experience">View Experience</a>
           </Button>
           <Button variant="secondary" size="lg" asChild>
-            <a href={socials.linkedin} target="_blank">
+            <a href={links.linkedin} target="_blank">
               <LinkedIn className="w-4 h-4 mr-2" />
               LinkedIn
             </a>

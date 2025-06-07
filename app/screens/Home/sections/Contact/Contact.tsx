@@ -1,6 +1,6 @@
 import { LinkedIn } from '@/components/icons/LinkedIn';
 import { Button } from '@/components/ui/button';
-import { socials } from '@/constants';
+import { links } from '@/constants';
 import { Mail } from 'lucide-react';
 
 export function ContactSection() {
@@ -17,11 +17,11 @@ export function ContactSection() {
         <p className="text-muted-foreground mb-8">
           Best way to get in touch is via{' '}
           <a
-            href={socials.linkedin}
+            href={links.linkedin}
             target="_blank"
-            className="text-[#0A66C2] dark:text-primary-foreground font-medium hover:underline inline-flex items-center relative top-0.25 px-0.25"
+            className="text-[#0A66C2] dark:text-primary-foreground link relative top-0.25 px-0.25"
           >
-            <LinkedIn className="w-3 h-3 mr-1" />
+            <LinkedIn className="w-3 h-3" />
             <span className="text-sm">LinkedIn</span>
           </a>
           , or hit me up with an email.
@@ -32,7 +32,7 @@ export function ContactSection() {
             className="bg-primary text-primary-foreground hover:bg-primary/90"
             asChild
           >
-            <a href={socials.email}>
+            <a href={links.email}>
               <Mail />
               Get In Touch
             </a>
