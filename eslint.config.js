@@ -1,5 +1,6 @@
 import js from '@eslint/js';
 import tanstackQuery from '@tanstack/eslint-plugin-query';
+import tanstackRouter from '@tanstack/eslint-plugin-router';
 import typescriptEslint from '@typescript-eslint/eslint-plugin';
 import typescriptParser from '@typescript-eslint/parser';
 import importPlugin from 'eslint-plugin-import';
@@ -43,6 +44,7 @@ export default [
       'jsx-a11y': jsxA11y,
       import: importPlugin,
       '@tanstack/query': tanstackQuery,
+      '@tanstack/router': tanstackRouter,
     },
     rules: {
       // TypeScript rules
@@ -109,6 +111,9 @@ export default [
       '@tanstack/query/exhaustive-deps': 'error',
       '@tanstack/query/no-rest-destructuring': 'warn',
       '@tanstack/query/stable-query-client': 'error',
+
+      // TanStack Router rules
+      '@tanstack/router/create-route-property-order': 'error',
 
       // General JavaScript/TypeScript rules
       'no-console': 'warn',
