@@ -27,11 +27,7 @@ export function ContactSection() {
           , or hit me up with an email.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button
-            size="lg"
-            className="bg-primary text-primary-foreground hover:bg-primary/90"
-            asChild
-          >
+          <Button size="lg" asChild>
             <a href={links.email}>
               <Mail />
               Get In Touch

@@ -1,10 +1,11 @@
 import { Calendar, MapPin } from 'lucide-react';
-import { useEffect, useState } from 'react';
 
 import { Button, commonButtonGlowEffects } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { LinkedIn } from '@/components/icons/LinkedIn';
-import { links, TITLES, YEARS_EXPERIENCE } from '@/constants';
+import { links, YEARS_EXPERIENCE } from '@/constants';
+
+import { AnimatedTitle } from './AnimatedTitle';
 
 export function HeroSection() {
   return (
@@ -32,10 +33,11 @@ export function HeroSection() {
           Barry Michael Doyle
         </h1>
         <AnimatedTitle />
-        <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
+        <p className="text-md text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
           Passionate about building scalable, performant web applications that
-          delight users. I lead frontend architecture, mentor engineering teams,
-          and drive technical excellence at scale.
+          delight users. I love diving deep into code, solving complex technical
+          challenges, while also leading frontend architecture and mentoring
+          engineering teams.
         </p>
         <div className="flex flex-wrap justify-center gap-4 mb-8">
           <div className="flex items-center gap-2 text-muted-foreground">
@@ -60,34 +62,5 @@ export function HeroSection() {
         </div>
       </div>
     </section>
-  );
-}
-
-function AnimatedTitle() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isVisible, setIsVisible] = useState(true);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIsVisible(false); // Start fade out
-
-      setTimeout(() => {
-        setCurrentIndex(prev => (prev + 1) % TITLES.length);
-        setIsVisible(true); // Fade back in
-      }, 300); // Half of transition duration
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  return (
-    <h2
-      className={cn(
-        `text-2xl sm:text-3xl md:text-4xl text-muted-foreground font-semibold mb-8 transition-opacity duration-500`,
-        isVisible ? 'opacity-100' : 'opacity-0'
-      )}
-    >
-      {TITLES[currentIndex]}
-    </h2>
   );
 }
