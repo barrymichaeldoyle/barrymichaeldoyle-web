@@ -1,5 +1,6 @@
-import { colors } from '@/constants';
 import type { LucideProps } from 'lucide-react';
+
+import { colors } from '@/constants';
 
 export function StackOverflow(props: LucideProps) {
   return (

@@ -1,4 +1,5 @@
 import { describe, it, expect } from 'vitest';
+
 import { capitalize } from '../strings';
 
 describe('capitalize', () => {

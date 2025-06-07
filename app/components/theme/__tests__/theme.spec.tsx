@@ -1,5 +1,11 @@
+import {
+  render,
+  screen,
+  fireEvent,
+  cleanup,
+  waitFor,
+} from '@testing-library/react';
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
-import { render, screen, fireEvent, cleanup, waitFor } from '@testing-library/react';
 
 import { ThemeProvider } from '../provider';
 import { ThemeToggle } from '../toggle';

@@ -1,7 +1,8 @@
+import { Mail } from 'lucide-react';
+
 import { LinkedIn } from '@/components/icons/LinkedIn';
 import { Button } from '@/components/ui/button';
 import { links } from '@/constants';
-import { Mail } from 'lucide-react';
 
 export function ContactSection() {
   return (
@@ -11,8 +12,9 @@ export function ContactSection() {
           Want to Poach Me?
         </h2>
         <p className="text-muted-foreground mb-8">
-          Although I'm currently very happily employed, I'm always open to
-          hearing about new full-time opportunities with the right company.
+          Although I&apos;m currently very happily employed, I&apos;m always
+          open to hearing about new full-time opportunities with the right
+          company.
         </p>
         <p className="text-muted-foreground mb-8">
           Best way to get in touch is via{' '}

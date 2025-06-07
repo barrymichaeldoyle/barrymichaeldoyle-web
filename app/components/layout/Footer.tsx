@@ -1,12 +1,12 @@
 import { Mail, MapPin, Code2 } from 'lucide-react';
 
-import { Button } from '@/components/ui/button';
+import { GitHub } from '../icons/GitHub';
+
 import { LinkedIn } from '@/components/icons/LinkedIn';
 import { StackOverflow } from '@/components/icons/StackOverflow';
 import { StackOverflowFlair } from '@/components/StackOverflowFlair/StackOverflowFlair';
+import { Button } from '@/components/ui/button';
 import { links, TITLES, YEARS_EXPERIENCE } from '@/constants';
-
-import { GitHub } from '../icons/GitHub';
 
 export function Footer() {
   return (
@@ -76,7 +76,7 @@ export function Footer() {
               Professional Roles
             </h4>
             <div className="space-y-1 text-sm text-muted-foreground">
-              {TITLES.map(title => (
+              {TITLES.map((title) => (
                 <div key={title} className="whitespace-nowrap">
                   {title}
                 </div>

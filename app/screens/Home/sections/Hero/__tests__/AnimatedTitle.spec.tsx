@@ -1,9 +1,9 @@
 import { render, screen, act, cleanup } from '@testing-library/react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
-import { TITLES } from '@/constants';
-
 import { AnimatedTitle } from '../AnimatedTitle';
+
+import { TITLES } from '@/constants';
 
 describe('AnimatedTitle', () => {
   beforeEach(() => {

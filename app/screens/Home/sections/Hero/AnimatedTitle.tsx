@@ -1,6 +1,7 @@
+import { useEffect, useState } from 'react';
+
 import { TITLES } from '@/constants';
 import { cn } from '@/lib/utils';
-import { useEffect, useState } from 'react';
 
 export function AnimatedTitle() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -11,7 +12,7 @@ export function AnimatedTitle() {
       setIsVisible(false); // Start fade out
 
       setTimeout(() => {
-        setCurrentIndex(prev => (prev + 1) % TITLES.length);
+        setCurrentIndex((prev) => (prev + 1) % TITLES.length);
         setIsVisible(true); // Fade back in
       }, 300); // Half of transition duration
     }, 3000);

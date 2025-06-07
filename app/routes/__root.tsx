@@ -1,17 +1,17 @@
-import type { ReactNode } from 'react';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import {
   Outlet,
   createRootRoute,
   HeadContent,
   Scripts,
 } from '@tanstack/react-router';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import type { ReactNode } from 'react';
 
-import appCss from '@/styles/app.css?url';
-import { ThemeProvider } from '@/components/theme/provider';
 import { Footer } from '@/components/layout/Footer';
 import { Header } from '@/components/layout/Header';
+import { ThemeProvider } from '@/components/theme/provider';
+import appCss from '@/styles/app.css?url';
 
 // Create a client
 const queryClient = new QueryClient();
