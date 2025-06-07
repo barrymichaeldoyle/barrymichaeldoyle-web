@@ -1,7 +1,8 @@
 import { Button } from '@/components/ui/button';
-import { LinkedIn } from '@/icons/LinkedIn';
-import { StackOverflow } from '@/icons/StackOverflow';
+import { LinkedIn } from '@/components/icons/LinkedIn';
 import { Github, Mail } from 'lucide-react';
+import { socials, TITLES, YEARS_EXPERIENCE } from '@/constants';
+import { StackOverflow } from '@/components/icons/StackOverflow';
 
 export function Footer() {
   return (
@@ -12,37 +13,37 @@ export function Footer() {
           <div className="flex items-center space-x-4">
             <Button variant="ghost" size="icon" asChild>
               <a
-                href="https://github.com/barrymichaeldoyle"
+                href={socials.github}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub"
               >
-                <Github className="w-5 h-5" />
+                <Github />
               </a>
             </Button>
             <Button variant="ghost" size="icon" asChild>
               <a
-                href="https://www.linkedin.com/in/barry-michael-doyle-11369683/"
+                href={socials.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
               >
-                <LinkedIn className="w-5 h-5" />
+                <LinkedIn />
               </a>
             </Button>
             <Button variant="ghost" size="icon" asChild>
               <a
-                href="https://stackoverflow.com/users/your-id"
+                href={socials.stackoverflow}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="StackOverflow"
               >
-                <StackOverflow className="w-5 h-5" />
+                <StackOverflow />
               </a>
             </Button>
             <Button variant="ghost" size="icon" asChild>
-              <a href="mailto:barry@barrymichaeldoyle.com" aria-label="Email">
-                <Mail className="w-5 h-5" />
+              <a href={socials.email} aria-label="Email">
+                <Mail />
               </a>
             </Button>
           </div>
@@ -50,7 +51,10 @@ export function Footer() {
           {/* Copyright */}
           <div className="text-center text-muted-foreground">
             <p>&copy; {new Date().getFullYear()} Barry Michael Doyle</p>
-            <p className="text-sm mt-1">Staff Frontend Engineer</p>
+            <p className="text-sm mt-1">{TITLES.join(' | ')}</p>
+            <p className="text-sm mt-1">
+              {YEARS_EXPERIENCE}+ Years Professional Experience
+            </p>
           </div>
         </div>
       </div>

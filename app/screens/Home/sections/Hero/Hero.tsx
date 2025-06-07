@@ -1,8 +1,10 @@
-import { Calendar, Github, Linkedin, MapPin } from 'lucide-react';
+import { Calendar, Github, MapPin } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 import { Button, commonButtonGlowEffects } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { LinkedIn } from '@/components/icons/LinkedIn';
+import { socials, TITLES, YEARS_EXPERIENCE } from '@/constants';
 
 export function HeroSection() {
   return (
@@ -42,7 +44,7 @@ export function HeroSection() {
           </div>
           <div className="flex items-center gap-2 text-muted-foreground">
             <Calendar className="w-4 h-4" />
-            {new Date().getFullYear() - 2013}+ Years Experience
+            {YEARS_EXPERIENCE}+ Years Professional Experience
           </div>
         </div>
         <div className="flex justify-center gap-4">
@@ -50,17 +52,14 @@ export function HeroSection() {
             <a href="#experience">View Experience</a>
           </Button>
           <Button variant="secondary" size="lg" asChild>
-            <a href="https://github.com/barrymichaeldoyle" target="_blank">
+            <a href={socials.github} target="_blank">
               <Github className="w-4 h-4 mr-2" />
               GitHub
             </a>
           </Button>
           <Button variant="secondary" size="lg" asChild>
-            <a
-              href="https://www.linkedin.com/in/barry-michael-doyle-11369683/"
-              target="_blank"
-            >
-              <Linkedin className="w-4 h-4 mr-2" />
+            <a href={socials.linkedin} target="_blank">
+              <LinkedIn className="w-4 h-4 mr-2" />
               LinkedIn
             </a>
           </Button>
@@ -69,13 +68,6 @@ export function HeroSection() {
     </section>
   );
 }
-
-const TITLES = [
-  'Staff Frontend Engineer',
-  'Product Engineer',
-  'Lead Frontend Engineer',
-  'Design Engineer',
-];
 
 function AnimatedTitle() {
   const [currentIndex, setCurrentIndex] = useState(0);
