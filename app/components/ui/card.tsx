@@ -8,8 +8,8 @@ function Card({ className, ...props }: React.ComponentProps<'div'>) {
       data-slot="card"
       className={cn(
         'bg-card text-card-foreground relative overflow-hidden',
-        'rounded-xl transition-all duration-300 ease-out',
-        'border-l-4 border-l-primary shadow-[0_0_15px_rgba(0,0,0,0.1)]',
+        'rounded-l-md rounded-r-xl transition-all duration-300 ease-out',
+        'border-l-7 border-l-primary shadow-[0_0_15px_rgba(0,0,0,0.1)]',
         'hover:shadow-[0_0_30px_rgba(0,0,0,0.2)] hover:border-l-primary/80',
         className
       )}
