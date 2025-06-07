@@ -174,12 +174,18 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
   }
 
   body {
     @apply bg-background text-foreground;
     position: relative;
     overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
   }
 
   /* ===== COMMON LINK STYLES ===== */

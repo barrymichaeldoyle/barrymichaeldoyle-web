@@ -1,9 +1,9 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import {
-  Outlet,
   createRootRoute,
   HeadContent,
+  Outlet,
   Scripts,
 } from '@tanstack/react-router';
 import type { ReactNode } from 'react';
@@ -47,7 +47,9 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
         <ThemeProvider storageKey="bmd-theme">
           <QueryClientProvider client={queryClient}>
             <Header />
-            {children}
+            <main className="container mx-auto space-y-16 px-3 flex-1">
+              {children}
+            </main>
             <Footer />
             <ReactQueryDevtools initialIsOpen={false} />
           </QueryClientProvider>
