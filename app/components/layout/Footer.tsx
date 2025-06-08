@@ -1,3 +1,4 @@
+import { Link } from '@tanstack/react-router';
 import { Code2, Mail, MapPin } from 'lucide-react';
 
 import { GitHub } from '../icons/GitHub';
@@ -13,7 +14,7 @@ export function Footer() {
     <footer className="border-t border-border bg-card">
       <div className="container mx-auto px-4 py-12">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 items-start mb-8">
           {/* Professional Info */}
           <div className="text-center md:text-left">
             <h3 className="font-semibold text-lg mb-3 text-foreground">
@@ -25,6 +26,21 @@ export function Footer() {
                 <span>Cape Town, South Africa</span>
               </div>
               <p>{YEARS_EXPERIENCE}+ Years Professional Experience</p>
+            </div>
+          </div>
+
+          {/* Navigation Links */}
+          <div className="text-center md:text-left">
+            <h4 className="font-semibold text-sm mb-3 text-foreground">
+              Navigation
+            </h4>
+            <div className="space-y-2 text-sm">
+              <Link to="/" className="block link">
+                Home
+              </Link>
+              <Link to="/blog" className="block link">
+                Blog
+              </Link>
             </div>
           </div>
 
@@ -77,9 +93,12 @@ export function Footer() {
             </h4>
             <div className="space-y-1 text-sm text-muted-foreground">
               {TITLES.map((title) => (
-                <div key={title} className="whitespace-nowrap">
+                <em
+                  key={title}
+                  className="block whitespace-nowrap text-muted-foreground"
+                >
                   {title}
-                </div>
+                </em>
               ))}
             </div>
           </div>
