@@ -1,4 +1,4 @@
-import { Mail, MapPin, Code2 } from 'lucide-react';
+import { Code2, Mail, MapPin } from 'lucide-react';
 
 import { GitHub } from '../icons/GitHub';
 

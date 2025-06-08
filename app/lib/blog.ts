@@ -1,31 +1,24 @@
-import { readFileSync } from 'fs';
-import { join } from 'path';
+import { createServerFn } from '@tanstack/react-start';
 
-import matter from 'gray-matter';
+import {
+  getAllBlogPosts as getAllBlogPostsServer,
+  getBlogPost as getBlogPostServer,
+  type BlogPost,
+} from './blog.server';
 
-export interface BlogPost {
-  slug: string;
-  title: string;
-  date: string;
-  description: string;
-  content: string;
-}
+// Server functions that will run on the server and be called from the client
+export const getBlogPostFn = createServerFn({
+  method: 'GET',
+}).handler(async (ctx): Promise<BlogPost | null> => {
+  const slug = ctx.data as unknown as string;
+  return getBlogPostServer(slug);
+});
 
-export function getBlogPost(slug: string): BlogPost | null {
-  try {
-    const filePath = join('content', 'blog', `${slug}.md`);
-    const fileContents = readFileSync(filePath, 'utf8');
-    const { data, content } = matter(fileContents);
+export const getAllBlogPostsFn = createServerFn({
+  method: 'GET',
+}).handler(async (): Promise<BlogPost[]> => {
+  return getAllBlogPostsServer();
+});
 
-    return {
-      slug,
-      title: data.title || 'Untitled',
-      date: data.date || '',
-      description: data.description || '',
-      content,
-    };
-  } catch (error) {
-    console.error('Error reading blog post:', error);
-    return null;
-  }
-}
+// Re-export the type for convenience
+export type { BlogPost };

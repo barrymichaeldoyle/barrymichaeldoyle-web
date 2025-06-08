@@ -1,10 +1,11 @@
 import { createFileRoute } from '@tanstack/react-router';
 
-import { getBlogPost } from '@/lib/blog';
+import { getBlogPost } from '@/lib/blog.server';
 
 export const Route = createFileRoute('/blog/$slug')({
-  component: BlogPost,
+  component: BlogPostComponent,
   loader: ({ params }) => {
+    // This runs on the server, so we can safely use the server function
     const post = getBlogPost(params.slug);
     if (!post) {
       throw new Error('Blog post not found');
@@ -13,7 +14,7 @@ export const Route = createFileRoute('/blog/$slug')({
   },
 });
 
-function BlogPost() {
+function BlogPostComponent() {
   const { post } = Route.useLoaderData();
 
   return (
