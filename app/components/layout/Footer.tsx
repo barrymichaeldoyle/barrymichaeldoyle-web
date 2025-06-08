@@ -1,3 +1,4 @@
+import { Link } from '@tanstack/react-router';
 import { Code2, Mail, MapPin } from 'lucide-react';
 
 import { LinkedIn } from '@/components/icons/LinkedIn';
@@ -29,7 +30,7 @@ export function Footer() {
           </div>
 
           {/* Navigation Links */}
-          {/* <div className="text-center md:text-left">
+          <div className="text-center md:text-left">
             <h4 className="font-semibold text-sm mb-3 text-foreground">
               Navigation
             </h4>
@@ -37,11 +38,11 @@ export function Footer() {
               <Link to="/" className="block link">
                 Home
               </Link>
-              <Link to="/blog" className="block link">
+              {/* <Link to="/blog" className="block link">
                 Blog
-              </Link>
+              </Link> */}
             </div>
-          </div> */}
+          </div>
 
           {/* Social Links & StackOverflow Flair */}
           <div className="flex flex-col items-center space-y-4">
