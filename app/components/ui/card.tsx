@@ -9,7 +9,10 @@ const cardVariants = cva(
     variants: {
       variant: {
         default: ['rounded-lg'],
-        feature: ['rounded-l-md rounded-r-xl', 'border-l-7 border-l-primary'],
+        feature: [
+          'rounded-l-md rounded-r-xl',
+          'border-l-7 border-l-primary dark:border-l-primary',
+        ],
       },
     },
     defaultVariants: {
