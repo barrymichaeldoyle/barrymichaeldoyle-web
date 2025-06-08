@@ -1,11 +1,11 @@
 import { createFileRoute, Link } from '@tanstack/react-router';
 
-import { getAllBlogPosts } from '@/lib/blog.server';
+import { getAllBlogPosts } from '@/server/blog';
 
 export const Route = createFileRoute('/blog/')({
   component: BlogIndex,
-  loader: () => {
-    const posts = getAllBlogPosts();
+  loader: async () => {
+    const posts = await getAllBlogPosts();
     return { posts };
   },
 });

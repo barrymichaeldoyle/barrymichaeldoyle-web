@@ -1,12 +1,11 @@
 import { createFileRoute } from '@tanstack/react-router';
 
-import { getBlogPost } from '@/lib/blog.server';
+import { getBlogPost } from '@/server/blog';
 
 export const Route = createFileRoute('/blog/$slug')({
   component: BlogPostComponent,
-  loader: ({ params }) => {
-    // This runs on the server, so we can safely use the server function
-    const post = getBlogPost(params.slug);
+  loader: async ({ params }) => {
+    const post = await getBlogPost({ data: params.slug });
     if (!post) {
       throw new Error('Blog post not found');
     }
