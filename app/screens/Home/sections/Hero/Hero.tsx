@@ -9,7 +9,7 @@ import { cn } from '@/lib/utils';
 
 export function HeroSection() {
   return (
-    <section className="hero-particles text-center py-16 w-full">
+    <section className="hero-particles text-center py-10 w-full">
       <div className="hero-particles-medium" />
       <div className="hero-particle-overlay" />
       <div className="max-w-4xl mx-auto relative z-10">
