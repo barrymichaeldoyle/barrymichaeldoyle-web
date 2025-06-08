@@ -24,7 +24,7 @@ export function ExperienceSection() {
       </div>
       <div className="max-w-4xl mx-auto space-y-8">
         {experiences.map((exp) => (
-          <Card key={exp.company} className="group p-6">
+          <Card key={exp.company} variant="feature" className="group p-6">
             <CardHeader className="p-0">
               <div className="flex justify-between items-start">
                 <div>

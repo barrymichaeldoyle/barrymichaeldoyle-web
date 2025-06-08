@@ -1,18 +1,32 @@
+import { type VariantProps, cva } from 'class-variance-authority';
 import * as React from 'react';
 
 import { cn } from '@/lib/utils';
 
-function Card({ className, ...props }: React.ComponentProps<'div'>) {
+const cardVariants = cva(
+  'bg-card text-card-foreground relative overflow-hidden transition-all duration-300 ease-out border border-border/40 shadow-[0_2px_4px_rgba(0,0,0,0.05),0_1px_2px_rgba(0,0,0,0.1)] dark:border-border/20 dark:shadow-[0_2px_4px_rgba(0,0,0,0.2),0_1px_2px_rgba(0,0,0,0.3)]',
+  {
+    variants: {
+      variant: {
+        default: ['rounded-lg'],
+        feature: ['rounded-l-md rounded-r-xl', 'border-l-7 border-l-primary'],
+      },
+    },
+    defaultVariants: {
+      variant: 'default',
+    },
+  }
+);
+
+interface CardProps
+  extends React.ComponentProps<'div'>,
+    VariantProps<typeof cardVariants> {}
+
+function Card({ className, variant, ...props }: CardProps) {
   return (
     <div
       data-slot="card"
-      className={cn(
-        'bg-card text-card-foreground relative overflow-hidden',
-        'rounded-l-md rounded-r-xl transition-all duration-300 ease-out',
-        'border-l-7 border-l-primary shadow-[0_0_15px_rgba(0,0,0,0.1)]',
-        'hover:shadow-[0_0_30px_rgba(0,0,0,0.2)] hover:border-l-primary/80',
-        className
-      )}
+      className={cn(cardVariants({ variant, className }))}
       {...props}
     />
   );
@@ -88,10 +102,10 @@ function CardFooter({ className, ...props }: React.ComponentProps<'div'>) {
 
 export {
   Card,
-  CardHeader,
-  CardFooter,
-  CardTitle,
   CardAction,
-  CardDescription,
   CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
 };

@@ -78,7 +78,7 @@ function BadgeCount({ count, color }: { count: number; color: string }) {
 
   return (
     <span className="flex items-center gap-0.5">
-      <span className={`text-[${color}]`}>●</span>
+      <span style={{ color }}>●</span>
       {count}
     </span>
   );
