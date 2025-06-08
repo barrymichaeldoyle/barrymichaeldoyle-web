@@ -1,3 +1,5 @@
 /node_modules
 .env
 app.config.timestamp_*.js
+.netlify
+.vinxi
