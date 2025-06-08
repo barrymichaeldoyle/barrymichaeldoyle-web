@@ -1,4 +1,5 @@
-import { ContactSection } from './sections/Contact/Contact';
+import { ContactSection } from '@/components/sections/Contact/Contact';
+
 import { ExperienceSection } from './sections/Experience/Experience';
 import { HeroSection } from './sections/Hero/Hero';
 

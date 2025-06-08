@@ -16,9 +16,9 @@ export function BlogPostScreen({ post }: BlogPostScreenProps) {
   const readingTime = calculateReadingTime(post.content);
 
   return (
-    <div className="container mx-auto pt-8 pb-16 max-w-4xl">
+    <div className="container mx-auto pt-2 max-w-4xl">
       {/* Navigation */}
-      <div className="mb-8">
+      <nav className="mb-4">
         <Button variant="ghost" asChild className="pl-0">
           <Link
             to="/blog"
@@ -28,16 +28,16 @@ export function BlogPostScreen({ post }: BlogPostScreenProps) {
             Back to Blog
           </Link>
         </Button>
-      </div>
+      </nav>
 
       {/* Header */}
-      <header className="mb-12 space-y-6">
+      <header className="mb-8 space-y-4">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight">
           {post.title}
         </h1>
 
         {post.description && (
-          <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed">
+          <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
             {post.description}
           </p>
         )}
@@ -61,46 +61,45 @@ export function BlogPostScreen({ post }: BlogPostScreenProps) {
 
       {/* Content */}
       <article>
-        <Card className="border-l-current border-l-0.25 p-4">
-          <CardContent className="p-0 md:p-8 lg:p-12">
-            <div className="prose prose-lg max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-h1:text-3xl prose-h1:mb-6 prose-h2:text-2xl prose-h2:mb-5 prose-h2:mt-12 prose-h3:text-xl prose-h3:mb-4 prose-h3:mt-8 prose-p:leading-relaxed prose-p:mb-6 prose-a:no-underline hover:prose-a:underline prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:font-mono prose-code:text-sm prose-pre:rounded-lg prose-pre:overflow-x-auto prose-pre:border prose-blockquote:border-l-4 prose-blockquote:pl-6 prose-blockquote:py-2 prose-ul:mb-6 prose-ol:mb-6 prose-li:mb-1 dark:prose-invert">
+        <Card className="p-4">
+          <CardContent className="p-0 md:p-6 lg:p-8">
+            <div className="prose prose-sm max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-h1:text-2xl prose-h1:mb-4 prose-h2:text-xl prose-h2:mb-4 prose-h2:mt-8 prose-h3:text-lg prose-h3:mb-3 prose-h3:mt-6 prose-p:leading-relaxed prose-p:mb-4 prose-a:no-underline hover:prose-a:underline prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:font-mono prose-code:text-sm prose-pre:rounded-lg prose-pre:overflow-x-auto prose-pre:border prose-blockquote:border-l-4 prose-blockquote:pl-6 prose-blockquote:py-2 prose-ul:mb-4 prose-ol:mb-4 prose-li:mb-1 dark:prose-invert">
               <ReactMarkdown
                 remarkPlugins={[remarkGfm]}
                 rehypePlugins={[rehypeHighlight]}
                 components={{
-                  // Custom components for better styling
                   h1: ({ children }) => (
-                    <h1 className="text-3xl font-bold text-foreground mt-12 mb-6 first:mt-0 tracking-tight border-b border-border pb-4">
+                    <h1 className="text-2xl font-bold text-foreground mt-8 mb-4 first:mt-0 tracking-tight border-b border-border pb-3">
                       {children}
                     </h1>
                   ),
                   h2: ({ children }) => (
-                    <h2 className="text-2xl font-bold text-foreground mt-12 mb-5 tracking-tight">
+                    <h2 className="text-xl font-bold text-foreground mt-8 mb-4 tracking-tight">
                       {children}
                     </h2>
                   ),
                   h3: ({ children }) => (
-                    <h3 className="text-xl font-bold text-foreground mt-8 mb-4 tracking-tight">
+                    <h3 className="text-lg font-bold text-foreground mt-6 mb-3 tracking-tight">
                       {children}
                     </h3>
                   ),
                   p: ({ children }) => (
-                    <p className="text-foreground leading-relaxed mb-6">
+                    <p className="text-foreground leading-relaxed mb-4 text-sm">
                       {children}
                     </p>
                   ),
                   ul: ({ children }) => (
-                    <ul className="list-disc pl-6 mb-6 space-y-2">
+                    <ul className="list-disc pl-6 mb-4 space-y-1">
                       {children}
                     </ul>
                   ),
                   ol: ({ children }) => (
-                    <ol className="list-decimal pl-6 mb-6 space-y-2">
+                    <ol className="list-decimal pl-6 mb-4 space-y-1">
                       {children}
                     </ol>
                   ),
                   li: ({ children }) => (
-                    <li className="text-foreground leading-relaxed">
+                    <li className="text-foreground leading-relaxed text-sm">
                       {children}
                     </li>
                   ),
@@ -125,7 +124,7 @@ export function BlogPostScreen({ post }: BlogPostScreenProps) {
                     );
                   },
                   pre: ({ children }) => (
-                    <pre className="bg-muted border border-border p-6 rounded-lg overflow-x-auto mb-8 text-sm leading-relaxed">
+                    <pre className="bg-muted border border-border px-2 py-1 rounded-lg overflow-x-auto mb-4 text-sm leading-relaxed">
                       {children}
                     </pre>
                   ),
@@ -154,14 +153,14 @@ export function BlogPostScreen({ post }: BlogPostScreenProps) {
       </article>
 
       {/* Navigation Footer */}
-      <div className="mt-16 pt-8 border-t border-border">
+      {/* <div className="mt-16 pt-8 border-t border-border">
         <Button variant="outline" asChild>
           <Link to="/blog" className="flex items-center gap-2">
             <ArrowLeft className="h-4 w-4" />
             Back to All Posts
           </Link>
         </Button>
-      </div>
+      </div> */}
     </div>
   );
 }

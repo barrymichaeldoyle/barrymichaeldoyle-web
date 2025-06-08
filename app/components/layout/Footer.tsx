@@ -1,13 +1,13 @@
 import { Link } from '@tanstack/react-router';
 import { Code2, Mail, MapPin } from 'lucide-react';
 
-import { GitHub } from '../icons/GitHub';
-
 import { LinkedIn } from '@/components/icons/LinkedIn';
 import { StackOverflow } from '@/components/icons/StackOverflow';
 import { StackOverflowFlair } from '@/components/StackOverflowFlair/StackOverflowFlair';
 import { Button } from '@/components/ui/button';
 import { links, TITLES, YEARS_EXPERIENCE } from '@/constants';
+
+import { GitHub } from '../icons/GitHub';
 
 export function Footer() {
   return (

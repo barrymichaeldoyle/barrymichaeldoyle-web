@@ -52,9 +52,9 @@ const buttonVariants = cva(
           commonButtonGlowEffects
         ),
         ghost: cn(
-          'border-transparent',
-          'hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50',
-          'hover:shadow-[var(--button-glow-hover)]'
+          'border-transparent shadow-none',
+          'hover:bg-input/50 accent hover:text-accent-foreground dark:hover:bg-input/50',
+          commonButtonGlowEffects
         ),
         link: 'text-primary underline-offset-4 hover:underline border-transparent',
       },

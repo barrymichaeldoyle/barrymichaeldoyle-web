@@ -99,13 +99,37 @@ export default [
             'sibling',
             'index',
           ],
+          pathGroups: [
+            // Internal imports with @ alias
+            {
+              pattern: '@/**',
+              group: 'internal',
+              position: 'before',
+            },
+            // Relative imports from parent directories
+            {
+              pattern: '../**',
+              group: 'parent',
+              position: 'before',
+            },
+            // Relative imports from current directory
+            {
+              pattern: './**',
+              group: 'sibling',
+              position: 'before',
+            },
+          ],
+          pathGroupsExcludedImportTypes: ['react'],
           'newlines-between': 'always',
           alphabetize: {
             order: 'asc',
             caseInsensitive: true,
           },
+          distinctGroup: false,
         },
       ],
+      'import/newline-after-import': 'error',
+      'import/no-duplicates': 'error',
 
       // TanStack Query rules
       '@tanstack/query/exhaustive-deps': 'error',

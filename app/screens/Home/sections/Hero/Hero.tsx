@@ -1,11 +1,11 @@
 import { Calendar, MapPin } from 'lucide-react';
 
-import { AnimatedTitle } from './AnimatedTitle';
-
 import { LinkedIn } from '@/components/icons/LinkedIn';
 import { Button, commonButtonGlowEffects } from '@/components/ui/button';
 import { links, YEARS_EXPERIENCE } from '@/constants';
 import { cn } from '@/lib/utils';
+
+import { AnimatedTitle } from './AnimatedTitle';
 
 export function HeroSection() {
   return (
