@@ -28,8 +28,8 @@ export function ContactSection() {
           </a>
           , or hit me up with an email.
         </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button size="lg" asChild>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <Button size="lg" className="w-fit" asChild>
             <a href={links.email}>
               <Mail />
               Get In Touch

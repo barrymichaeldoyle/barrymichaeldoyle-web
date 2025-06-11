@@ -12,7 +12,7 @@ import { experiences } from '@/screens/Home/sections/Experience/experiences';
 
 export function ExperienceSection() {
   return (
-    <section id="experience" className="py-16">
+    <section id="experience" className="py-10">
       <div className="text-center mb-12">
         <h2 className="text-3xl font-bold mb-4 text-foreground">
           Professional Experience
