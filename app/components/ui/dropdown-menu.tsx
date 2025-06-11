@@ -1,24 +1,20 @@
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
 import { CheckIcon, ChevronRightIcon, CircleIcon } from 'lucide-react';
-import type { ComponentProps } from 'react';
-import { useEffect, useState } from 'react';
+import type { ComponentProps, RefObject } from 'react';
+import { createContext, useContext, useEffect, useRef, useState } from 'react';
 
 import { cn } from '@/lib/utils';
 
-/**
- * Provides a dropdown menu with internal open state management and automatic closing on scroll events.
- *
- * The menu closes automatically when the user scrolls the window or any scrollable container. An optional {@link onOpenChange} callback is invoked whenever the open state changes.
- *
- * @param onOpenChange - Optional callback triggered when the menu's open state changes.
- *
- * @remark The menu is controlled internally and is not modal.
- */
+const DropdownMenuContext = createContext<{
+  triggerRef: RefObject<HTMLButtonElement | null>;
+}>({ triggerRef: { current: null } });
+
 function DropdownMenu({
   onOpenChange,
   ...props
 }: ComponentProps<typeof DropdownMenuPrimitive.Root>) {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(props.open);
+  const triggerRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     if (!open) return;
@@ -27,11 +23,39 @@ function DropdownMenu({
       setOpen(false);
     }
 
-    // Listen to scroll on window and all scrollable containers
-    window.addEventListener('scroll', handleScroll, { capture: true });
+    // Find the nearest scrollable ancestor
+    function findScrollableAncestor(element: HTMLElement | null): HTMLElement {
+      if (!element || element === document.body) {
+        return document.documentElement; // Fallback to document root
+      }
+
+      const { overflow, overflowY, overflowX } =
+        window.getComputedStyle(element);
+      const isScrollable =
+        /(auto|scroll)/.test(overflow + overflowY + overflowX) &&
+        (element.scrollHeight > element.clientHeight ||
+          element.scrollWidth > element.clientWidth);
+
+      return isScrollable
+        ? element
+        : findScrollableAncestor(element.parentElement);
+    }
+
+    // Get the scrollable container
+    const scrollContainer = triggerRef.current
+      ? findScrollableAncestor(triggerRef.current.parentElement)
+      : document.documentElement;
+
+    // Listen to scroll on the nearest scrollable ancestor
+    scrollContainer.addEventListener('scroll', handleScroll, {
+      capture: true,
+      passive: true,
+    });
 
     return () => {
-      window.removeEventListener('scroll', handleScroll, { capture: true });
+      scrollContainer.removeEventListener('scroll', handleScroll, {
+        capture: true,
+      });
     };
   }, [open]);
 
@@ -41,13 +65,16 @@ function DropdownMenu({
   };
 
   return (
-    <DropdownMenuPrimitive.Root
-      modal={false}
-      open={open}
-      onOpenChange={handleOpenChange}
-      data-slot="dropdown-menu"
-      {...props}
-    />
+    <DropdownMenuContext.Provider value={{ triggerRef }}>
+      <DropdownMenuPrimitive.Root
+        modal={false}
+        data-slot="dropdown-menu"
+        {...props}
+        // We do not want spread props to override our open logic
+        open={open}
+        onOpenChange={handleOpenChange}
+      />
+    </DropdownMenuContext.Provider>
   );
 }
 
@@ -67,8 +94,11 @@ function DropdownMenuPortal({
 function DropdownMenuTrigger({
   ...props
 }: ComponentProps<typeof DropdownMenuPrimitive.Trigger>) {
+  const context = useContext(DropdownMenuContext);
+
   return (
     <DropdownMenuPrimitive.Trigger
+      ref={context.triggerRef}
       data-slot="dropdown-menu-trigger"
       {...props}
     />
