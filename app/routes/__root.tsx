@@ -39,6 +39,11 @@ function RootComponent() {
   );
 }
 
+/**
+ * Renders the complete HTML document structure for the root route, including theming, data fetching context, and layout.
+ *
+ * @param children - The main content to be rendered within the document body.
+ */
 function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
   return (
     <html>

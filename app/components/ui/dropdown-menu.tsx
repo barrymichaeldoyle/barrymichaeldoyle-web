@@ -5,6 +5,15 @@ import { useEffect, useState } from 'react';
 
 import { cn } from '@/lib/utils';
 
+/**
+ * Provides a dropdown menu with internal open state management and automatic closing on scroll events.
+ *
+ * The menu closes automatically when the user scrolls the window or any scrollable container. An optional {@link onOpenChange} callback is invoked whenever the open state changes.
+ *
+ * @param onOpenChange - Optional callback triggered when the menu's open state changes.
+ *
+ * @remark The menu is controlled internally and is not modal.
+ */
 function DropdownMenu({
   onOpenChange,
   ...props
@@ -42,6 +51,11 @@ function DropdownMenu({
   );
 }
 
+/**
+ * Renders the dropdown menu content in a React portal.
+ *
+ * Passes all props to the underlying portal and adds a data attribute for identification.
+ */
 function DropdownMenuPortal({
   ...props
 }: ComponentProps<typeof DropdownMenuPrimitive.Portal>) {

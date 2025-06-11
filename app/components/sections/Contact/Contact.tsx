@@ -4,6 +4,11 @@ import { LinkedIn } from '@/components/icons/LinkedIn';
 import { Button } from '@/components/ui/button';
 import { links } from '@/constants';
 
+/**
+ * Renders a contact section with options to connect via LinkedIn or email.
+ *
+ * Displays a heading, descriptive text, a LinkedIn link, and a prominent button for email contact.
+ */
 export function ContactSection() {
   return (
     <section id="contact" className="py-10 text-center">

@@ -10,6 +10,11 @@ import {
 } from '@/components/ui/card';
 import { experiences } from '@/screens/Home/sections/Experience/experiences';
 
+/**
+ * Renders a section displaying a list of professional experiences with roles, companies, durations, and achievements.
+ *
+ * Each experience is presented as a card with the role, company name, years of experience, period, and a list of achievements.
+ */
 export function ExperienceSection() {
   return (
     <section id="experience" className="py-10">
