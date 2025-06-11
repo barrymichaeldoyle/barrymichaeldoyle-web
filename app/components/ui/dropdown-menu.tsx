@@ -7,9 +7,10 @@ import { cn } from '@/lib/utils';
 
 function DropdownMenu({
   onOpenChange,
+  open: openProp,
   ...props
 }: ComponentProps<typeof DropdownMenuPrimitive.Root>) {
-  const [open, setOpen] = useState(props.open);
+  const [open, setOpen] = useState(openProp);
 
   useEffect(() => {
     if (!open) return;
