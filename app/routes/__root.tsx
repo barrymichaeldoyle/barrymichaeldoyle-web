@@ -52,9 +52,7 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
             <div className="absolute right-0 top-0 p-1 z-1">
               <ThemeToggle />
             </div>
-            <main className="container mx-auto space-y-16 px-3 flex-1">
-              {children}
-            </main>
+            <main className="container mx-auto px-3 flex-1">{children}</main>
             <Footer />
             <ReactQueryDevtools initialIsOpen={false} />
           </QueryClientProvider>
