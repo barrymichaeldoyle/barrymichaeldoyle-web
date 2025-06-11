@@ -6,7 +6,7 @@ import { links } from '@/constants';
 
 export function ContactSection() {
   return (
-    <section id="contact" className="py-10 text-center">
+    <section id="contact" className="py-16 text-center">
       <div className="max-w-2xl mx-auto">
         <h2 className="text-3xl font-bold mb-4 text-foreground">
           Want to Poach Me?
@@ -28,8 +28,8 @@ export function ContactSection() {
           </a>
           , or hit me up with an email.
         </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button size="lg" asChild>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <Button size="lg" className="w-fit" asChild>
             <a href={links.email}>
               <Mail />
               Get In Touch
