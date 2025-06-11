@@ -9,7 +9,7 @@ function DropdownMenu({
   onOpenChange,
   ...props
 }: ComponentProps<typeof DropdownMenuPrimitive.Root>) {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(props.open);
 
   useEffect(() => {
     if (!open) return;
