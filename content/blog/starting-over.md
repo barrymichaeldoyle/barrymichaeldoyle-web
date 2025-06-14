@@ -1,10 +1,10 @@
 ---
-title: 'If I Could Start My Dev Career Again: Tips for Newbies'
+title: 'If I could start my dev career again: Tips for Newbies'
 date: '2023-09-11'
 description: 'A look at what I would do differently if I were to start over in my career'
 ---
 
-I began my programming journey back in 2010, a time when I was grappling with the basics and marveling at what a few lines of code could achieve. It's been a wild ride to getting where I am today. But if I were to start again from scratch, what would I do differently?
+I began my programming journey back in 2010, a time when I was grappling with the basics and marveling at what a few lines of code could achieve. It's been a wild ride getting to where I am today. But if I were to start again from scratch, what would I do differently?
 
 I'm going to discuss some valuable lessons I've learned over the last decade that might help you get started in a career in software development.
 
@@ -20,13 +20,13 @@ Learning the foundations of multiple different programming languages is just goi
 
 ## Pick a speciality early
 
-Software development is a very broad field and it is easy to get overwhelmed thinking that you need to know absolutely everything.
+Software development is a very broad field, and it is easy to get overwhelmed thinking that you need to know absolutely everything.
 
 Identify what area of software development you'd like to get into early on. Consider fields like web development, mobile app development, or data science. This focus will aid you in landing your first job as companies generally look for people with a specific skill set.
 
 ## Create accounts for the platforms you use
 
-In these modern days, it is not enough to just be someone who knows how to code to get your first programming gig. It is worth having some sort of online presence rather than being just another lurker.
+Nowadays, it is not enough to just be someone who knows how to code to get your first programming gig. It is worth having some sort of online presence rather than being just another lurker.
 
 Engage on platforms you use regularly and make meaningful contributions. Remember, maintaining a respectful and healthy engagement fosters a positive online environment.
 
@@ -62,13 +62,13 @@ As you delve deeper into your chosen specialty, start building things on the sid
 
 Writing about your learning journey, like I am doing here, can be a great way to network with others who share similar interests. It not only helps in understanding a topic better but also opens avenues for collaboration and learning.
 
-The best thing you can do is just get started right away. I'm obviously using [dev.to](https://dev.to/) but you can also use [Medium](https://medium.com/) or you can self host. It doesn't really matter where you choose to host it, as long as you start writing.
+The best thing you can do is just get started right away. You can use platforms like [dev.to](https://dev.to/), [Medium](https://medium.com/) etc. or you can self-host. It doesn't really matter where you choose to host it, as long as you start writing.
 
 Once you've written your first post you can share it on X/Twitter and LinkedIn!
 
 ## Network Network Network
 
-Networking has been a golden key in my journey. Be it online communities or developer friends in your circle, make sure to engage actively and maintain a professional demeanor while networking.
+Networking has been a golden key in my journey. Be it online communities, or developer friends in your circle, make sure to engage actively and maintain a professional demeanor while networking.
 
 ## Apply for jobs regularly
 

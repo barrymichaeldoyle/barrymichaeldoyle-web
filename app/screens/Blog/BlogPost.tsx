@@ -31,8 +31,8 @@ export function BlogPostScreen({ post }: BlogPostScreenProps) {
       </nav>
 
       {/* Header */}
-      <header className="mb-8 space-y-4">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight">
+      <header className="mb-4 space-y-1 px-1">
+        <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight tracking-tight">
           {post.title}
         </h1>
 
@@ -131,7 +131,7 @@ export function BlogPostScreen({ post }: BlogPostScreenProps) {
                   a: ({ href, children }) => (
                     <a
                       href={href}
-                      className="text-primary hover:text-primary/80 hover:underline transition-colors font-medium"
+                      className="text-primary hover:text-primary/80 hover:underline transition-colors font-medium dark:text-accent dark:hover:text-accent/80"
                       target={href?.startsWith('http') ? '_blank' : undefined}
                       rel={
                         href?.startsWith('http')
