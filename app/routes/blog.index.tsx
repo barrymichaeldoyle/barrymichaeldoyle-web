@@ -18,10 +18,7 @@ function BlogIndex() {
       <h1 className="text-3xl font-bold mb-6">Blog</h1>
 
       {posts.length === 0 ? (
-        <p>
-          No blog posts found. Add some markdown files to the content/blog
-          directory!
-        </p>
+        <p>No blog posts found.</p>
       ) : (
         <div className="space-y-6">
           {posts.map((post) => (

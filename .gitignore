@@ -3,3 +3,4 @@
 app.config.timestamp_*.js
 .netlify
 .vinxi
+dist

@@ -23,47 +23,44 @@ export const getBlogPost = createServerFn({
   })
   .handler(async (ctx): Promise<BlogPost | null> => {
     const slug = ctx.data as unknown as string;
-
-    return parseBlogPost(slug);
+    try {
+      const filePath = join('public', 'blog', `${slug}.md`);
+      const fileContents = readFileSync(filePath, 'utf8');
+      const { data, content } = matter(fileContents);
+      return {
+        slug,
+        title: data.title || 'Untitled',
+        date: data.date || '',
+        description: data.description || '',
+        content,
+      };
+    } catch (error) {
+      console.error('Error fetching blog post:', error);
+      return null;
+    }
   });
 
 export const getAllBlogPosts = createServerFn({
   method: 'GET',
 }).handler(async (): Promise<BlogPost[]> => {
   try {
-    const blogDir = join('content', 'blog');
+    const blogDir = join('public', 'blog');
     const filenames = readdirSync(blogDir).filter((name) =>
       name.endsWith('.md')
     );
 
-    return filenames
-      .map((filename) => {
+    const posts = await Promise.all(
+      filenames.map(async (filename) => {
         const slug = filename.replace(/\.md$/, '');
-        return parseBlogPost(slug);
+        return getBlogPost({ data: slug });
       })
-      .filter((post): post is BlogPost => post !== null)
+    );
+
+    return posts
+      .filter((p): p is BlogPost => p !== null)
       .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
   } catch (error) {
-    console.error('Error reading blog posts:', error);
+    console.error('Error fetching all blog posts:', error);
     return [];
   }
 });
-
-function parseBlogPost(slug: string): BlogPost | null {
-  try {
-    const filePath = join('content', 'blog', `${slug}.md`);
-    const fileContents = readFileSync(filePath, 'utf8');
-    const { data, content } = matter(fileContents);
-
-    return {
-      slug,
-      title: data.title || 'Untitled',
-      date: data.date || '',
-      description: data.description || '',
-      content,
-    };
-  } catch (error) {
-    console.error('Error reading blog post:', error);
-    return null;
-  }
-}
