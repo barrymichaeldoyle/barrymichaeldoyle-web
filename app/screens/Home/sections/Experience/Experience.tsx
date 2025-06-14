@@ -29,7 +29,7 @@ export function ExperienceSection() {
               <div className="flex justify-between items-start">
                 <div>
                   <CardTitle className="text-xl mb-1">{exp.role}</CardTitle>
-                  <CardDescription className="company-name text-lg font-medium">
+                  <CardDescription className="company-name text-lg font-semibold">
                     {exp.company}
                   </CardDescription>
                 </div>

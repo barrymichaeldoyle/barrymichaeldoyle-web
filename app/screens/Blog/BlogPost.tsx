@@ -16,7 +16,7 @@ export function BlogPostScreen({ post }: BlogPostScreenProps) {
   const readingTime = calculateReadingTime(post.content);
 
   return (
-    <div className="container mx-auto pt-2 max-w-4xl">
+    <div className="container mx-auto pt-2 max-w-4xl pb-10">
       {/* Navigation */}
       <nav className="mb-4">
         <Button variant="ghost" asChild className="pl-0">
@@ -31,8 +31,8 @@ export function BlogPostScreen({ post }: BlogPostScreenProps) {
       </nav>
 
       {/* Header */}
-      <header className="mb-8 space-y-4">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight">
+      <header className="mb-4 space-y-1 px-1">
+        <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight tracking-tight">
           {post.title}
         </h1>
 
@@ -61,8 +61,8 @@ export function BlogPostScreen({ post }: BlogPostScreenProps) {
 
       {/* Content */}
       <article>
-        <Card className="p-4">
-          <CardContent className="p-0 md:p-6 lg:p-8">
+        <Card>
+          <CardContent className="p-4 md:p-6 lg:p-8">
             <div className="prose prose-sm max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-h1:text-2xl prose-h1:mb-4 prose-h2:text-xl prose-h2:mb-4 prose-h2:mt-8 prose-h3:text-lg prose-h3:mb-3 prose-h3:mt-6 prose-p:leading-relaxed prose-p:mb-4 prose-a:no-underline hover:prose-a:underline prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:font-mono prose-code:text-sm prose-pre:rounded-lg prose-pre:overflow-x-auto prose-pre:border prose-blockquote:border-l-4 prose-blockquote:pl-6 prose-blockquote:py-2 prose-ul:mb-4 prose-ol:mb-4 prose-li:mb-1 dark:prose-invert">
               <ReactMarkdown
                 remarkPlugins={[remarkGfm]}
@@ -104,7 +104,7 @@ export function BlogPostScreen({ post }: BlogPostScreenProps) {
                     </li>
                   ),
                   blockquote: ({ children }) => (
-                    <blockquote className="border-l-4 border-primary bg-accent/30 pl-6 py-4 my-8 italic text-muted-foreground rounded-r-md">
+                    <blockquote className="border-l-4 border-primary bg-accent/30 p-3 my-8 italic text-muted-foreground rounded-r-md [&>p:last-child]:mb-0">
                       {children}
                     </blockquote>
                   ),
@@ -131,7 +131,7 @@ export function BlogPostScreen({ post }: BlogPostScreenProps) {
                   a: ({ href, children }) => (
                     <a
                       href={href}
-                      className="text-primary hover:text-primary/80 hover:underline transition-colors font-medium"
+                      className="text-primary hover:text-primary/80 hover:underline transition-colors font-medium dark:text-accent dark:hover:text-accent/80"
                       target={href?.startsWith('http') ? '_blank' : undefined}
                       rel={
                         href?.startsWith('http')

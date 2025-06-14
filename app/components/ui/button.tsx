@@ -11,7 +11,7 @@ const buttonVariants = cva(
   cn(
     // Base styles
     'inline-flex items-center justify-center gap-2',
-    'whitespace-nowrap rounded-md text-sm font-medium',
+    'whitespace-nowrap rounded-md text-sm font-semibold',
     'border transform-gpu cursor-pointer',
 
     // Transitions
