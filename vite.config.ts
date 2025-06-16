@@ -8,6 +8,9 @@ export default defineConfig({
   plugins: [
     tailwindcss(),
     tsConfigPaths({ projects: ['./tsconfig.json'] }),
-    tanstackStart({ target: 'netlify' }),
+    tanstackStart({
+      target: 'netlify',
+      prerender: { enabled: true, crawlLinks: true },
+    }),
   ],
 });

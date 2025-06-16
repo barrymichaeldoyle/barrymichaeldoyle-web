@@ -4,7 +4,7 @@ import * as React from 'react';
 import { cn } from '~/lib/utils';
 
 const cardVariants = cva(
-  'bg-card text-card-foreground relative overflow-hidden transition-all duration-300 ease-out border border-border/40 shadow-[0_2px_4px_rgba(0,0,0,0.05),0_1px_2px_rgba(0,0,0,0.1)] dark:border-border/20 dark:shadow-[0_2px_4px_rgba(0,0,0,0.2),0_1px_2px_rgba(0,0,0,0.3)]',
+  'bg-card text-card-foreground relative overflow-hidden transition-all duration-300 ease-out border border-border/40 shadow-[0_2px_4px_rgba(0,0,0,0.05),0_1px_2px_rgba(0,0,0,0.1)] dark:border-border/20 dark:shadow-[0_2px_4px_rgba(0,0,0,0.2),0_1px_2px_rgba(0,0,0,0.3)] p-4',
   {
     variants: {
       variant: {
@@ -40,9 +40,8 @@ function CardHeader({ className, ...props }: React.ComponentProps<'div'>) {
     <div
       data-slot="card-header"
       className={cn(
-        '@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 px-6',
+        '@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start',
         'has-data-[slot=card-action]:grid-cols-[1fr_auto]',
-        '[.border-b]:pb-6',
         className
       )}
       {...props}
@@ -84,13 +83,7 @@ function CardAction({ className, ...props }: React.ComponentProps<'div'>) {
 }
 
 function CardContent({ className, ...props }: React.ComponentProps<'div'>) {
-  return (
-    <div
-      data-slot="card-content"
-      className={cn('px-6', className)}
-      {...props}
-    />
-  );
+  return <div data-slot="card-content" className={cn(className)} {...props} />;
 }
 
 function CardFooter({ className, ...props }: React.ComponentProps<'div'>) {

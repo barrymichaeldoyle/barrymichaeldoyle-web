@@ -1,33 +1,30 @@
 import { Link } from '@tanstack/react-router';
-import { ArrowLeft, Clock } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import rehypeHighlight from 'rehype-highlight';
 import remarkGfm from 'remark-gfm';
 
-import { Button } from '~/components/ui/button';
 import { Card, CardContent } from '~/components/ui/card';
-import { type BlogPost } from '~/server/blog';
+import { type BlogPost } from '~/types/blog';
+
+import { BlogMetaDetails } from './components/BlogMetaDetails';
 
 interface BlogPostScreenProps {
   post: BlogPost;
 }
 
 export function BlogPostScreen({ post }: BlogPostScreenProps) {
-  const readingTime = calculateReadingTime(post.content);
-
   return (
-    <div className="container mx-auto pt-2 max-w-4xl pb-10">
+    <div className="container mx-auto pt-4 max-w-4xl pb-10">
       {/* Navigation */}
       <nav className="mb-4">
-        <Button variant="ghost" asChild className="pl-0">
-          <Link
-            to="/blog"
-            className="flex items-center gap-2 text-muted-foreground hover:text-foreground"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Back to Blog
-          </Link>
-        </Button>
+        <Link
+          to="/blog"
+          className="link flex items-center gap-2hover:text-foreground"
+        >
+          <ArrowLeft className="h-4 w-4" />
+          Back to Blog
+        </Link>
       </nav>
 
       {/* Header */}
@@ -42,27 +39,13 @@ export function BlogPostScreen({ post }: BlogPostScreenProps) {
           </p>
         )}
 
-        <div className="flex flex-wrap items-center gap-4 text-muted-foreground text-sm">
-          {post.date && (
-            <time dateTime={post.date} className="font-medium">
-              {new Date(post.date).toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-              })}
-            </time>
-          )}
-          <div className="flex items-center gap-1">
-            <Clock className="h-4 w-4" />
-            <span>{readingTime} min read</span>
-          </div>
-        </div>
+        <BlogMetaDetails post={post} />
       </header>
 
       {/* Content */}
       <article>
         <Card>
-          <CardContent className="p-4 md:p-6 lg:p-8">
+          <CardContent className="p-0 md:p-1 lg:p-2">
             <div className="prose prose-sm max-w-none prose-headings:font-bold prose-headings:tracking-tight prose-h1:text-2xl prose-h1:mb-4 prose-h2:text-xl prose-h2:mb-4 prose-h2:mt-8 prose-h3:text-lg prose-h3:mb-3 prose-h3:mt-6 prose-p:leading-relaxed prose-p:mb-4 prose-a:no-underline hover:prose-a:underline prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:font-mono prose-code:text-sm prose-pre:rounded-lg prose-pre:overflow-x-auto prose-pre:border prose-blockquote:border-l-4 prose-blockquote:pl-6 prose-blockquote:py-2 prose-ul:mb-4 prose-ol:mb-4 prose-li:mb-1 dark:prose-invert">
               <ReactMarkdown
                 remarkPlugins={[remarkGfm]}
@@ -84,7 +67,7 @@ export function BlogPostScreen({ post }: BlogPostScreenProps) {
                     </h3>
                   ),
                   p: ({ children }) => (
-                    <p className="text-foreground leading-relaxed mb-4 text-sm">
+                    <p className="text-foreground leading-relaxed mb-4 text-sm last:mb-0">
                       {children}
                     </p>
                   ),
@@ -151,22 +134,6 @@ export function BlogPostScreen({ post }: BlogPostScreenProps) {
           </CardContent>
         </Card>
       </article>
-
-      {/* Navigation Footer */}
-      {/* <div className="mt-16 pt-8 border-t border-border">
-        <Button variant="outline" asChild>
-          <Link to="/blog" className="flex items-center gap-2">
-            <ArrowLeft className="h-4 w-4" />
-            Back to All Posts
-          </Link>
-        </Button>
-      </div> */}
     </div>
   );
-}
-
-function calculateReadingTime(text: string): number {
-  const wordsPerMinute = 200;
-  const words = text.trim().split(/\s+/).length;
-  return Math.ceil(words / wordsPerMinute);
 }

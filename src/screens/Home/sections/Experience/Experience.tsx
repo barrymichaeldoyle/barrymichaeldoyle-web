@@ -24,8 +24,8 @@ export function ExperienceSection() {
       </div>
       <div className="max-w-4xl mx-auto space-y-8">
         {experiences.map((exp) => (
-          <Card key={exp.company} variant="feature" className="group p-6">
-            <CardHeader className="p-0">
+          <Card key={exp.company} variant="feature">
+            <CardHeader>
               <div className="flex justify-between items-start">
                 <div>
                   <CardTitle className="text-xl mb-1">{exp.role}</CardTitle>
@@ -41,16 +41,20 @@ export function ExperienceSection() {
                 </div>
               </div>
             </CardHeader>
-            <CardContent className="p-0 mt-4">
-              <ul className="space-y-2">
-                {exp.achievements.map((achievement) => (
-                  <li key={achievement} className="flex items-start gap-2">
-                    <Award className="w-4 h-4 mt-1 text-accent flex-shrink-0" />
-                    <span className="text-muted-foreground">{achievement}</span>
-                  </li>
-                ))}
-              </ul>
-            </CardContent>
+            {exp.achievements.length > 0 && (
+              <CardContent className="p-0 mt-4">
+                <ul className="space-y-2">
+                  {exp.achievements.map((achievement) => (
+                    <li key={achievement} className="flex items-start gap-2">
+                      <Award className="w-4 h-4 mt-1 text-accent flex-shrink-0" />
+                      <span className="text-muted-foreground">
+                        {achievement}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </CardContent>
+            )}
           </Card>
         ))}
       </div>

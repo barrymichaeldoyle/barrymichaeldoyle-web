@@ -38,9 +38,9 @@ export function Footer() {
               <Link to="/" className="block link">
                 Home
               </Link>
-              {/* <Link to="/blog" className="block link">
+              <Link to="/blog" className="block link">
                 Blog
-              </Link> */}
+              </Link>
             </div>
           </div>
 

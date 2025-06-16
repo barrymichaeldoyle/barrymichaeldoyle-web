@@ -1,21 +1,15 @@
 import { createFileRoute } from '@tanstack/react-router';
 
+import { blogPosts } from '~/data/blog.gen';
 import { BlogPostScreen } from '~/screens/Blog/BlogPost';
-import { getBlogPost } from '~/server/blog';
 
 export const Route = createFileRoute('/blog/$slug')({
   component: BlogPostComponent,
-  loader: async ({ params }) => {
-    const post = await getBlogPost({ data: params.slug });
-    if (!post) {
-      throw new Error('Blog post not found');
-    }
-    return post;
-  },
 });
 
 function BlogPostComponent() {
-  const post = Route.useLoaderData();
+  const slug = Route.useParams().slug;
+  const post = blogPosts[slug];
 
   return <BlogPostScreen post={post} />;
 }

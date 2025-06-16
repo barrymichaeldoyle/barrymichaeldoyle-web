@@ -1,25 +1,10 @@
-import { readFileSync } from 'fs';
-import { dirname, join } from 'path';
-import { fileURLToPath } from 'url';
-
 import { createServerFn } from '@tanstack/react-start';
 
-export interface BlogPost {
-  slug: string;
-  title: string;
-  date: string;
-  description: string;
-  content: string;
-}
+import { blogPosts } from '~/data/blog.gen';
+import { type BlogPost } from '~/types/blog';
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
-
-function getPostsData() {
-  const data = readFileSync(
-    join(__dirname, '..', '..', 'public', 'data', 'blog-posts.json'),
-    'utf8'
-  );
-  return JSON.parse(data) as BlogPost[];
+function getPostsData(): BlogPost[] {
+  return Object.values(blogPosts);
 }
 
 export const getBlogPost = createServerFn({
@@ -34,13 +19,7 @@ export const getBlogPost = createServerFn({
   .handler(async (ctx): Promise<BlogPost | null> => {
     const slug = ctx.data as unknown as string;
     const posts = getPostsData();
-
-    const post = posts.find((post) => post.slug === slug);
-    if (!post) {
-      throw new Error(`Post ${slug} not found`);
-    }
-
-    return post;
+    return posts.find((post) => post.slug === slug) || null;
   });
 
 export const getAllBlogPosts = createServerFn({
