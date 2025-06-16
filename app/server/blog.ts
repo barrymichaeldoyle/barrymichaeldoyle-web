@@ -24,7 +24,7 @@ export const getBlogPost = createServerFn({
   .handler(async (ctx): Promise<BlogPost | null> => {
     const slug = ctx.data as unknown as string;
     try {
-      const filePath = join('public', 'blog', `${slug}.md`);
+      const filePath = join('content', 'blog', `${slug}.md`);
       const fileContents = readFileSync(filePath, 'utf8');
       const { data, content } = matter(fileContents);
       return {
@@ -44,7 +44,7 @@ export const getAllBlogPosts = createServerFn({
   method: 'GET',
 }).handler(async (): Promise<BlogPost[]> => {
   try {
-    const blogDir = join('public', 'blog');
+    const blogDir = join('content', 'blog');
     const filenames = readdirSync(blogDir).filter((name) =>
       name.endsWith('.md')
     );
