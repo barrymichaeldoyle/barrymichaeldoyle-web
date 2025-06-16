@@ -1,8 +1,11 @@
 import { readFileSync, readdirSync } from 'fs';
-import { join } from 'path';
+import { dirname, join } from 'path';
+import { fileURLToPath } from 'url';
 
 import { createServerFn } from '@tanstack/react-start';
 import matter from 'gray-matter';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export interface BlogPost {
   slug: string;
@@ -24,7 +27,14 @@ export const getBlogPost = createServerFn({
   .handler(async (ctx): Promise<BlogPost | null> => {
     const slug = ctx.data as unknown as string;
     try {
-      const filePath = join('content', 'blog', `${slug}.md`);
+      const filePath = join(
+        __dirname,
+        '..',
+        '..',
+        'content',
+        'blog',
+        `${slug}.md`
+      );
       const fileContents = readFileSync(filePath, 'utf8');
       const { data, content } = matter(fileContents);
       return {
@@ -44,7 +54,7 @@ export const getAllBlogPosts = createServerFn({
   method: 'GET',
 }).handler(async (): Promise<BlogPost[]> => {
   try {
-    const blogDir = join('content', 'blog');
+    const blogDir = join(__dirname, '..', '..', 'content', 'blog');
     const filenames = readdirSync(blogDir).filter((name) =>
       name.endsWith('.md')
     );
