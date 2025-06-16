@@ -6,7 +6,7 @@ import matter from 'gray-matter';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const contentDir = join(__dirname, '..', 'content', 'blog');
-const outputDir = join(__dirname, '..', '.output', 'public', 'blog-data');
+const outputDir = join(__dirname, '..', 'dist');
 
 // Create output directory if it doesn't exist
 mkdirSync(outputDir, { recursive: true });
@@ -26,4 +26,4 @@ const posts = readdirSync(contentDir)
   })
   .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
-writeFileSync(join(outputDir, 'posts.json'), JSON.stringify(posts));
+writeFileSync(join(outputDir, 'blog-posts.json'), JSON.stringify(posts));

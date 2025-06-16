@@ -16,7 +16,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 
 function getPostsData() {
   const data = readFileSync(
-    join(__dirname, '..', '..', '.output', 'public', 'blog-data', 'posts.json'),
+    join(__dirname, '..', '..', 'dist', 'blog-posts.json'),
     'utf8'
   );
   return JSON.parse(data) as BlogPost[];
