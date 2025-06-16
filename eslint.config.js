@@ -102,7 +102,7 @@ export default [
           pathGroups: [
             // Internal imports with @ alias
             {
-              pattern: '@/**',
+              pattern: '~/**',
               group: 'internal',
               position: 'before',
             },
