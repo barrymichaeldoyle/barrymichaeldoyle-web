@@ -4,6 +4,7 @@ import ReactMarkdown from 'react-markdown';
 import rehypeHighlight from 'rehype-highlight';
 import remarkGfm from 'remark-gfm';
 
+import { ContactSection } from '~/components/sections/Contact/Contact';
 import { Card, CardContent } from '~/components/ui/card';
 import { type BlogPost } from '~/types/blog';
 
@@ -15,7 +16,7 @@ interface BlogPostScreenProps {
 
 export function BlogPostScreen({ post }: BlogPostScreenProps) {
   return (
-    <div className="container mx-auto pt-4 max-w-4xl pb-10">
+    <div className="container mx-auto pt-4 max-w-4xl">
       {/* Navigation */}
       <nav className="mb-4">
         <Link
@@ -134,6 +135,8 @@ export function BlogPostScreen({ post }: BlogPostScreenProps) {
           </CardContent>
         </Card>
       </article>
+
+      <ContactSection />
     </div>
   );
 }
