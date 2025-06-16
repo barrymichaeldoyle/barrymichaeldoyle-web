@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "vite dev",
-    "build": "vite build && tsc --noEmit && node scripts/build-blog.ts",
+    "build": "vite build && tsc --noEmit",
     "start": "vite start",
     "lint": "eslint . && prettier --check .",
     "lint:fix": "eslint . --fix && prettier --write .",
@@ -15,7 +15,8 @@
     "lint:prettier:fix": "prettier --write .",
     "test": "vitest",
     "test:ui": "vitest --ui",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "generate:blog": "tsx scripts/build-blog.ts"
   },
   "keywords": [],
   "author": {

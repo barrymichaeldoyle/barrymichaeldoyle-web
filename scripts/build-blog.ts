@@ -6,7 +6,7 @@ import matter from 'gray-matter';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const contentDir = join(__dirname, '..', 'content', 'blog');
-const outputDir = join(__dirname, '..', 'dist');
+const outputDir = join(__dirname, '..', 'public', 'data');
 
 // Create output directory if it doesn't exist
 mkdirSync(outputDir, { recursive: true });
