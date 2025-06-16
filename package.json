@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "vinxi dev",
-    "build": "vinxi build && cp -r content .output/content",
+    "build": "vinxi build",
     "start": "vinxi start",
     "lint": "eslint . && prettier --check .",
     "lint:fix": "eslint . --fix && prettier --write .",
