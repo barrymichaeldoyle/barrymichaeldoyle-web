@@ -22,6 +22,11 @@ export const Route = createRootRoute({
       { charSet: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { title: 'Barry Michael Doyle - Staff Frontend Engineer' },
+      {
+        name: 'description',
+        content:
+          'Barry Michael Doyle - Staff Frontend Engineer | Design Engineer | Product Engineer | Lead Frontend Engineer',
+      },
     ],
     links: [
       { rel: 'stylesheet', href: appCss },
@@ -41,7 +46,7 @@ function RootComponent() {
 
 function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
   return (
-    <html>
+    <html lang="en">
       <head>
         <HeadContent />
       </head>
