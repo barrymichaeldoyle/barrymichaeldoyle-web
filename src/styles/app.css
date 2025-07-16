@@ -10,173 +10,37 @@
 @import 'tailwindcss' source('../');
 @import 'tw-animate-css';
 
-@custom-variant dark (&:is(.dark *));
-
 :root {
   /* Base colors */
-  --background: oklch(0.98 0.003 280);
-  --foreground: oklch(0.16 0.035 282);
+  --background: oklch(0.0984 0.0514 304.05); /* #060010 */
+  --foreground: oklch(0.9911 0 0); /* #fcfcfc */
 
-  /* Component backgrounds */
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.16 0.035 282);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.16 0.035 282);
-
-  /* Brand colors - consistent purple theme */
-  --primary: oklch(0.5 0.32 299);
-  --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.96 0.02 286);
-  --secondary-foreground: oklch(0.16 0.035 282);
-  --accent: oklch(0.7 0.174 299);
-  --accent-foreground: oklch(0.16 0.035 282);
-  --destructive: oklch(0.65 0.235 34);
-  --destructive-foreground: oklch(1 0 0);
-
-  /* UI elements */
-  --muted: oklch(0.96 0.02 286);
-  --muted-foreground: oklch(0.45 0.035 282);
-  --border: oklch(0.92 0.009 280);
-  --input: oklch(0.92 0.009 280);
-  --ring: oklch(0.6 0.29 299);
-
-  /* Chart colors - consistent purple spectrum */
-  --chart-1: oklch(0.67 0.29 299);
-  --chart-2: oklch(0.55 0.294 299);
-  --chart-3: oklch(0.84 0.146 299);
-  --chart-4: oklch(0.7 0.174 299);
-  --chart-5: oklch(0.92 0.192 299);
-
-  /* Button effects */
-  --button-glow: 0 0 25px oklch(0.5 0.32 299 / 0.12);
-  --button-glow-hover:
-    0 0 15px oklch(0.5 0.32 299 / 0.25), 0 0 30px oklch(0.5 0.32 299 / 0.18),
-    0 0 45px oklch(0.5 0.32 299 / 0.12);
-  --button-border-glow: oklch(0.5 0.32 299 / 0.25);
-
-  /* Typography */
-  --font-sans: Outfit, sans-serif;
-  --font-serif: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
-  --font-mono: Fira Code, monospace;
-
-  /* Radius */
-  --radius: 0.5rem;
-
-  /* Shadows */
-  --shadow-2xs: 0px 2px 4px -1px hsl(0 0% 0% / 0.03);
-  --shadow-xs: 0px 4px 8px -2px hsl(0 0% 0% / 0.05);
-  --shadow-sm:
-    0px 4px 8px -2px hsl(0 0% 0% / 0.1), 0px 1px 2px -3px hsl(0 0% 0% / 0.1);
-  --shadow:
-    0px 4px 8px -2px hsl(0 0% 0% / 0.1), 0px 2px 4px -3px hsl(0 0% 0% / 0.1);
-  --shadow-md:
-    0px 6px 12px -2px hsl(0 0% 0% / 0.1), 0px 3px 6px -3px hsl(0 0% 0% / 0.1);
-  --shadow-lg:
-    0px 8px 16px -4px hsl(0 0% 0% / 0.1), 0px 4px 8px -3px hsl(0 0% 0% / 0.1);
-  --shadow-xl:
-    0px 12px 24px -4px hsl(0 0% 0% / 0.1), 0px 6px 12px -3px hsl(0 0% 0% / 0.1);
-  --shadow-2xl:
-    0px 16px 32px -4px hsl(0 0% 0% / 0.1), 0px 8px 16px -3px hsl(0 0% 0% / 0.1);
-}
-
-.dark {
-  /* Base colors */
-  --background: oklch(0.16 0.035 282);
-  --foreground: oklch(0.95 0.007 261);
-
-  /* Component backgrounds */
-  --card: oklch(0.22 0.061 281);
-  --card-foreground: oklch(0.95 0.007 261);
-  --popover: oklch(0.22 0.061 281);
-  --popover-foreground: oklch(0.95 0.007 261);
-
-  /* Brand colors - consistent purple theme */
-  --primary: oklch(0.6 0.32 299);
-  --primary-foreground: oklch(0.98 0 0);
-  --secondary: oklch(0.3 0.061 281);
-  --secondary-foreground: oklch(0.9 0.015 261);
-  --accent: oklch(0.7 0.174 299);
-  --accent-foreground: oklch(0.98 0 0);
-  --destructive: oklch(0.65 0.235 34);
-  --destructive-foreground: oklch(0.98 0 0);
-
-  /* UI elements */
-  --muted: oklch(0.3 0.061 281);
-  --muted-foreground: oklch(0.75 0.08 299);
-  --border: oklch(0.33 0.083 281);
-  --input: oklch(0.33 0.083 281);
-  --ring: oklch(0.6 0.32 299);
-
-  /* Chart colors - consistent purple spectrum */
-  --chart-1: oklch(0.67 0.29 299);
-  --chart-2: oklch(0.55 0.294 299);
-  --chart-3: oklch(0.84 0.146 299);
-  --chart-4: oklch(0.7 0.174 299);
-  --chart-5: oklch(0.92 0.192 299);
-
-  /* Button effects - enhanced for dark mode */
-  --button-glow: 0 0 25px oklch(0.6 0.32 299 / 0.15);
-  --button-glow-hover:
-    0 0 20px oklch(0.6 0.32 299 / 0.45), 0 0 40px oklch(0.6 0.32 299 / 0.35),
-    0 0 60px oklch(0.6 0.32 299 / 0.25);
-  --button-border-glow: oklch(0.6 0.32 299 / 0.35);
+  --color-primary: oklch(0.7422 0.146 242); /* #46b5ff */
 }
 
 @theme inline {
   /* Map CSS variables to theme properties */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
 
-  /* Button effects */
-  --color-button-glow: var(--button-glow);
-  --color-button-glow-hover: var(--button-glow-hover);
-  --color-button-border-glow: var(--button-border-glow);
-
-  /* Radius */
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-
-  /* Shadows */
-  --shadow-2xs: var(--shadow-2xs);
-  --shadow-xs: var(--shadow-xs);
-  --shadow-sm: var(--shadow-sm);
-  --shadow: var(--shadow);
-  --shadow-md: var(--shadow-md);
-  --shadow-lg: var(--shadow-lg);
-  --shadow-xl: var(--shadow-xl);
-  --shadow-2xl: var(--shadow-2xl);
+  --color-primary: var(--color-primary);
+  --text-primary: var(--color-primary);
+  --text-foreground: var(--foreground);
 }
 
 @layer base {
+  * {
+    box-sizing: border-box;
+  }
+
   html {
     scroll-behavior: smooth;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    width: 100%;
+    margin: 0;
+    padding: 0;
   }
 
   body {
@@ -186,541 +50,42 @@
     display: flex;
     flex-direction: column;
     flex: 1;
-  }
-
-  /* ===== COMMON LINK STYLES ===== */
-
-  .link {
-    @apply text-primary dark:text-foreground font-medium transition-colors duration-200 hover:underline inline-flex items-center relative gap-1;
-  }
-
-  /* ===== PARTICLE SYSTEM ===== */
-
-  /* Base particle layer - tiny floating dots */
-  .hero-particles::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
-    height: 100%;
-    background-image:
-      /* Small scattered particles */
-      radial-gradient(
-        circle 0.8px at 12% 23%,
-        oklch(0.6 0.32 299 / 0.4),
-        transparent
-      ),
-      radial-gradient(
-        circle 1.2px at 68% 7%,
-        oklch(0.7 0.174 299 / 0.3),
-        transparent
-      ),
-      radial-gradient(
-        circle 0.5px at 34% 67%,
-        oklch(0.84 0.146 299 / 0.5),
-        transparent
-      ),
-      radial-gradient(
-        circle 2px at 89% 34%,
-        oklch(0.92 0.192 299 / 0.35),
-        transparent
-      ),
-      radial-gradient(
-        circle 0.7px at 23% 89%,
-        oklch(0.6 0.32 299 / 0.45),
-        transparent
-      ),
-      radial-gradient(
-        circle 1.5px at 78% 56%,
-        oklch(0.7 0.174 299 / 0.25),
-        transparent
-      ),
-      radial-gradient(
-        circle 0.9px at 45% 12%,
-        oklch(0.84 0.146 299 / 0.4),
-        transparent
-      ),
-      radial-gradient(
-        circle 1.8px at 67% 78%,
-        oklch(0.92 0.192 299 / 0.3),
-        transparent
-      ),
-      radial-gradient(
-        circle 0.6px at 91% 45%,
-        oklch(0.6 0.32 299 / 0.35),
-        transparent
-      ),
-      radial-gradient(
-        circle 1.3px at 5% 67%,
-        oklch(0.7 0.174 299 / 0.4),
-        transparent
-      ),
-      /* Additional small particles for increased intensity */
-        radial-gradient(
-          circle 0.4px at 56% 34%,
-          oklch(0.6 0.32 299 / 0.45),
-          transparent
-        ),
-      radial-gradient(
-        circle 1.1px at 82% 78%,
-        oklch(0.7 0.174 299 / 0.35),
-        transparent
-      ),
-      radial-gradient(
-        circle 0.8px at 19% 45%,
-        oklch(0.84 0.146 299 / 0.4),
-        transparent
-      ),
-      radial-gradient(
-        circle 1.4px at 73% 23%,
-        oklch(0.92 0.192 299 / 0.3),
-        transparent
-      ),
-      radial-gradient(
-        circle 0.6px at 37% 91%,
-        oklch(0.6 0.32 299 / 0.5),
-        transparent
-      ),
-      radial-gradient(
-        circle 1.7px at 94% 67%,
-        oklch(0.7 0.174 299 / 0.25),
-        transparent
-      ),
-      radial-gradient(
-        circle 0.3px at 61% 8%,
-        oklch(0.84 0.146 299 / 0.55),
-        transparent
-      ),
-      radial-gradient(
-        circle 1.9px at 28% 56%,
-        oklch(0.92 0.192 299 / 0.4),
-        transparent
-      ),
-      radial-gradient(
-        circle 0.7px at 85% 12%,
-        oklch(0.6 0.32 299 / 0.3),
-        transparent
-      ),
-      radial-gradient(
-        circle 1.2px at 14% 82%,
-        oklch(0.7 0.174 299 / 0.45),
-        transparent
-      );
-    animation: float-gentle 60s ease-in-out infinite;
-    pointer-events: none;
-    z-index: -3;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
   }
 
-  /* Medium particle layer - more visible orbs */
-  .hero-particles::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
+  #root {
     width: 100%;
-    height: 100%;
-    background-image:
-      /* Medium scattered particles */
-      radial-gradient(
-        circle 2.5px at 18% 34%,
-        oklch(0.6 0.32 299 / 0.25),
-        transparent
-      ),
-      radial-gradient(
-        circle 3.2px at 73% 18%,
-        oklch(0.7 0.174 299 / 0.2),
-        transparent
-      ),
-      radial-gradient(
-        circle 1.8px at 42% 81%,
-        oklch(0.84 0.146 299 / 0.3),
-        transparent
-      ),
-      radial-gradient(
-        circle 4px at 86% 52%,
-        oklch(0.92 0.192 299 / 0.18),
-        transparent
-      ),
-      radial-gradient(
-        circle 2.2px at 9% 73%,
-        oklch(0.6 0.32 299 / 0.28),
-        transparent
-      ),
-      radial-gradient(
-        circle 3.5px at 67% 91%,
-        oklch(0.7 0.174 299 / 0.22),
-        transparent
-      ),
-      radial-gradient(
-        circle 2.8px at 31% 45%,
-        oklch(0.84 0.146 299 / 0.25),
-        transparent
-      ),
-      radial-gradient(
-        circle 1.5px at 94% 23%,
-        oklch(0.92 0.192 299 / 0.32),
-        transparent
-      ),
-      /* Additional medium particles for increased intensity */
-        radial-gradient(
-          circle 2.1px at 54% 67%,
-          oklch(0.6 0.32 299 / 0.3),
-          transparent
-        ),
-      radial-gradient(
-        circle 3.8px at 26% 8%,
-        oklch(0.7 0.174 299 / 0.18),
-        transparent
-      ),
-      radial-gradient(
-        circle 2.4px at 78% 43%,
-        oklch(0.84 0.146 299 / 0.28),
-        transparent
-      ),
-      radial-gradient(
-        circle 1.9px at 15% 29%,
-        oklch(0.92 0.192 299 / 0.35),
-        transparent
-      ),
-      radial-gradient(
-        circle 3.1px at 89% 78%,
-        oklch(0.6 0.32 299 / 0.22),
-        transparent
-      ),
-      radial-gradient(
-        circle 2.7px at 48% 15%,
-        oklch(0.7 0.174 299 / 0.26),
-        transparent
-      ),
-      radial-gradient(
-        circle 1.6px at 65% 85%,
-        oklch(0.84 0.146 299 / 0.33),
-        transparent
-      ),
-      radial-gradient(
-        circle 3.4px at 7% 56%,
-        oklch(0.92 0.192 299 / 0.19),
-        transparent
-      );
-    animation: float-drift 80s ease-in-out infinite reverse;
-    animation-delay: -20s;
-    pointer-events: none;
-    z-index: -2;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
   }
 
-  /* Container for hero particles */
-  .hero-particles {
-    position: relative;
-    overflow: hidden;
+  h1 {
+    @apply text-primary;
+    font-weight: 600;
+    font-size: 5rem;
+    line-height: 6rem;
   }
 
-  /* Large particle overlay using a pseudo-element container */
-  .hero-particle-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: -1;
+  h2 {
+    @apply text-primary;
+    font-weight: 600;
+    font-size: 2.25rem;
+    line-height: 3rem;
   }
 
-  .hero-particle-overlay::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image:
-      /* Large floating orbs */
-      radial-gradient(
-        circle 5px at 25% 15%,
-        oklch(0.6 0.32 299 / 0.3),
-        transparent
-      ),
-      radial-gradient(
-        circle 6.5px at 78% 38%,
-        oklch(0.7 0.174 299 / 0.24),
-        transparent
-      ),
-      radial-gradient(
-        circle 4.2px at 52% 72%,
-        oklch(0.84 0.146 299 / 0.36),
-        transparent
-      ),
-      radial-gradient(
-        circle 7px at 13% 89%,
-        oklch(0.92 0.192 299 / 0.2),
-        transparent
-      ),
-      radial-gradient(
-        circle 5.5px at 89% 67%,
-        oklch(0.6 0.32 299 / 0.28),
-        transparent
-      ),
-      radial-gradient(
-        circle 3.8px at 41% 23%,
-        oklch(0.7 0.174 299 / 0.32),
-        transparent
-      ),
-      /* Additional large particles for increased intensity */
-        radial-gradient(
-          circle 4.8px at 67% 8%,
-          oklch(0.6 0.32 299 / 0.26),
-          transparent
-        ),
-      radial-gradient(
-        circle 6.2px at 19% 54%,
-        oklch(0.7 0.174 299 / 0.22),
-        transparent
-      ),
-      radial-gradient(
-        circle 5.1px at 85% 29%,
-        oklch(0.84 0.146 299 / 0.3),
-        transparent
-      ),
-      radial-gradient(
-        circle 3.5px at 34% 87%,
-        oklch(0.92 0.192 299 / 0.35),
-        transparent
-      ),
-      radial-gradient(
-        circle 7.3px at 73% 61%,
-        oklch(0.6 0.32 299 / 0.18),
-        transparent
-      ),
-      radial-gradient(
-        circle 4.6px at 8% 31%,
-        oklch(0.7 0.174 299 / 0.29),
-        transparent
-      ),
-      radial-gradient(
-        circle 5.8px at 91% 83%,
-        oklch(0.84 0.146 299 / 0.25),
-        transparent
-      ),
-      radial-gradient(
-        circle 6.8px at 46% 12%,
-        oklch(0.92 0.192 299 / 0.21),
-        transparent
-      );
-    animation: float-slow 100s linear infinite;
-    animation-delay: -30s;
-  }
-
-  .hero-particle-overlay::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image:
-      /* Sparkle layer */
-      radial-gradient(
-        circle 0.3px at 33% 44%,
-        oklch(0.92 0.192 299 / 0.8),
-        transparent
-      ),
-      radial-gradient(
-        circle 0.4px at 76% 12%,
-        oklch(0.84 0.146 299 / 0.7),
-        transparent
-      ),
-      radial-gradient(
-        circle 0.2px at 15% 78%,
-        oklch(0.7 0.174 299 / 0.9),
-        transparent
-      ),
-      radial-gradient(
-        circle 0.6px at 92% 33%,
-        oklch(0.6 0.32 299 / 0.6),
-        transparent
-      ),
-      radial-gradient(
-        circle 0.3px at 48% 91%,
-        oklch(0.92 0.192 299 / 0.7),
-        transparent
-      ),
-      radial-gradient(
-        circle 0.5px at 67% 54%,
-        oklch(0.84 0.146 299 / 0.8),
-        transparent
-      ),
-      radial-gradient(
-        circle 0.2px at 24% 67%,
-        oklch(0.7 0.174 299 / 0.6),
-        transparent
-      ),
-      radial-gradient(
-        circle 0.4px at 81% 89%,
-        oklch(0.6 0.32 299 / 0.7),
-        transparent
-      ),
-      /* Additional sparkles for increased intensity */
-        radial-gradient(
-          circle 0.25px at 58% 23%,
-          oklch(0.92 0.192 299 / 0.85),
-          transparent
-        ),
-      radial-gradient(
-        circle 0.35px at 11% 47%,
-        oklch(0.84 0.146 299 / 0.75),
-        transparent
-      ),
-      radial-gradient(
-        circle 0.45px at 84% 68%,
-        oklch(0.7 0.174 299 / 0.65),
-        transparent
-      ),
-      radial-gradient(
-        circle 0.2px at 37% 8%,
-        oklch(0.6 0.32 299 / 0.9),
-        transparent
-      ),
-      radial-gradient(
-        circle 0.6px at 72% 81%,
-        oklch(0.92 0.192 299 / 0.55),
-        transparent
-      ),
-      radial-gradient(
-        circle 0.3px at 26% 34%,
-        oklch(0.84 0.146 299 / 0.8),
-        transparent
-      ),
-      radial-gradient(
-        circle 0.4px at 89% 17%,
-        oklch(0.7 0.174 299 / 0.7),
-        transparent
-      ),
-      radial-gradient(
-        circle 0.25px at 63% 93%,
-        oklch(0.6 0.32 299 / 0.85),
-        transparent
-      ),
-      radial-gradient(
-        circle 0.5px at 14% 62%,
-        oklch(0.92 0.192 299 / 0.6),
-        transparent
-      ),
-      radial-gradient(
-        circle 0.35px at 95% 45%,
-        oklch(0.84 0.146 299 / 0.75),
-        transparent
-      );
-    animation: sparkle-dance 25s ease-in-out infinite;
-    animation-delay: -8s;
-  }
-
-  /* ===== ANIMATIONS ===== */
-
-  @keyframes float-gentle {
-    0%,
-    100% {
-      transform: translate(0, 0) rotate(0deg);
-      opacity: 0.6;
-    }
-    25% {
-      transform: translate(20px, -30px) rotate(90deg);
-      opacity: 0.8;
-    }
-    50% {
-      transform: translate(-15px, -60px) rotate(180deg);
-      opacity: 0.4;
-    }
-    75% {
-      transform: translate(-35px, -30px) rotate(270deg);
-      opacity: 0.9;
-    }
-  }
-
-  @keyframes float-drift {
-    0%,
-    100% {
-      transform: translate(0, 0) scale(1) rotate(0deg);
-      opacity: 0.7;
-    }
-    20% {
-      transform: translate(30px, -20px) scale(1.1) rotate(72deg);
-      opacity: 0.5;
-    }
-    40% {
-      transform: translate(-10px, -50px) scale(0.9) rotate(144deg);
-      opacity: 0.9;
-    }
-    60% {
-      transform: translate(-40px, -35px) scale(1.05) rotate(216deg);
-      opacity: 0.6;
-    }
-    80% {
-      transform: translate(-20px, -10px) scale(0.95) rotate(288deg);
-      opacity: 0.8;
-    }
-  }
-
-  @keyframes float-slow {
-    0% {
-      transform: translate(0, 0) rotate(0deg);
-    }
-    25% {
-      transform: translate(40px, -25px) rotate(90deg);
-    }
-    50% {
-      transform: translate(20px, -70px) rotate(180deg);
-    }
-    75% {
-      transform: translate(-30px, -45px) rotate(270deg);
-    }
-    100% {
-      transform: translate(0, -80px) rotate(360deg);
-    }
-  }
-
-  @keyframes sparkle-dance {
-    0%,
-    100% {
-      opacity: 0.3;
-      transform: scale(1) rotate(0deg);
-    }
-    12% {
-      opacity: 0.8;
-      transform: scale(1.4) rotate(45deg);
-    }
-    25% {
-      opacity: 0.1;
-      transform: scale(0.6) rotate(90deg);
-    }
-    37% {
-      opacity: 0.9;
-      transform: scale(1.2) rotate(135deg);
-    }
-    50% {
-      opacity: 0.2;
-      transform: scale(0.8) rotate(180deg);
-    }
-    62% {
-      opacity: 0.7;
-      transform: scale(1.3) rotate(225deg);
-    }
-    75% {
-      opacity: 0.4;
-      transform: scale(0.9) rotate(270deg);
-    }
-    87% {
-      opacity: 0.6;
-      transform: scale(1.1) rotate(315deg);
-    }
+  h3 {
+    @apply text-foreground;
+    font-weight: 500;
+    font-size: 1.5rem;
   }
 }
 
 /* Syntax highlighting styles - GitHub-like theme */
 .hljs {
-  color: #24292e;
-}
-
-.dark .hljs {
   color: #c9d1d9;
 }
 
@@ -731,32 +96,13 @@
 .hljs-template-variable,
 .hljs-type,
 .hljs-variable.language_ {
-  /* pink */
-  color: #d73a49;
-}
-
-.dark .hljs-doctag,
-.dark .hljs-keyword,
-.dark .hljs-meta .hljs-keyword,
-.dark .hljs-template-tag,
-.dark .hljs-template-variable,
-.dark .hljs-type,
-.dark .hljs-variable.language_ {
-  color: #ff7b72;
+  color: #ff7b7;
 }
 
 .hljs-title,
 .hljs-title.class_,
 .hljs-title.class_.inherited__,
 .hljs-title.function_ {
-  /* purple */
-  color: #6f42c1;
-}
-
-.dark .hljs-title,
-.dark .hljs-title.class_,
-.dark .hljs-title.class_.inherited__,
-.dark .hljs-title.function_ {
   color: #d2a8ff;
 }
 
@@ -770,56 +116,23 @@
 .hljs-selector-attr,
 .hljs-selector-class,
 .hljs-selector-id {
-  /* blue */
-  color: #005cc5;
-}
-
-.dark .hljs-attr,
-.dark .hljs-attribute,
-.dark .hljs-literal,
-.dark .hljs-meta,
-.dark .hljs-number,
-.dark .hljs-operator,
-.dark .hljs-variable,
-.dark .hljs-selector-attr,
-.dark .hljs-selector-class,
-.dark .hljs-selector-id {
   color: #79c0ff;
 }
 
 .hljs-regexp,
 .hljs-string,
 .hljs-meta .hljs-string {
-  /* green */
-  color: #032f62;
-}
-
-.dark .hljs-regexp,
-.dark .hljs-string,
-.dark .hljs-meta .hljs-string {
   color: #a5d6ff;
 }
 
 .hljs-built_in,
 .hljs-symbol {
-  /* yellow */
-  color: #e36209;
-}
-
-.dark .hljs-built_in,
-.dark .hljs-symbol {
   color: #ffa657;
 }
 
 .hljs-comment,
 .hljs-code,
 .hljs-formula {
-  color: #6a737d;
-}
-
-.dark .hljs-comment,
-.dark .hljs-code,
-.dark .hljs-formula {
   color: #8b949e;
 }
 
@@ -827,79 +140,38 @@
 .hljs-quote,
 .hljs-selector-tag,
 .hljs-selector-pseudo {
-  /* green */
-  color: #22863a;
-}
-
-.dark .hljs-name,
-.dark .hljs-quote,
-.dark .hljs-selector-tag,
-.dark .hljs-selector-pseudo {
   color: #7ee787;
 }
 
 .hljs-subst {
-  color: #24292e;
-}
-
-.dark .hljs-subst {
   color: #c9d1d9;
 }
 
 .hljs-section {
-  color: #005cc5;
-  font-weight: bold;
-}
-
-.dark .hljs-section {
   color: #79c0ff;
   font-weight: bold;
 }
 
 .hljs-bullet {
-  color: #735c0f;
-}
-
-.dark .hljs-bullet {
   color: #f2cc60;
 }
 
 .hljs-emphasis {
-  color: #24292e;
-  font-style: italic;
-}
-
-.dark .hljs-emphasis {
   color: #c9d1d9;
   font-style: italic;
 }
 
 .hljs-strong {
-  color: #24292e;
-  font-weight: bold;
-}
-
-.dark .hljs-strong {
   color: #c9d1d9;
   font-weight: bold;
 }
 
 .hljs-addition {
-  color: #22863a;
-  background-color: #f0fff4;
-}
-
-.dark .hljs-addition {
   color: #7ee787;
   background-color: #033a16;
 }
 
 .hljs-deletion {
-  color: #b31d28;
-  background-color: #ffeef0;
-}
-
-.dark .hljs-deletion {
   color: #ffa198;
   background-color: #67060c;
 }

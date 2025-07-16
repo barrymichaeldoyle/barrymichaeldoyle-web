@@ -5,15 +5,25 @@ import { defineConfig } from 'vite';
 import tsConfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig({
-  server: { port: 3000 },
+  build: {
+    rollupOptions: {
+      onwarn(warning, warn) {
+        if (warning.code && ['SOURCEMAP_BROKEN'].includes(warning.code)) {
+          return;
+        }
+
+        warn(warning);
+      },
+    },
+  },
   plugins: [
-    tailwindcss(),
     tsConfigPaths({ projects: ['./tsconfig.json'] }),
     tanstackStart({
       target: 'netlify',
-      prerender: { enabled: true, crawlLinks: true },
+      sitemap: { host: 'https://barrymichaeldoyle.com' },
       customViteReactPlugin: true,
     }),
     viteReact(),
+    tailwindcss(),
   ],
 });

@@ -16,7 +16,7 @@ interface BlogPostScreenProps {
 
 export function BlogPostScreen({ post }: BlogPostScreenProps) {
   return (
-    <div className="container mx-auto pt-4 max-w-4xl">
+    <div className="w-full pt-4 max-w-4xl mx-auto">
       {/* Navigation */}
       <nav className="mb-4">
         <Link

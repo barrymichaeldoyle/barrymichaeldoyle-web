@@ -9,10 +9,10 @@ import {
 import type { ReactNode } from 'react';
 
 import { Footer } from '~/components/layout/Footer';
+import Aurora from '~/components/reactbits/Backgrounds/Aurora/Aurora';
 import { seo } from '~/lib/seo';
 import appCss from '~/styles/app.css?url';
 
-// Create a client
 const queryClient = new QueryClient();
 
 export const Route = createRootRoute({
@@ -49,13 +49,17 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
         <HeadContent />
       </head>
       <body>
-        <div className="particle-overlay"></div>
-          <QueryClientProvider client={queryClient}>
-            <main className="container mx-auto px-3 flex-1">{children}</main>
-            <Footer />
-            <ReactQueryDevtools initialIsOpen={false} />
-          </QueryClientProvider>
+        <QueryClientProvider client={queryClient}>
+          <main className="container mx-auto px-3 flex-1 pt-40">
+            {children}
+          </main>
+          <Footer />
+          <ReactQueryDevtools initialIsOpen={false} />
+        </QueryClientProvider>
         <Scripts />
+        <div className="absolute w-full h-100 bg-transparent -z-1">
+          <Aurora speed={0.5} amplitude={1} />
+        </div>
       </body>
     </html>
   );
