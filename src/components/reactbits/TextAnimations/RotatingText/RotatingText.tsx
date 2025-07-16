@@ -4,7 +4,6 @@
 
 import {
   AnimatePresence,
-  type LegacyAnimationControls,
   motion,
   type Target,
   type TargetAndTransition,
@@ -39,11 +38,7 @@ export interface RotatingTextProps
   texts: string[];
   transition?: Transition;
   initial?: boolean | Target | VariantLabels;
-  animate?:
-    | boolean
-    | VariantLabels
-    | TargetAndTransition
-    | LegacyAnimationControls;
+  animate?: boolean | VariantLabels | TargetAndTransition;
   exit?: Target | VariantLabels;
   animatePresenceMode?: 'sync' | 'wait';
   animatePresenceInitial?: boolean;
@@ -211,7 +206,7 @@ const RotatingText = forwardRef<RotatingTextRef, RotatingTextProps>(
     return (
       <motion.span
         className={cn(
-          'flex flex-wrap whitespace-pre-wrap relative',
+          'relative flex flex-wrap whitespace-pre-wrap',
           mainClassName
         )}
         {...rest}
@@ -227,8 +222,8 @@ const RotatingText = forwardRef<RotatingTextRef, RotatingTextProps>(
             key={currentTextIndex}
             className={cn(
               splitBy === 'lines'
-                ? 'flex flex-col w-full'
-                : 'flex flex-wrap whitespace-pre-wrap relative'
+                ? 'flex w-full flex-col'
+                : 'relative flex flex-wrap whitespace-pre-wrap'
             )}
             layout
             aria-hidden="true"
