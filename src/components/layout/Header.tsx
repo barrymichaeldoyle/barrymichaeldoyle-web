@@ -25,7 +25,7 @@ export function Header() {
       >
         {!isHome && (
           <Link to="/" className="flex h-9 flex-col gap-1">
-            <span className="no-wrap relative -top-1 px-4 text-sm font-bold text-primary">
+            <span className="relative -top-1 px-4 text-sm font-bold whitespace-nowrap text-primary">
               Barry Michael Doyle
             </span>
             <DevElement className="absolute top-5 left-8 w-30" />
