@@ -9,6 +9,7 @@ import {
 import type { ReactNode } from 'react';
 
 import { Footer } from '~/components/layout/Footer';
+import { Header } from '~/components/layout/Header';
 import Aurora from '~/components/reactbits/Backgrounds/Aurora/Aurora';
 import { seo } from '~/lib/seo';
 import appCss from '~/styles/app.css?url';
@@ -50,6 +51,7 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
       </head>
       <body>
         <QueryClientProvider client={queryClient}>
+          <Header />
           <main className="container mx-auto px-3 flex-1 pt-40">
             {children}
           </main>
@@ -57,7 +59,7 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
           <ReactQueryDevtools initialIsOpen={false} />
         </QueryClientProvider>
         <Scripts />
-        <div className="absolute w-full h-100 bg-transparent -z-1">
+        <div className="absolute w-full h-100 bg-background -z-1">
           <Aurora speed={0.5} amplitude={1} />
         </div>
       </body>

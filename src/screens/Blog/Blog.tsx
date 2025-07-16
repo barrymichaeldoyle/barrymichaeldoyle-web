@@ -11,8 +11,8 @@ interface BlogScreenProps {
 
 export function BlogScreen({ posts }: BlogScreenProps) {
   return (
-    <div className="w-full pt-4 max-w-4xl pb-10 mx-auto">
-      <h1 className="text-3xl font-bold mb-6">Blog</h1>
+    <div className="mx-auto w-full max-w-4xl pt-4 pb-10">
+      <h1 className="mb-6 text-3xl font-bold">Blog</h1>
 
       {Object.values(posts).length === 0 ? (
         <p>No blog posts found.</p>
@@ -21,7 +21,7 @@ export function BlogScreen({ posts }: BlogScreenProps) {
           {Object.values(posts).map((post) => (
             <Card key={post.slug} variant="feature">
               <CardHeader>
-                <CardTitle className="text-2xl font-semibold mb-2">
+                <CardTitle className="mb-2 text-2xl font-semibold">
                   {post.title}
                 </CardTitle>
               </CardHeader>
@@ -31,7 +31,7 @@ export function BlogScreen({ posts }: BlogScreenProps) {
                 </div>
 
                 {post.description && (
-                  <p className="text-lg text-muted-foreground leading-relaxed">
+                  <p className="text-muted-foreground text-lg leading-relaxed">
                     {post.description}
                   </p>
                 )}

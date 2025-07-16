@@ -1,9 +1,10 @@
+'use client';
 /*
 	Installed from https://reactbits.dev/ts/tailwind/
 */
 
 import { Color, Mesh, Program, Renderer, Triangle } from 'ogl';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const VERT = `#version 300 es
 in vec2 position;
@@ -129,6 +130,7 @@ export default function Aurora(props: AuroraProps) {
   propsRef.current = props;
 
   const ctnDom = useRef<HTMLDivElement>(null);
+  const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
     const ctn = ctnDom.current;
@@ -185,7 +187,7 @@ export default function Aurora(props: AuroraProps) {
     ctn.appendChild(gl.canvas);
 
     let animateId = 0;
-    const update = (t: number) => {
+    function update(t: number) {
       animateId = requestAnimationFrame(update);
       const { time = t * 0.01, speed = 1.0 } = propsRef.current;
       if (program) {
@@ -199,10 +201,13 @@ export default function Aurora(props: AuroraProps) {
         });
         renderer.render({ scene: mesh });
       }
-    };
+    }
     animateId = requestAnimationFrame(update);
 
     resize();
+
+    // Mark as ready after first render
+    setIsReady(true);
 
     return () => {
       cancelAnimationFrame(animateId);
@@ -215,5 +220,12 @@ export default function Aurora(props: AuroraProps) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [amplitude]);
 
-  return <div ref={ctnDom} className="w-full h-full bg-transparent" />;
+  return (
+    <div
+      ref={ctnDom}
+      className={`w-full h-full bg-transparent transition-opacity duration-300 ${
+        isReady ? 'opacity-100' : 'opacity-0'
+      }`}
+    />
+  );
 }
