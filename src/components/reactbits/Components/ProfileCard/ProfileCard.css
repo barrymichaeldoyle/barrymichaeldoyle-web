@@ -395,7 +395,8 @@
 .pc-details h3 {
   font-weight: 600;
   margin: 0;
-  font-size: min(5svh, 3em);
+  font-size: 2rem;
+  line-height: 3rem;
   margin: 0;
   background-image: linear-gradient(to bottom, #fff, #6f6fbe);
   background-size: 1em 1.5em;
@@ -407,7 +408,6 @@
 .pc-details p {
   font-weight: 600;
   position: relative;
-  top: -12px;
   white-space: nowrap;
   font-size: 16px;
   margin: 0 auto;
@@ -456,7 +456,8 @@
   }
 
   .pc-details h3 {
-    font-size: min(4svh, 2.5em);
+    font-size: 1.5rem;
+    line-height: 2rem;
   }
 
   .pc-details p {

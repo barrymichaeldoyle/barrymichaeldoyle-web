@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useMemo, useRef } from 'react';
 import './ProfileCard.css';
 
 interface ProfileCardProps {
-  avatarUrl: string;
+  avatarUrl?: string;
   iconUrl?: string;
   grainUrl?: string;
   behindGradient?: string;
@@ -52,18 +52,18 @@ const easeInOutCubic = (x: number): number =>
   x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
 
 const ProfileCardComponent: React.FC<ProfileCardProps> = ({
-  avatarUrl = '<Placeholder for avatar URL>',
-  iconUrl = '<Placeholder for icon URL>',
-  grainUrl = '<Placeholder for grain URL>',
+  avatarUrl = '/barry.png',
+  iconUrl,
+  grainUrl,
   behindGradient,
   innerGradient,
   showBehindGradient = true,
   className = '',
   enableTilt = true,
-  miniAvatarUrl,
-  name = 'Javi A. Torres',
+  miniAvatarUrl = '/profile.png',
+  name = 'Barry Michael Doyle',
   title = 'Software Engineer',
-  handle = 'javicodes',
+  handle = 'barrymichaeldoyle',
   status = 'Online',
   contactText = 'Contact',
   showUserInfo = true,
