@@ -9,8 +9,6 @@ import {
 import type { ReactNode } from 'react';
 
 import { Footer } from '~/components/layout/Footer';
-import { ThemeProvider } from '~/components/theme/provider';
-import { ThemeToggle } from '~/components/theme/toggle';
 import { seo } from '~/lib/seo';
 import appCss from '~/styles/app.css?url';
 
@@ -52,16 +50,11 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
       </head>
       <body>
         <div className="particle-overlay"></div>
-        <ThemeProvider storageKey="bmd-theme">
           <QueryClientProvider client={queryClient}>
-            <div className="absolute right-0 top-0 p-1 z-1">
-              <ThemeToggle />
-            </div>
             <main className="container mx-auto px-3 flex-1">{children}</main>
             <Footer />
             <ReactQueryDevtools initialIsOpen={false} />
           </QueryClientProvider>
-        </ThemeProvider>
         <Scripts />
       </body>
     </html>
