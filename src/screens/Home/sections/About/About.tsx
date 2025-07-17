@@ -2,9 +2,9 @@ import ProfileCard from '~/components/reactbits/Components/ProfileCard/ProfileCa
 
 export function AboutSection() {
   return (
-    <section className="flex flex-col gap-8 sm:flex-row sm:gap-8">
+    <section className="mx-auto flex w-full max-w-250 flex-col gap-16 py-30 md:flex-row md:gap-8">
       <div className="flex flex-2 flex-col gap-2">
-        <h2>About</h2>
+        <h2 className="pb-2">About</h2>
         <p>
           Hey I&apos;m Barry! As you can pretty much see. This site is still a
           work in progress.
@@ -14,8 +14,8 @@ export function AboutSection() {
           soon!
         </p>
       </div>
-      <div className="flex-none sm:flex-1">
-        <ProfileCard enableTilt />
+      <div className="flex justify-center">
+        <ProfileCard />
       </div>
     </section>
   );

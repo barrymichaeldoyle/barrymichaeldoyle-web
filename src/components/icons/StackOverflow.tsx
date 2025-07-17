@@ -1,7 +1,5 @@
 import type { LucideProps } from 'lucide-react';
 
-import { colors } from '~/constants';
-
 export function StackOverflow(props: LucideProps) {
   return (
     <svg
@@ -16,7 +14,7 @@ export function StackOverflow(props: LucideProps) {
       />
       <path
         d="M38.8 68.4l37.8 7.9 1.6-7.6-37.8-7.9-1.6 7.6zm5-18l35 16.3 3.2-7-35-16.4-3.2 7.1zm9.7-17.2l29.7 24.7 4.9-5.9-29.7-24.7-4.9 5.9zm19.2-18.3l-6.2 4.6 23 31 6.2-4.6-23-31zM38 86h38.6v-7.7H38V86z"
-        fill={colors.stackoverflow}
+        fill="currentColor"
       />
     </svg>
   );

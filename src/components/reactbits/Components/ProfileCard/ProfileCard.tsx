@@ -1,4 +1,10 @@
 import React, { useCallback, useEffect, useMemo, useRef } from 'react';
+
+import { EmailButton } from '~/components/socials/EmailButton';
+import { GitHubButton } from '~/components/socials/GitHubButton';
+import { LinkedInButton } from '~/components/socials/LinkedInButton';
+import { StackOverflowButton } from '~/components/socials/StackOverflowButton';
+import { YouTubeButton } from '~/components/socials/YouTubeButton';
 import './ProfileCard.css';
 
 interface ProfileCardProps {
@@ -60,14 +66,8 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
   showBehindGradient = true,
   className = '',
   enableTilt = true,
-  miniAvatarUrl = '/profile.png',
   name = 'Barry Michael Doyle',
   title = 'Software Engineer',
-  handle = 'barrymichaeldoyle',
-  status = 'Online',
-  contactText = 'Contact',
-  showUserInfo = true,
-  onContactClick,
 }) => {
   const wrapRef = useRef<HTMLDivElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
@@ -250,10 +250,6 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
     [iconUrl, grainUrl, showBehindGradient, behindGradient, innerGradient]
   );
 
-  const handleContactClick = useCallback(() => {
-    onContactClick?.();
-  }, [onContactClick]);
-
   return (
     <div
       ref={wrapRef}
@@ -275,37 +271,13 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
                 target.style.display = 'none';
               }}
             />
-            {showUserInfo && (
-              <div className="pc-user-info">
-                <div className="pc-user-details">
-                  <div className="pc-mini-avatar">
-                    <img
-                      src={miniAvatarUrl || avatarUrl}
-                      alt={`${name || 'User'} mini avatar`}
-                      loading="lazy"
-                      onError={(e) => {
-                        const target = e.target as HTMLImageElement;
-                        target.style.opacity = '0.5';
-                        target.src = avatarUrl;
-                      }}
-                    />
-                  </div>
-                  <div className="pc-user-text">
-                    <div className="pc-handle">@{handle}</div>
-                    <div className="pc-status">{status}</div>
-                  </div>
-                </div>
-                <button
-                  className="pc-contact-btn"
-                  onClick={handleContactClick}
-                  style={{ pointerEvents: 'auto' }}
-                  type="button"
-                  aria-label={`Contact ${name || 'user'}`}
-                >
-                  {contactText}
-                </button>
-              </div>
-            )}
+            <div className="pc-user-info mx-auto flex w-fit gap-2">
+              <LinkedInButton className="pointer-events-auto" />
+              <GitHubButton />
+              <EmailButton />
+              <YouTubeButton />
+              <StackOverflowButton />
+            </div>
           </div>
           <div className="pc-content">
             <div className="pc-details">

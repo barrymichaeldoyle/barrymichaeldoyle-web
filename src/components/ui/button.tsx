@@ -11,15 +11,15 @@ const buttonVariants = cva(
   cn(
     // Base styles
     'inline-flex items-center justify-center gap-2',
-    'whitespace-nowrap rounded-md text-sm font-semibold',
-    'border transform-gpu cursor-pointer',
+    'rounded-md text-sm font-semibold whitespace-nowrap',
+    'transform-gpu cursor-pointer border',
 
     // Transitions
     'transition-all duration-300',
 
     // States
     'disabled:pointer-events-none disabled:opacity-50',
-    'outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]',
+    'focus-visible:border-ring focus-visible:ring-ring/50 outline-none focus-visible:ring-[3px]',
     'aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive',
 
     // SVG handling
@@ -31,18 +31,18 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: cn(
-          'bg-primary text-primary-foreground',
-          'hover:bg-primary/90 border-transparent',
+          'text-primary-foreground bg-primary',
+          'border-transparent hover:bg-primary/90',
           commonButtonGlowEffects
         ),
         destructive: cn(
-          'bg-destructive text-white dark:bg-destructive/60',
-          'hover:bg-destructive/90 border-transparent hover:border-destructive/30',
+          'bg-destructive dark:bg-destructive/60 text-white',
+          'hover:bg-destructive/90 hover:border-destructive/30 border-transparent',
           'shadow-xs hover:shadow-[0_0_15px_rgba(239,68,68,0.35),0_0_30px_rgba(239,68,68,0.25)]',
           'focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40'
         ),
         outline: cn(
-          'border-border bg-background dark:bg-input/30 dark:border-input',
+          'border-border dark:bg-input/30 dark:border-input bg-background',
           'hover:bg-input/50 accent hover:text-accent-foreground dark:hover:bg-input/50',
           commonButtonGlowEffects
         ),
