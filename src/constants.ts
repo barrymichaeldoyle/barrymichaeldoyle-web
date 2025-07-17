@@ -23,3 +23,7 @@ export const colors: Record<string, string> = {
   linkedin: '#0A66C2',
   stackoverflow: '#EC7C22',
 };
+
+export const sections = {
+  about: 'about-section',
+};
