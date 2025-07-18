@@ -6,6 +6,6 @@
   "trailingComma": "es5",
   "bracketSpacing": true,
   "plugins": ["prettier-plugin-tailwindcss"],
-  "tailwindFunctions": ["cn"],
+  "tailwindFunctions": ["cn", "cva"],
   "tailwindStylesheet": "src/styles/app.css"
 }

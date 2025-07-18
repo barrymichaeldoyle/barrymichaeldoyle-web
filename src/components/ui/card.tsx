@@ -4,12 +4,12 @@ import * as React from 'react';
 import { cn } from '~/lib/utils';
 
 const cardVariants = cva(
-  'bg-background-secondary text-card-foreground relative overflow-hidden transition-all duration-300 ease-out border-1 border-border/40 p-4',
+  'text-card-foreground border-border/40 relative overflow-hidden border-1 border-primary bg-background-secondary p-4 transition-all duration-300 ease-out',
   {
     variants: {
       variant: {
         default: ['rounded-lg'],
-        feature: ['rounded-l-sm rounded-r-2xl', 'border-l-12 border-primary'],
+        feature: ['rounded-l-sm rounded-r-2xl', 'border-l-12'],
       },
     },
     defaultVariants: {
