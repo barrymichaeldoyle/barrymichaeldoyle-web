@@ -8,8 +8,8 @@ import { SocialButtons } from '../socials/SocialButtons';
 
 export function Footer() {
   return (
-    <footer className="border-border bg-card border-t">
-      <div className="w-full px-4 py-12">
+    <footer className="bg-background-secondary">
+      <div className="w-full p-4 pt-12">
         {/* Main Footer Content */}
         <div className="mb-8 grid grid-cols-1 items-start gap-8 md:grid-cols-4">
           {/* Professional Info */}
@@ -68,7 +68,7 @@ export function Footer() {
         </div>
 
         {/* Copyright & Open Source */}
-        <div className="border-border border-t pt-6">
+        <div className="border-t border-primary/25 pt-6">
           <div className="flex flex-col items-center space-y-3">
             {/* Open Source Link */}
             <div className="text-center">
@@ -76,7 +76,7 @@ export function Footer() {
                 href={links.repo}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="link text-xs"
+                className="flex flex-row items-center gap-2 text-xs"
               >
                 <Code2 className="h-3 w-3" />
                 <span>Open Source on GitHub</span>

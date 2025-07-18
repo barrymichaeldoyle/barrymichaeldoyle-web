@@ -13,6 +13,7 @@
 :root {
   /* Base colors */
   --background: oklch(0.0984 0.0514 304.05); /* #060010 */
+  --background-secondary: oklch(0.2649 0.0546 240.78); /* #06283d */
   --foreground: oklch(0.9911 0 0); /* #fcfcfc */
 
   --color-primary: oklch(0.7422 0.146 242); /* #46b5ff */
@@ -21,6 +22,7 @@
 @theme inline {
   /* Map CSS variables to theme properties */
   --color-background: var(--background);
+  --color-background-secondary: var(--background-secondary);
   --color-foreground: var(--foreground);
 
   --color-primary: var(--color-primary);
