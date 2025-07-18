@@ -52,14 +52,14 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
       <body>
         <QueryClientProvider client={queryClient}>
           <Header />
-          <main className="container mx-auto px-3 flex-1 pt-40">
+          <main className="container mx-auto flex-1 px-3 pt-[30vh]">
             {children}
           </main>
           <Footer />
           <ReactQueryDevtools initialIsOpen={false} />
         </QueryClientProvider>
         <Scripts />
-        <div className="absolute w-full h-100 bg-background -z-1">
+        <div className="absolute -z-1 h-[50vh] w-full bg-background">
           <Aurora speed={0.5} amplitude={1} />
         </div>
       </body>
