@@ -4,12 +4,13 @@ import { Code2, MapPin } from 'lucide-react';
 import { StackOverflowFlair } from '~/components/StackOverflowFlair/StackOverflowFlair';
 import { links, TITLES, YEARS_EXPERIENCE } from '~/constants';
 
+import Particles from '../reactbits/Backgrounds/Particles/Particles';
 import { SocialButtons } from '../socials/SocialButtons';
 
 export function Footer() {
   return (
-    <footer className="bg-background-secondary">
-      <div className="w-full p-4 pt-12">
+    <footer className="relative bg-background-secondary">
+      <div className="relative z-10 w-full p-4 pt-12">
         {/* Main Footer Content */}
         <div className="mb-8 grid grid-cols-1 items-start gap-8 md:grid-cols-4">
           {/* Professional Info */}
@@ -93,6 +94,15 @@ export function Footer() {
           </div>
         </div>
       </div>
+      <Particles
+        particleSpread={15}
+        particleColors={['#46b5ff', '#ffffff']}
+        particleCount={100}
+        sizeRandomness={10}
+        particleBaseSize={50}
+        speed={1}
+        alphaParticles
+      />
     </footer>
   );
 }
