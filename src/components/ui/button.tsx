@@ -31,7 +31,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: cn(
-          'text-primary-foreground bg-primary',
+          'bg-primary text-background',
           'border-transparent hover:bg-primary/90',
           commonButtonGlowEffects
         ),

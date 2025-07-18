@@ -17,11 +17,19 @@ export const experiences: Experience[] = [
     achievements: [],
   },
   {
+    company: 'Join Odin Limited',
+    companyUrl: 'https://www.joinodin.com/',
+    role: 'Design Engineer',
+    period: 'April 2022 - Feb 2023',
+    years: '1 year',
+    achievements: [],
+  },
+  {
     company: 'Universal Healthcare Group',
     companyUrl: 'https://universal.one/',
     role: 'Head of Frontend Engineering',
-    period: 'Mar 2019 - Feb 2023',
-    years: '4 years',
+    period: 'Mar 2019 - Mar 2022',
+    years: '3 years',
     achievements: [],
   },
   {
