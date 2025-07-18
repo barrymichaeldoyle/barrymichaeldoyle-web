@@ -4,7 +4,7 @@ import * as React from 'react';
 import { cn } from '~/lib/utils';
 
 const cardVariants = cva(
-  'bg-card text-card-foreground relative overflow-hidden transition-all duration-300 ease-out border-1 border-border/40 p-4',
+  'bg-background-secondary text-card-foreground relative overflow-hidden transition-all duration-300 ease-out border-1 border-border/40 p-4',
   {
     variants: {
       variant: {
