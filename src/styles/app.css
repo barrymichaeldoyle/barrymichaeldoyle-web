@@ -105,6 +105,17 @@
     font-size: 1.5rem;
   }
 
+  a {
+    font-weight: 500;
+    color: var(--color-primary);
+    transition: opacity 0.2s ease-in-out;
+  }
+
+  a:hover {
+    text-decoration: underline;
+    opacity: 0.8;
+  }
+
   /* Syntax highlighting styles - GitHub-like theme */
   .hljs {
     color: #c9d1d9;

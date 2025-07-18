@@ -11,13 +11,10 @@ export function ContactSection() {
         <h2 className="mb-4 text-3xl font-bold">Want to Poach Me?</h2>
         <p>
           Although I&apos;m currently full-time employed, I&apos;m always open
-          to hearing about new full-time opportunities with the right company.
+          to hearing about new opportunities with the right company.
         </p>
         <br />
-        <p>
-          If you think I&apos;d be a good fit for anything full-time. Get in
-          touch.
-        </p>
+        <p>If you think I&apos;d be a good fit for your team, get in touch.</p>
         <p>
           The best way to reach me is via email, or hit me up on{' '}
           <a href={links.linkedin} target="_blank">
