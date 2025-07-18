@@ -26,10 +26,16 @@ export function ExperienceSection() {
               <div className="flex items-start justify-between py-4">
                 <div>
                   <CardTitle className="mb-1 text-xl text-primary">
-                    {exp.role}
+                    <a
+                      href={exp.companyUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {exp.company}
+                    </a>
                   </CardTitle>
-                  <CardDescription className="company-name text-lg font-normal">
-                    {exp.company}
+                  <CardDescription className="text-lg font-normal">
+                    <em>{exp.role}</em>
                   </CardDescription>
                 </div>
                 <div className="flex flex-col items-end gap-2 text-right">
