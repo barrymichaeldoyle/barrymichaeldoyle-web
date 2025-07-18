@@ -43,7 +43,7 @@ export const experiences: Experience[] = [
   {
     company: 'Barry-Dean IT Solutions (B1TS)',
     companyUrl: 'https://www.linkedin.com/in/barry-dean-martin-b69441b8/',
-    role: 'Full Stack Engineer',
+    role: 'Software Engineer',
     period: 'Jan 2013 - Sep 2017',
     years: '4.5 years',
     achievements: [],
