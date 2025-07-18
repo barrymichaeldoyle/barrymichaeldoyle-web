@@ -2,6 +2,7 @@ import { Link } from '@tanstack/react-router';
 
 import GlareHover from '~/components/reactbits/Animations/GlareHover/GlareHover';
 import { ContactSection } from '~/components/sections/Contact/Contact';
+import { Button } from '~/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '~/components/ui/card';
 import { type BlogPost } from '~/types/blog';
 
@@ -26,6 +27,7 @@ export function BlogScreen({ posts }: BlogScreenProps) {
               to="/blog/$slug"
               params={{ slug: post.slug }}
               className="link mt-2"
+              data-slot="button"
             >
               <Card
                 key={post.slug}
@@ -45,13 +47,17 @@ export function BlogScreen({ posts }: BlogScreenProps) {
                       {post.title}
                     </CardTitle>
                   </CardHeader>
-                  <CardContent className="w-full">
+                  <CardContent className="flex w-full flex-col gap-1">
                     <div className="-mt-2 mb-2">
                       <BlogMetaDetails post={post} />
                     </div>
-                    <div className="text-md flex flex-col gap-2 leading-tight">
-                      {post.description && <p>{post.description}</p>}
-                      <p>Read more →</p>
+                    <div className="flex flex-row items-center justify-between gap-2">
+                      {post.description && (
+                        <p className="text-md leading-tight">
+                          {post.description}
+                        </p>
+                      )}
+                      <Button tabIndex={-1}>Read more →</Button>
                     </div>
                   </CardContent>
                 </GlareHover>
@@ -60,7 +66,7 @@ export function BlogScreen({ posts }: BlogScreenProps) {
           ))}
         </div>
       )}
-      <ContactSection />
+      <ContactSection hideLink />
     </div>
   );
 }

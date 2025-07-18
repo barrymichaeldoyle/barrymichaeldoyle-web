@@ -4,10 +4,7 @@ import type { ComponentProps } from 'react';
 
 import { cn } from '~/lib/utils';
 
-export const commonButtonGlowEffects =
-  'shadow-[var(--button-glow)] hover:shadow-[var(--button-glow-hover)] hover:border-[var(--button-border-glow)]';
-
-const buttonVariants = cva(
+export const buttonVariants = cva(
   cn(
     // Base styles
     'inline-flex items-center justify-center gap-2',
@@ -16,9 +13,6 @@ const buttonVariants = cva(
 
     // Transitions
     'transition-all duration-300',
-
-    // States
-    'focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 aria-invalid:border-destructive outline-none focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50',
 
     // SVG handling
     '[&_svg]:pointer-events-none [&_svg]:shrink-0',
@@ -29,31 +23,27 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: cn(
-          'border-transparent bg-primary text-background hover:bg-primary/90',
-          commonButtonGlowEffects
+          'border-transparent bg-primary text-background hover:bg-primary/90'
         ),
         destructive: cn(
-          'bg-destructive hover:bg-destructive/90 hover:border-destructive/30 focus-visible:ring-destructive/20 border-transparent text-white shadow-xs hover:shadow-[0_0_15px_rgba(239,68,68,0.35),0_0_30px_rgba(239,68,68,0.25)]'
+          'bg-destructive hover:bg-destructive/90 hover:border-destructive/30 border-transparent text-white shadow-xs hover:shadow-[0_0_15px_rgba(239,68,68,0.35),0_0_30px_rgba(239,68,68,0.25)]'
         ),
         outline: cn(
-          'border-border hover:bg-input/50 accent hover:text-accent-foreground bg-background',
-          commonButtonGlowEffects
+          'border-border hover:bg-input/50 accent hover:text-accent-foreground bg-background'
         ),
         secondary: cn(
           'bg-card text-secondary-foreground border-muted-foreground',
-          'hover:bg-secondary/80',
-          commonButtonGlowEffects
+          'hover:bg-secondary/80 focus:border-2'
         ),
         ghost: cn(
           'border-transparent shadow-none',
-          'hover:bg-input/50 accent hover:text-accent-foreground',
-          commonButtonGlowEffects
+          'hover:bg-input/50 accent hover:text-accent-foreground'
         ),
-        link: 'text-primary underline-offset-4 hover:underline border-transparent',
+        link: 'border-transparent text-primary underline-offset-4 hover:underline',
       },
       size: {
         default: 'h-9 px-4 py-2 has-[>svg]:px-3',
-        sm: 'h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5',
+        sm: 'h-8 gap-1.5 rounded-md px-3 has-[>svg]:px-2.5',
         lg: 'h-10 rounded-md px-6 has-[>svg]:px-4',
         icon: 'size-9 [&_svg:not([class*="size-"])]:size-5',
       },
@@ -65,12 +55,12 @@ const buttonVariants = cva(
   }
 );
 
-type ButtonProps = ComponentProps<'button'> &
+export type ButtonProps = ComponentProps<'button'> &
   VariantProps<typeof buttonVariants> & {
     asChild?: boolean;
   };
 
-function Button({
+export function Button({
   className,
   variant,
   size,
@@ -87,6 +77,3 @@ function Button({
     />
   );
 }
-
-export { Button, buttonVariants };
-export type { ButtonProps };

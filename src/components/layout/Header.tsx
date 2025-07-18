@@ -12,8 +12,13 @@ export function Header() {
   const [imageError, setImageError] = useState(false);
 
   const hideLogo = pathname === '/';
+  const showLogo = !hideLogo;
   const isAbout = hash === sections.about;
-  const isHome = pathname === '/' && !isAbout;
+  const isExperience = hash === sections.experience;
+  const isContact = hash === sections.contact;
+  const isHome = pathname === '/' && !isAbout && !isExperience && !isContact;
+
+  const hideHashSections = showLogo;
 
   return (
     <header
@@ -25,7 +30,8 @@ export function Header() {
       <div
         className={cn(
           'flex w-full items-center justify-between gap-1 rounded-full bg-background/50 px-1 py-1 backdrop-blur-sm transition-all duration-500',
-          hideLogo && 'w-fit'
+          hideLogo && 'w-fit',
+          'mx-auto sm:mx-0'
         )}
       >
         {!hideLogo && (
@@ -69,8 +75,29 @@ export function Header() {
           <NavLink active={isHome} to="/">
             Home
           </NavLink>
-          <NavLink active={isAbout} to="#about-section">
+          <NavLink
+            active={isAbout}
+            to={`#${sections.about}`}
+            hideOnSm={hideHashSections}
+            hideOnXs
+          >
             About
+          </NavLink>
+          <NavLink
+            active={isExperience}
+            to={`#${sections.experience}`}
+            hideOnSm={hideHashSections}
+            hideOnXs
+          >
+            Experience
+          </NavLink>
+          <NavLink
+            active={isContact}
+            to={`#${sections.contact}`}
+            hideOnSm={hideHashSections}
+            hideOnXs
+          >
+            Contact
           </NavLink>
           <NavLink active={pathname.includes('/blog')} to="/blog">
             Blog
@@ -85,18 +112,24 @@ function NavLink({
   active,
   to,
   children,
+  hideOnSm,
+  hideOnXs,
 }: {
   active?: boolean;
   to: string;
   children: ReactNode;
+  hideOnSm?: boolean;
+  hideOnXs?: boolean;
 }) {
   return (
     <Link
       to={to}
       className={cn(
         'rounded-full p-2 px-3 text-sm font-medium text-foreground transition-colors duration-500',
-        active && 'bg-primary text-background'
+        active && 'bg-primary text-background opacity-100',
+        hideOnSm ? 'hidden sm:block' : hideOnXs && 'hidden xs:block'
       )}
+      data-slot="button"
     >
       {children}
     </Link>

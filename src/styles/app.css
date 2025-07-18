@@ -28,6 +28,8 @@
   --color-primary: var(--color-primary);
   --text-primary: var(--color-primary);
   --text-foreground: var(--foreground);
+
+  --breakpoint-xs: 420px;
 }
 
 @layer base {
@@ -113,6 +115,16 @@
 
   a:hover {
     text-decoration: underline;
+    opacity: 0.8;
+  }
+
+  a[data-slot='button'] {
+    font-weight: unset;
+    color: unset;
+  }
+
+  a[data-slot='button']:hover {
+    text-decoration: none;
     opacity: 0.8;
   }
 

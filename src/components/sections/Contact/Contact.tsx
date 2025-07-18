@@ -1,14 +1,35 @@
+import { Link } from '@tanstack/react-router';
 import { Mail } from 'lucide-react';
+import { type ReactNode } from 'react';
 
 import { LinkedIn } from '~/components/icons/LinkedIn';
 import { Button } from '~/components/ui/button';
-import { links } from '~/constants';
+import { links, sections } from '~/constants';
 
-export function ContactSection() {
+interface ContactSectionProps {
+  hideLink?: boolean;
+}
+
+export function ContactSection({ hideLink }: ContactSectionProps) {
+  function LinkWrapper({ children }: { children: ReactNode }) {
+    if (hideLink) {
+      return children;
+    }
+
+    return (
+      <Link to={`#${sections.contact}` as string} data-slot="button">
+        {children}
+      </Link>
+    );
+  }
+
   return (
-    <section id="contact" className="py-32 text-center">
+    <section id={sections.contact} className="py-32 text-center">
       <div className="mx-auto flex max-w-lg flex-col gap-2">
-        <h2 className="mb-4 text-3xl font-bold">Want to Poach Me?</h2>
+        <LinkWrapper>
+          <h2 className="mb-4 text-3xl font-bold">Want to Poach Me?</h2>
+        </LinkWrapper>
+
         <p>
           Although I&apos;m currently full-time employed, I&apos;m always open
           to hearing about new opportunities with the right company.

@@ -28,4 +28,5 @@ export const colors: Record<string, string> = {
 export const sections = {
   about: 'about-section',
   experience: 'experience-section',
+  contact: 'contact-section',
 };

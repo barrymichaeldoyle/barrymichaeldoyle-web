@@ -1,3 +1,4 @@
+import { Link } from '@tanstack/react-router';
 import { Award } from 'lucide-react';
 
 import { Badge } from '~/components/ui/badge';
@@ -8,13 +9,16 @@ import {
   CardHeader,
   CardTitle,
 } from '~/components/ui/card';
+import { sections } from '~/constants';
 import { experiences } from '~/screens/Home/sections/Experience/experiences';
 
 export function ExperienceSection() {
   return (
-    <section id="experience" className="px-4 py-10">
+    <section id={sections.experience} className="px-4 py-10">
       <div className="mb-12 text-center">
-        <h2 className="mb-4 text-3xl font-bold">Professional Experience</h2>
+        <Link to={`#${sections.experience}` as string} data-slot="button">
+          <h2 className="mb-4 text-3xl font-bold">Professional Experience</h2>
+        </Link>
         <p className="text-muted-foreground mx-auto max-w-2xl">
           These are all the places that I&apos;ve worked at full time 🎉
         </p>
