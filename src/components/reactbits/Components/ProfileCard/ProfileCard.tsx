@@ -1,10 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useRef } from 'react';
 
-import { EmailButton } from '~/components/socials/EmailButton';
-import { GitHubButton } from '~/components/socials/GitHubButton';
-import { LinkedInButton } from '~/components/socials/LinkedInButton';
-import { StackOverflowButton } from '~/components/socials/StackOverflowButton';
-import { YouTubeButton } from '~/components/socials/YouTubeButton';
+import { SocialButtons } from '~/components/socials/SocialButtons';
+import { TITLES } from '~/constants';
 import './ProfileCard.css';
 
 interface ProfileCardProps {
@@ -16,14 +13,8 @@ interface ProfileCardProps {
   showBehindGradient?: boolean;
   className?: string;
   enableTilt?: boolean;
-  miniAvatarUrl?: string;
   name?: string;
   title?: string;
-  handle?: string;
-  status?: string;
-  contactText?: string;
-  showUserInfo?: boolean;
-  onContactClick?: () => void;
 }
 
 const DEFAULT_BEHIND_GRADIENT =
@@ -67,7 +58,7 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
   className = '',
   enableTilt = true,
   name = 'Barry Michael Doyle',
-  title = 'Software Engineer',
+  title = TITLES[0],
 }) => {
   const wrapRef = useRef<HTMLDivElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
@@ -272,11 +263,7 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
               }}
             />
             <div className="pc-user-info mx-auto flex w-fit gap-2">
-              <LinkedInButton className="pointer-events-auto" />
-              <GitHubButton />
-              <EmailButton />
-              <YouTubeButton />
-              <StackOverflowButton />
+              <SocialButtons />
             </div>
           </div>
           <div className="pc-content">
@@ -291,6 +278,4 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
   );
 };
 
-const ProfileCard = React.memo(ProfileCardComponent);
-
-export default ProfileCard;
+export const ProfileCard = React.memo(ProfileCardComponent);

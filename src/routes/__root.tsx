@@ -10,7 +10,8 @@ import type { ReactNode } from 'react';
 
 import { Footer } from '~/components/layout/Footer';
 import { Header } from '~/components/layout/Header';
-import Aurora from '~/components/reactbits/Backgrounds/Aurora/Aurora';
+import { Aurora } from '~/components/reactbits/Backgrounds/Aurora/Aurora';
+import { TITLES } from '~/constants';
 import { seo } from '~/lib/seo';
 import appCss from '~/styles/app.css?url';
 
@@ -23,8 +24,7 @@ export const Route = createRootRoute({
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       ...seo({
         title: 'Barry Michael Doyle - Staff Frontend Engineer',
-        description:
-          'Barry Michael Doyle - Staff Frontend Engineer | Design Engineer | Product Engineer | Lead Frontend Engineer',
+        description: `Barry Michael Doyle - ${TITLES.join(' | ')}`,
       }),
     ],
     links: [
@@ -52,9 +52,7 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
       <body>
         <QueryClientProvider client={queryClient}>
           <Header />
-          <main className="container mx-auto flex-1 px-3 pt-[30vh]">
-            {children}
-          </main>
+          <main className="mx-auto flex-1 px-3 pt-[30vh]">{children}</main>
           <Footer />
           <ReactQueryDevtools initialIsOpen={false} />
         </QueryClientProvider>

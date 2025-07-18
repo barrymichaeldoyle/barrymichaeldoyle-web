@@ -4,11 +4,7 @@ import { Code2, MapPin } from 'lucide-react';
 import { StackOverflowFlair } from '~/components/StackOverflowFlair/StackOverflowFlair';
 import { links, TITLES, YEARS_EXPERIENCE } from '~/constants';
 
-import { EmailButton } from '../socials/EmailButton';
-import { GitHubButton } from '../socials/GitHubButton';
-import { LinkedInButton } from '../socials/LinkedInButton';
-import { StackOverflowButton } from '../socials/StackOverflowButton';
-import { YouTubeButton } from '../socials/YouTubeButton';
+import { SocialButtons } from '../socials/SocialButtons';
 
 export function Footer() {
   return (
@@ -48,11 +44,7 @@ export function Footer() {
           {/* Social Links & StackOverflow Flair */}
           <div className="flex flex-col items-center space-y-4">
             <div className="flex items-center space-x-3">
-              <LinkedInButton />
-              <GitHubButton />
-              <EmailButton />
-              <YouTubeButton />
-              <StackOverflowButton />
+              <SocialButtons />
             </div>
             <StackOverflowFlair />
           </div>

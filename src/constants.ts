@@ -1,8 +1,8 @@
 export const TITLES = [
-  'Staff Frontend Engineer',
+  'Staff Engineer',
   'Product Engineer',
-  'Lead UI Engineer',
   'Design Engineer',
+  'Software Engineer',
 ];
 
 export const YEARS_EXPERIENCE = new Date().getFullYear() - 2013;
@@ -13,6 +13,7 @@ export const links: Record<string, string> = {
   stackoverflow: 'https://stackoverflow.com/users/2111515/barry-michael-doyle',
   youtube: 'https://www.youtube.com/@barrymichaeldoyle',
   email: 'mailto:barry@barrymichaeldoyle.com',
+  twitch: 'https://www.twitch.tv/barrymichaeldoyle',
   repo: 'https://github.com/barrymichaeldoyle/barrymichaeldoyle-web',
 };
 
