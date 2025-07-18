@@ -1,5 +1,7 @@
 import { Link } from '@tanstack/react-router';
 
+import GlareHover from '~/components/reactbits/Animations/GlareHover/GlareHover';
+import { ContactSection } from '~/components/sections/Contact/Contact';
 import { Card, CardContent, CardHeader, CardTitle } from '~/components/ui/card';
 import { type BlogPost } from '~/types/blog';
 
@@ -19,35 +21,46 @@ export function BlogScreen({ posts }: BlogScreenProps) {
       ) : (
         <div className="space-y-6">
           {Object.values(posts).map((post) => (
-            <Card key={post.slug} variant="feature">
-              <CardHeader>
-                <CardTitle className="mb-2 text-2xl font-semibold">
-                  {post.title}
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="-mt-2 mb-2">
-                  <BlogMetaDetails post={post} />
-                </div>
-
-                {post.description && (
-                  <p className="text-muted-foreground text-lg leading-relaxed">
-                    {post.description}
-                  </p>
-                )}
-
-                <Link
-                  to="/blog/$slug"
-                  params={{ slug: post.slug }}
-                  className="link mt-2"
+            <Link
+              key={post.slug}
+              to="/blog/$slug"
+              params={{ slug: post.slug }}
+              className="link mt-2"
+            >
+              <Card
+                key={post.slug}
+                variant="feature"
+                className="flex flex-1 flex-col p-0"
+              >
+                <GlareHover
+                  className="flex flex-1 flex-col p-4"
+                  width="100%"
+                  height="100%"
+                  borderRadius="0"
+                  background="transparent"
+                  borderColor="transparent"
                 >
-                  Read more →
-                </Link>
-              </CardContent>
-            </Card>
+                  <CardHeader className="w-full pb-1">
+                    <CardTitle className="mb-2 text-2xl font-semibold">
+                      {post.title}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="w-full">
+                    <div className="-mt-2 mb-2">
+                      <BlogMetaDetails post={post} />
+                    </div>
+                    <div className="text-md flex flex-col gap-2 leading-tight">
+                      {post.description && <p>{post.description}</p>}
+                      <p>Read more →</p>
+                    </div>
+                  </CardContent>
+                </GlareHover>
+              </Card>
+            </Link>
           ))}
         </div>
       )}
+      <ContactSection />
     </div>
   );
 }

@@ -6,7 +6,7 @@ import { links } from '~/constants';
 
 export function ContactSection() {
   return (
-    <section id="contact" className="py-16 text-center">
+    <section id="contact" className="py-32 text-center">
       <div className="mx-auto flex max-w-lg flex-col gap-2">
         <h2 className="mb-4 text-3xl font-bold">Want to Poach Me?</h2>
         <p>
