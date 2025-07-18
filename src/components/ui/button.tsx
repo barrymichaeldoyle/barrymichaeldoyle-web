@@ -18,9 +18,7 @@ const buttonVariants = cva(
     'transition-all duration-300',
 
     // States
-    'disabled:pointer-events-none disabled:opacity-50',
-    'focus-visible:border-ring focus-visible:ring-ring/50 outline-none focus-visible:ring-[3px]',
-    'aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive',
+    'focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 aria-invalid:border-destructive outline-none focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50',
 
     // SVG handling
     '[&_svg]:pointer-events-none [&_svg]:shrink-0',
@@ -31,29 +29,24 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: cn(
-          'bg-primary text-background',
-          'border-transparent hover:bg-primary/90',
+          'border-transparent bg-primary text-background hover:bg-primary/90',
           commonButtonGlowEffects
         ),
         destructive: cn(
-          'bg-destructive dark:bg-destructive/60 text-white',
-          'hover:bg-destructive/90 hover:border-destructive/30 border-transparent',
-          'shadow-xs hover:shadow-[0_0_15px_rgba(239,68,68,0.35),0_0_30px_rgba(239,68,68,0.25)]',
-          'focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40'
+          'bg-destructive hover:bg-destructive/90 hover:border-destructive/30 focus-visible:ring-destructive/20 border-transparent text-white shadow-xs hover:shadow-[0_0_15px_rgba(239,68,68,0.35),0_0_30px_rgba(239,68,68,0.25)]'
         ),
         outline: cn(
-          'border-border dark:bg-input/30 dark:border-input bg-background',
-          'hover:bg-input/50 accent hover:text-accent-foreground dark:hover:bg-input/50',
+          'border-border hover:bg-input/50 accent hover:text-accent-foreground bg-background',
           commonButtonGlowEffects
         ),
         secondary: cn(
           'bg-card text-secondary-foreground border-muted-foreground',
-          'hover:bg-secondary/80 dark:border-secondary',
+          'hover:bg-secondary/80',
           commonButtonGlowEffects
         ),
         ghost: cn(
           'border-transparent shadow-none',
-          'hover:bg-input/50 accent hover:text-accent-foreground dark:hover:bg-input/50',
+          'hover:bg-input/50 accent hover:text-accent-foreground',
           commonButtonGlowEffects
         ),
         link: 'text-primary underline-offset-4 hover:underline border-transparent',

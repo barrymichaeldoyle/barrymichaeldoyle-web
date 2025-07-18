@@ -52,7 +52,9 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
       <body>
         <QueryClientProvider client={queryClient}>
           <Header />
-          <main className="mx-auto flex-1 px-3 pt-[30vh]">{children}</main>
+          <main className="mx-auto w-full max-w-4xl flex-1 px-3 pt-20">
+            {children}
+          </main>
           <Footer />
           <ReactQueryDevtools initialIsOpen={false} />
         </QueryClientProvider>

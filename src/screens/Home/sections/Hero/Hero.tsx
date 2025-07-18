@@ -4,7 +4,7 @@ import { TITLES } from '~/constants';
 
 export function HeroSection() {
   return (
-    <section className="w-full py-10 text-center">
+    <section className="w-full py-10 pt-[30vh] text-center">
       <div className="relative z-10 mx-auto flex w-fit max-w-4xl flex-col gap-5 px-4 text-end">
         <h1>Barry Michael Doyle</h1>
         <h2 className="flex flex-1 justify-end gap-2 text-end">

@@ -11,7 +11,7 @@ interface BlogScreenProps {
 
 export function BlogScreen({ posts }: BlogScreenProps) {
   return (
-    <div className="mx-auto w-full max-w-4xl pt-4 pb-10">
+    <div className="mx-auto flex w-full min-w-full flex-1 flex-col p-4 pb-10">
       <h1 className="mb-6 text-3xl font-bold">Blog</h1>
 
       {Object.values(posts).length === 0 ? (
