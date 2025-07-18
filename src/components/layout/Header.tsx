@@ -1,5 +1,5 @@
 import { Link, useLocation } from '@tanstack/react-router';
-import { type ReactNode } from 'react';
+import { type ReactNode, useState } from 'react';
 
 import { sections } from '~/constants';
 import { cn } from '~/lib/utils';
@@ -8,6 +8,8 @@ import { DevElement } from '../DevElement/DevElement';
 
 export function Header() {
   const { pathname, hash } = useLocation();
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [imageError, setImageError] = useState(false);
 
   const hideLogo = pathname === '/';
   const isAbout = hash === sections.about;
@@ -27,11 +29,40 @@ export function Header() {
         )}
       >
         {!hideLogo && (
-          <Link to="/" className="flex h-9 flex-col gap-1">
-            <span className="relative -top-1 px-4 text-sm font-bold whitespace-nowrap text-primary">
-              Barry Michael Doyle
-            </span>
-            <DevElement className="absolute top-5 left-8 w-30" />
+          <Link to="/" className="flex h-9 flex-row gap-1.5">
+            <div className="relative">
+              {/* Loading placeholder */}
+              {!imageLoaded && !imageError && (
+                <div className="h-9 w-9 animate-pulse rounded-full border-2 border-primary bg-background-secondary" />
+              )}
+
+              {/* Fallback image */}
+              {imageError && (
+                <img
+                  src="/favicon.svg"
+                  alt="Barry Michael Doyle"
+                  className="h-9 w-9 rounded-full border-2 border-primary"
+                />
+              )}
+
+              {/* Main profile image */}
+              <img
+                src="/profile.png"
+                alt="Barry Michael Doyle"
+                className={cn(
+                  'h-9 w-9 rounded-full border-2 border-primary object-cover',
+                  !imageLoaded && !imageError && 'hidden'
+                )}
+                onLoad={() => setImageLoaded(true)}
+                onError={() => setImageError(true)}
+              />
+            </div>
+            <div className="flex flex-col gap-1">
+              <span className="relative -top-1 text-sm font-bold whitespace-nowrap text-primary">
+                Barry Michael Doyle
+              </span>
+              <DevElement className="absolute top-5 left-14.75 w-30" />
+            </div>
           </Link>
         )}
         <nav className="flex gap-1">
