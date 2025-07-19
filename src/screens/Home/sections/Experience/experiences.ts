@@ -20,7 +20,7 @@ export const experiences: Experience[] = [
     company: 'Join Odin Limited',
     companyUrl: 'https://www.joinodin.com/',
     role: 'Design Engineer',
-    period: 'April 2022 - Feb 2023',
+    period: 'Apr 2022 - Feb 2023',
     years: '1 year',
     achievements: [],
   },
