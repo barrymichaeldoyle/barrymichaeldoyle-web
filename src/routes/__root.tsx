@@ -10,6 +10,7 @@ import type { ReactNode } from 'react';
 
 import { Footer } from '~/components/layout/Footer';
 import { Header } from '~/components/layout/Header';
+import { NotFound } from '~/components/NotFound';
 import { Aurora } from '~/components/reactbits/Backgrounds/Aurora/Aurora';
 import { TITLES } from '~/constants';
 import { seo } from '~/lib/seo';
@@ -33,6 +34,7 @@ export const Route = createRootRoute({
     ],
   }),
   component: RootComponent,
+  notFoundComponent: NotFound,
 });
 
 function RootComponent() {
