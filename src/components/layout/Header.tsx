@@ -77,7 +77,7 @@ export function Header() {
           </NavLink>
           <NavLink
             active={isAbout}
-            to={`#${sections.about}`}
+            to={pathname === '/' ? `#${sections.about}` : `/#${sections.about}`}
             hideOnSm={hideHashSections}
             hideOnXs
           >
@@ -85,7 +85,11 @@ export function Header() {
           </NavLink>
           <NavLink
             active={isExperience}
-            to={`#${sections.experience}`}
+            to={
+              pathname === '/'
+                ? `#${sections.experience}`
+                : `/#${sections.experience}`
+            }
             hideOnSm={hideHashSections}
             hideOnXs
           >
@@ -93,7 +97,11 @@ export function Header() {
           </NavLink>
           <NavLink
             active={isContact}
-            to={`#${sections.contact}`}
+            to={
+              pathname === '/'
+                ? `#${sections.contact}`
+                : `/#${sections.contact}`
+            }
             hideOnSm={hideHashSections}
             hideOnXs
           >
