@@ -19,9 +19,7 @@ export default defineConfig({
   plugins: [
     tsConfigPaths({ projects: ['./tsconfig.json'] }),
     tanstackStart({
-      target: 'netlify',
       sitemap: { host: 'https://barrymichaeldoyle.com' },
-      customViteReactPlugin: true,
     }),
     viteReact(),
     tailwindcss(),

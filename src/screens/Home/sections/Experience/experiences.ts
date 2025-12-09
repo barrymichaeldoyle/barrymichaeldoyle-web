@@ -11,9 +11,17 @@ export const experiences: Experience[] = [
   {
     company: 'SecuritEase International Australia (Pty) Ltd',
     companyUrl: 'https://www.securitease.com/',
-    role: 'Staff Engineer',
-    period: 'Mar 2023 - Present',
-    years: `${new Date().getFullYear() - 2023}+ years`,
+    role: 'Senior Software Engineer',
+    period: 'Sep 2025 - Present',
+    years: '3 months', // TODO: Calculate months since Sep 2025
+    achievements: [],
+  },
+  {
+    company: 'SecuritEase International Australia (Pty) Ltd',
+    companyUrl: 'https://www.securitease.com/',
+    role: 'Chapter Lead (Engineer)',
+    period: 'Mar 2023 - Aug 2025',
+    years: '2.5 years',
     achievements: [],
   },
   {
