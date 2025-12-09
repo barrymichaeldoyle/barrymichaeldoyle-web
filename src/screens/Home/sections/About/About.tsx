@@ -18,15 +18,7 @@ export function AboutSection() {
         <p>
           Hey, I&apos;m Barry! I&apos;ve been programming professionally for
           over {programmingYears} years. Currently, I&apos;m a Senior Engineer
-          at{' '}
-          <a
-            href="https://securitease.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            SecuritEase
-          </a>
-          .
+          at a Crypto Exchange (Confidential).
         </p>
         <p>
           I love exploring various technologies, but most of my professional

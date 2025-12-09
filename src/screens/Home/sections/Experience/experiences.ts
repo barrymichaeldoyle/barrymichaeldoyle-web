@@ -9,8 +9,8 @@ interface Experience {
 
 export const experiences: Experience[] = [
   {
-    company: 'SecuritEase International Australia (Pty) Ltd',
-    companyUrl: 'https://www.securitease.com/',
+    company: 'Crypto Exchange (Confidential)',
+    companyUrl: 'https://www.valr.com/',
     role: 'Senior Software Engineer',
     period: 'Sep 2025 - Present',
     years: '3 months', // TODO: Calculate months since Sep 2025
