@@ -1,3 +1,22 @@
 [build]
   command = "vite build"
   publish = "dist/client"
+
+# Force HTTPS redirects
+[[redirects]]
+  from = "http://barrymichaeldoyle.com/*"
+  to = "https://barrymichaeldoyle.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.barrymichaeldoyle.com/*"
+  to = "https://barrymichaeldoyle.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.barrymichaeldoyle.com/*"
+  to = "https://barrymichaeldoyle.com/:splat"
+  status = 301
+  force = true
