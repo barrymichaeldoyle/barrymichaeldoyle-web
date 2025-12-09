@@ -19,7 +19,7 @@ export const experiences: Experience[] = [
   {
     company: 'SecuritEase International Australia (Pty) Ltd',
     companyUrl: 'https://www.securitease.com/',
-    role: 'Chapter Lead (Engineer)',
+    role: 'UI Chapter Lead (Engineer)',
     period: 'Mar 2023 - Aug 2025',
     years: '2.5 years',
     achievements: [],
