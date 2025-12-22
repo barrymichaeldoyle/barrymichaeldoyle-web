@@ -1,6 +1,7 @@
 import { Camera, Geometry, Mesh, Program, Renderer } from 'ogl';
 import React, { useEffect, useRef } from 'react';
 
+import { ClientOnly } from '~/components/ui/client-only';
 import { cn } from '~/lib/utils';
 
 interface ParticlesProps {
@@ -94,7 +95,7 @@ const fragment = /* glsl */ `
   }
 `;
 
-const Particles: React.FC<ParticlesProps> = ({
+const ParticlesComponent: React.FC<ParticlesProps> = ({
   particleCount = 200,
   particleSpread = 10,
   speed = 0.1,
@@ -117,6 +118,13 @@ const Particles: React.FC<ParticlesProps> = ({
 
     const renderer = new Renderer({ depth: false, alpha: true });
     const gl = renderer.gl;
+
+    // Check if WebGL context was successfully created
+    if (!gl) {
+      // WebGL is not available (disabled, not supported, or context creation failed)
+      // Silently fail - the component just won't render particles
+      return;
+    }
     container.appendChild(gl.canvas);
     gl.clearColor(0, 0, 0, 0);
 
@@ -249,6 +257,14 @@ const Particles: React.FC<ParticlesProps> = ({
 
   return (
     <div ref={containerRef} className={cn('absolute inset-0 z-0', className)} />
+  );
+};
+
+const Particles = (props: ParticlesProps) => {
+  return (
+    <ClientOnly fallback={null}>
+      <ParticlesComponent {...props} />
+    </ClientOnly>
   );
 };
 
