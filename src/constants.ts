@@ -17,14 +17,6 @@ export const links: Record<string, string> = {
   repo: 'https://github.com/barrymichaeldoyle/barrymichaeldoyle-web',
 };
 
-/**
- * Colors for the social icons.
- */
-export const colors: Record<string, string> = {
-  linkedin: '#0A66C2',
-  stackoverflow: '#EC7C22',
-};
-
 export const sections = {
   about: 'about-section',
   experience: 'experience-section',

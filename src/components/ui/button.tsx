@@ -4,7 +4,7 @@ import type { ComponentProps } from 'react';
 
 import { cn } from '~/lib/utils';
 
-export const buttonVariants = cva(
+const buttonVariants = cva(
   cn(
     // Base styles
     'inline-flex items-center justify-center gap-2',

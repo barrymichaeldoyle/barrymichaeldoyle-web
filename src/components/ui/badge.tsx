@@ -5,7 +5,7 @@ import { type ComponentProps } from 'react';
 import { cn } from '~/lib/utils';
 
 const badgeVariants = cva(
-  'inline-flex items-center rounded-full px-2.5 py-0.5 text-[0.75rem] leading-normal font-semibold w-fit whitespace-nowrap shrink-0 [&>svg]:size-3 gap-1 [&>svg]:pointer-events-none cursor-default select-none transition-colors',
+  'inline-flex w-fit shrink-0 cursor-default items-center gap-1 rounded-full px-2.5 py-0.5 text-[0.75rem] leading-normal font-semibold whitespace-nowrap transition-colors select-none [&>svg]:pointer-events-none [&>svg]:size-3',
   {
     variants: {
       variant: {
@@ -36,4 +36,4 @@ function Badge({
   );
 }
 
-export { Badge, badgeVariants };
+export { Badge };

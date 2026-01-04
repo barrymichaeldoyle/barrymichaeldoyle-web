@@ -23,14 +23,7 @@ function cn(...classes: (string | undefined | null | boolean)[]): string {
   return classes.filter(Boolean).join(' ');
 }
 
-export interface RotatingTextRef {
-  next: () => void;
-  previous: () => void;
-  jumpTo: (index: number) => void;
-  reset: () => void;
-}
-
-export interface RotatingTextProps
+interface RotatingTextProps
   extends Omit<
     React.ComponentPropsWithoutRef<typeof motion.span>,
     'children' | 'transition' | 'initial' | 'animate' | 'exit'
@@ -54,7 +47,7 @@ export interface RotatingTextProps
   elementLevelClassName?: string;
 }
 
-const RotatingText = forwardRef<RotatingTextRef, RotatingTextProps>(
+const RotatingText = forwardRef<{}, RotatingTextProps>(
   (
     {
       texts,
