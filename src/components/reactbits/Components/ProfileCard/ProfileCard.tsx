@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useRef } from 'react';
+import { memo, useCallback, useEffect, useMemo, useRef } from 'react';
 
 import { SocialButtons } from '~/components/socials/SocialButtons';
 import { TITLES } from '~/constants';
@@ -48,20 +48,23 @@ const adjust = (
 const easeInOutCubic = (x: number): number =>
   x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
 
-const ProfileCardComponent: React.FC<ProfileCardProps> = ({
+const ProfileCardComponent = ({
   avatarUrl = '/barry.png',
   iconUrl,
   grainUrl,
   behindGradient,
   innerGradient,
-  showBehindGradient = true,
+  showBehindGradient = false,
   className = '',
   enableTilt = true,
   name = 'Barry Michael Doyle',
   title = TITLES[0],
-}) => {
+}: ProfileCardProps) => {
   const wrapRef = useRef<HTMLDivElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
+  const rafMoveId = useRef<number | null>(null);
+  const pendingMove = useRef<{ x: number; y: number } | null>(null);
+  const cardDimensions = useRef<{ width: number; height: number } | null>(null);
 
   const animationHandlers = useMemo(() => {
     if (!enableTilt) return null;
@@ -74,30 +77,45 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
       card: HTMLElement,
       wrap: HTMLElement
     ) => {
-      const width = card.clientWidth;
-      const height = card.clientHeight;
+      // Cache dimensions if not set or if card was resized
+      if (
+        !cardDimensions.current ||
+        cardDimensions.current.width !== card.clientWidth ||
+        cardDimensions.current.height !== card.clientHeight
+      ) {
+        cardDimensions.current = {
+          width: card.clientWidth,
+          height: card.clientHeight,
+        };
+      }
 
+      const { width, height } = cardDimensions.current;
       const percentX = clamp((100 / width) * offsetX);
       const percentY = clamp((100 / height) * offsetY);
 
       const centerX = percentX - 50;
       const centerY = percentY - 50;
 
-      const properties = {
-        '--pointer-x': `${percentX}%`,
-        '--pointer-y': `${percentY}%`,
-        '--background-x': `${adjust(percentX, 0, 100, 35, 65)}%`,
-        '--background-y': `${adjust(percentY, 0, 100, 35, 65)}%`,
-        '--pointer-from-center': `${clamp(Math.hypot(percentY - 50, percentX - 50) / 50, 0, 1)}`,
-        '--pointer-from-top': `${percentY / 100}`,
-        '--pointer-from-left': `${percentX / 100}`,
-        '--rotate-x': `${round(-(centerX / 5))}deg`,
-        '--rotate-y': `${round(centerY / 4)}deg`,
-      };
-
-      Object.entries(properties).forEach(([property, value]) => {
-        wrap.style.setProperty(property, value);
-      });
+      // Batch CSS property updates using direct style object access
+      const style = wrap.style;
+      style.setProperty('--pointer-x', `${percentX}%`);
+      style.setProperty('--pointer-y', `${percentY}%`);
+      style.setProperty(
+        '--background-x',
+        `${adjust(percentX, 0, 100, 35, 65)}%`
+      );
+      style.setProperty(
+        '--background-y',
+        `${adjust(percentY, 0, 100, 35, 65)}%`
+      );
+      style.setProperty(
+        '--pointer-from-center',
+        `${clamp(Math.hypot(percentY - 50, percentX - 50) / 50, 0, 1)}`
+      );
+      style.setProperty('--pointer-from-top', `${percentY / 100}`);
+      style.setProperty('--pointer-from-left', `${percentX / 100}`);
+      style.setProperty('--rotate-x', `${round(-(centerX / 5))}deg`);
+      style.setProperty('--rotate-y', `${round(centerY / 4)}deg`);
     };
 
     const createSmoothAnimation = (
@@ -149,12 +167,26 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
       if (!card || !wrap || !animationHandlers) return;
 
       const rect = card.getBoundingClientRect();
-      animationHandlers.updateCardTransform(
-        event.clientX - rect.left,
-        event.clientY - rect.top,
-        card,
-        wrap
-      );
+      const x = event.clientX - rect.left;
+      const y = event.clientY - rect.top;
+
+      // Store pending move
+      pendingMove.current = { x, y };
+
+      // Throttle updates using RAF
+      if (rafMoveId.current === null) {
+        rafMoveId.current = requestAnimationFrame(() => {
+          if (pendingMove.current && card && wrap) {
+            animationHandlers.updateCardTransform(
+              pendingMove.current.x,
+              pendingMove.current.y,
+              card,
+              wrap
+            );
+          }
+          rafMoveId.current = null;
+        });
+      }
     },
     [animationHandlers]
   );
@@ -191,13 +223,15 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
   );
 
   useEffect(() => {
-    if (!enableTilt || !animationHandlers) return;
-
+    if (!enableTilt || !animationHandlers) {
+      return;
+    }
     const card = cardRef.current;
     const wrap = wrapRef.current;
 
-    if (!card || !wrap) return;
-
+    if (!card || !wrap) {
+      return;
+    }
     card.addEventListener('pointerenter', handlePointerEnter);
     card.addEventListener('pointermove', handlePointerMove);
     card.addEventListener('pointerleave', handlePointerLeave);
@@ -219,6 +253,11 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
       card.removeEventListener('pointermove', handlePointerMove);
       card.removeEventListener('pointerleave', handlePointerLeave);
       animationHandlers.cancelAnimation();
+      if (rafMoveId.current !== null) {
+        cancelAnimationFrame(rafMoveId.current);
+        rafMoveId.current = null;
+      }
+      pendingMove.current = null;
     };
   }, [
     enableTilt,
@@ -229,23 +268,28 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
   ]);
 
   const cardStyle = useMemo(
-    () =>
-      ({
-        '--icon': iconUrl ? `url(${iconUrl})` : 'none',
-        '--grain': grainUrl ? `url(${grainUrl})` : 'none',
-        '--behind-gradient': showBehindGradient
-          ? (behindGradient ?? DEFAULT_BEHIND_GRADIENT)
-          : 'none',
-        '--inner-gradient': innerGradient ?? DEFAULT_INNER_GRADIENT,
-      }) as React.CSSProperties,
+    () => ({
+      '--icon': iconUrl ? `url(${iconUrl})` : 'none',
+      '--grain': grainUrl ? `url(${grainUrl})` : 'none',
+      '--behind-gradient': showBehindGradient
+        ? (behindGradient ?? DEFAULT_BEHIND_GRADIENT)
+        : 'none',
+      '--inner-gradient': innerGradient ?? DEFAULT_INNER_GRADIENT,
+    }),
     [iconUrl, grainUrl, showBehindGradient, behindGradient, innerGradient]
+  );
+
+  const wrapperClassName = useMemo(
+    () =>
+      (className ? `pc-card-wrapper ${className}` : 'pc-card-wrapper').trim(),
+    [className]
   );
 
   return (
     <div
       ref={wrapRef}
-      className={`pc-card-wrapper ${className}`.trim()}
-      style={cardStyle}
+      className={wrapperClassName}
+      style={cardStyle as Record<string, string>}
     >
       <section ref={cardRef} className="pc-card">
         <div className="pc-inside">
@@ -255,7 +299,7 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
             <img
               className="avatar"
               src={avatarUrl}
-              alt={`${name || 'User'} avatar`}
+              alt={`${name} avatar`}
               loading="lazy"
               onError={(e) => {
                 const target = e.target as HTMLImageElement;
@@ -278,4 +322,4 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
   );
 };
 
-export const ProfileCard = React.memo(ProfileCardComponent);
+export const ProfileCard = memo(ProfileCardComponent);

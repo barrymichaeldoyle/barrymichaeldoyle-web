@@ -14,5 +14,6 @@
     "typescriptreact"
   ],
   "eslint.format.enable": true,
-  "eslint.lintTask.enable": true
+  "eslint.lintTask.enable": true,
+  "typescript.referencesCodeLens.enabled": true
 }
