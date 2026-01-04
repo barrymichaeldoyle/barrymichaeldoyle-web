@@ -31,6 +31,7 @@ export const Route = createRootRoute({
     links: [
       { rel: 'stylesheet', href: appCss },
       { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+      { rel: 'preload', href: '/profile.png', as: 'image' },
     ],
   }),
   component: RootComponent,

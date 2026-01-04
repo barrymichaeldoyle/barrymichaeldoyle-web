@@ -301,6 +301,7 @@ const ProfileCardComponent = ({
               src={avatarUrl}
               alt={`${name} avatar`}
               loading="lazy"
+              fetchPriority="low"
               onError={(e) => {
                 const target = e.target as HTMLImageElement;
                 target.style.display = 'none';

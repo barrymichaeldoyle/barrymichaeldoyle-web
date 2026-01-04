@@ -55,6 +55,9 @@ export function Header() {
               <img
                 src="/profile.png"
                 alt="Barry Michael Doyle"
+                fetchPriority="high"
+                width={36}
+                height={36}
                 className={cn(
                   'h-9 w-9 rounded-full border-2 border-primary object-cover',
                   !imageLoaded && !imageError && 'hidden'
