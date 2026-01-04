@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 
 import { StackOverflow } from '../icons/StackOverflow';
+import '../socials/SocialButtons.css';
 import { Button } from '../ui/button';
 
 const SO_USER_ID = 2111515;
@@ -47,7 +48,7 @@ export function StackOverflowFlair() {
   }
 
   return (
-    <Button variant="secondary" asChild>
+    <Button variant="secondary" asChild className="social-button-hover">
       <a
         href={data.link}
         target="_blank"
@@ -55,13 +56,13 @@ export function StackOverflowFlair() {
         className="inline-flex items-center gap-1.5 text-sm"
         title={`${data.display_name} on Stack Overflow - ${data.reputation.toLocaleString()} reputation`}
       >
-        <StackOverflow className="w-4 h-4" />
+        <StackOverflow className="h-4 w-4" />
 
-        <span className="font-medium text-xs">
+        <span className="text-xs font-medium">
           {data.reputation.toLocaleString()}
         </span>
 
-        <span className="text-xs gap-1 flex font-medium">
+        <span className="flex gap-1 text-xs font-medium">
           <BadgeCount count={data.badge_counts.gold} color="#FFCC01" />
           <BadgeCount count={data.badge_counts.silver} color="#B4B8BC" />
           <BadgeCount count={data.badge_counts.bronze} color="#D1A684" />

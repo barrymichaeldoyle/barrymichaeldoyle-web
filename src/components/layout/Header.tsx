@@ -63,11 +63,11 @@ export function Header() {
                 onError={() => setImageError(true)}
               />
             </div>
-            <div className="flex flex-col gap-1">
+            <div className="relative flex flex-col gap-1">
               <span className="relative -top-1 text-sm font-bold whitespace-nowrap text-primary">
                 Barry Michael Doyle
               </span>
-              <DevElement className="absolute top-5 left-14.75 w-30" />
+              <DevElement className="absolute top-4.5 left-2.5 w-30 text-white" />
             </div>
           </Link>
         )}

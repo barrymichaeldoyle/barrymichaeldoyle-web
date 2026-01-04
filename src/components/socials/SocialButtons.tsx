@@ -1,6 +1,7 @@
 import { EmailButton } from './EmailButton';
 import { GitHubButton } from './GitHubButton';
 import { LinkedInButton } from './LinkedInButton';
+import './SocialButtons.css';
 import { StackOverflowButton } from './StackOverflowButton';
 import { TwitchButton } from './TwitchButton';
 import { YouTubeButton } from './YouTubeButton';
@@ -11,13 +12,13 @@ import { YouTubeButton } from './YouTubeButton';
  */
 export function SocialButtons() {
   return (
-    <>
+    <div className="social-buttons-container">
       <LinkedInButton />
       <GitHubButton />
       <EmailButton />
       <TwitchButton />
       <YouTubeButton />
       <StackOverflowButton />
-    </>
+    </div>
   );
 }
