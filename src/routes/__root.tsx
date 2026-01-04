@@ -6,6 +6,7 @@ import {
   Outlet,
   Scripts,
 } from '@tanstack/react-router';
+import { PostHogProvider } from 'posthog-js/react';
 import type { ReactNode } from 'react';
 
 import { Footer } from '~/components/layout/Footer';
@@ -46,21 +47,42 @@ function RootComponent() {
   );
 }
 
+const postHogOptions = {
+  api_host: import.meta.env.VITE_PUBLIC_POSTHOG_HOST,
+  defaults: '2025-11-30',
+} as const;
+
 function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
+  const postHogApiKey = import.meta.env.VITE_PUBLIC_POSTHOG_KEY;
+  const postHogHost = import.meta.env.VITE_PUBLIC_POSTHOG_HOST;
+
   return (
     <html lang="en">
       <head>
         <HeadContent />
       </head>
       <body>
-        <QueryClientProvider client={queryClient}>
-          <Header />
-          <main className="mx-auto w-full max-w-4xl flex-1 px-3 pt-20">
-            {children}
-          </main>
-          <Footer />
-          <ReactQueryDevtools initialIsOpen={false} />
-        </QueryClientProvider>
+        {postHogApiKey && postHogHost ? (
+          <PostHogProvider apiKey={postHogApiKey} options={postHogOptions}>
+            <QueryClientProvider client={queryClient}>
+              <Header />
+              <main className="mx-auto w-full max-w-4xl flex-1 px-3 pt-20">
+                {children}
+              </main>
+              <Footer />
+              <ReactQueryDevtools initialIsOpen={false} />
+            </QueryClientProvider>
+          </PostHogProvider>
+        ) : (
+          <QueryClientProvider client={queryClient}>
+            <Header />
+            <main className="mx-auto w-full max-w-4xl flex-1 px-3 pt-20">
+              {children}
+            </main>
+            <Footer />
+            <ReactQueryDevtools initialIsOpen={false} />
+          </QueryClientProvider>
+        )}
         <Scripts />
         <div className="absolute -z-1 h-[50vh] w-full bg-background">
           <Aurora speed={0.5} amplitude={1} />

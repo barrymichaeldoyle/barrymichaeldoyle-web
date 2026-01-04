@@ -43,6 +43,7 @@
     "gray-matter": "4.0.3",
     "lucide-react": "0.533.0",
     "ogl": "1.0.11",
+    "posthog-js": "^1.313.0",
     "react": "19.2.1",
     "react-dom": "19.2.1",
     "react-markdown": "10.1.0",
