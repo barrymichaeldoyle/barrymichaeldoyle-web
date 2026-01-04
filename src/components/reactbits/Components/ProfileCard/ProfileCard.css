@@ -33,6 +33,93 @@
   transform: translate3d(0, 0, 0.1px);
   position: relative;
   touch-action: none;
+  /* Always reserve space to prevent layout shift - these dimensions must be set from the start */
+  height: 80svh;
+  max-height: 540px;
+  width: 100%;
+  max-width: calc(540px * 0.718);
+  margin: 0 auto;
+  /* Ensure wrapper always takes up space even when empty */
+  min-height: 540px;
+  aspect-ratio: 0.718;
+}
+
+.pc-card-wrapper.loading {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.pc-card-wrapper.loading .pc-card {
+  /* Ensure card maintains dimensions even when loading */
+  visibility: visible;
+  opacity: 0.3;
+}
+
+.pc-card-wrapper.ready {
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.pc-card-wrapper.ready .pc-card {
+  opacity: 1;
+}
+
+/* Placeholder styles to maintain layout */
+.pc-placeholder {
+  display: grid;
+  grid-area: 1/-1;
+  border-radius: var(--card-radius);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.3);
+  /* Match card dimensions exactly */
+  height: 80svh;
+  max-height: 540px;
+  aspect-ratio: 0.718;
+}
+
+.pc-placeholder.hidden {
+  display: none;
+}
+
+.avatar-placeholder {
+  width: 100%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) scale(1);
+  bottom: -30px;
+  aspect-ratio: 1;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+  max-width: 200px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.pc-user-info-placeholder {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+}
+
+.pc-details-placeholder-title {
+  width: 60%;
+  height: 3rem;
+  margin: 0 auto 0.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+}
+
+.pc-details-placeholder-text {
+  width: 40%;
+  height: 1.5rem;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
 }
 
 .pc-card-wrapper::before {

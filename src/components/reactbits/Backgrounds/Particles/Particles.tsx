@@ -1,7 +1,8 @@
 import { Camera, Geometry, Mesh, Program, Renderer } from 'ogl';
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 import { ClientOnly } from '~/components/ui/client-only';
+import { ErrorBoundary } from '~/components/ui/error-boundary';
 import { cn } from '~/lib/utils';
 
 interface ParticlesProps {
@@ -95,7 +96,7 @@ const fragment = /* glsl */ `
   }
 `;
 
-const ParticlesComponent: React.FC<ParticlesProps> = ({
+const ParticlesComponent = ({
   particleCount = 200,
   particleSpread = 10,
   speed = 0.1,
@@ -108,7 +109,7 @@ const ParticlesComponent: React.FC<ParticlesProps> = ({
   cameraDistance = 20,
   disableRotation = true,
   className,
-}) => {
+}: ParticlesProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const mouseRef = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
 
@@ -131,13 +132,16 @@ const ParticlesComponent: React.FC<ParticlesProps> = ({
     const camera = new Camera(gl, { fov: 15 });
     camera.position.set(0, 0, cameraDistance);
 
+    const abortController = new AbortController();
+    const { signal } = abortController;
+
     const resize = () => {
       const width = container.clientWidth;
       const height = container.clientHeight;
       renderer.setSize(width, height);
       camera.perspective({ aspect: gl.canvas.width / gl.canvas.height });
     };
-    window.addEventListener('resize', resize, false);
+    window.addEventListener('resize', resize, { signal });
     resize();
 
     const handleMouseMove = (e: MouseEvent) => {
@@ -148,7 +152,7 @@ const ParticlesComponent: React.FC<ParticlesProps> = ({
     };
 
     if (moveParticlesOnHover) {
-      container.addEventListener('mousemove', handleMouseMove);
+      container.addEventListener('mousemove', handleMouseMove, { signal });
     }
 
     const count = particleCount;
@@ -232,10 +236,7 @@ const ParticlesComponent: React.FC<ParticlesProps> = ({
     animationFrameId = requestAnimationFrame(update);
 
     return () => {
-      window.removeEventListener('resize', resize);
-      if (moveParticlesOnHover) {
-        container.removeEventListener('mousemove', handleMouseMove);
-      }
+      abortController.abort();
       cancelAnimationFrame(animationFrameId);
       if (container.contains(gl.canvas)) {
         container.removeChild(gl.canvas);
@@ -262,9 +263,11 @@ const ParticlesComponent: React.FC<ParticlesProps> = ({
 
 const Particles = (props: ParticlesProps) => {
   return (
-    <ClientOnly fallback={null}>
-      <ParticlesComponent {...props} />
-    </ClientOnly>
+    <ErrorBoundary>
+      <ClientOnly fallback={null}>
+        <ParticlesComponent {...props} />
+      </ClientOnly>
+    </ErrorBoundary>
   );
 };
 

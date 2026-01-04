@@ -19,6 +19,8 @@ import React, {
   useState,
 } from 'react';
 
+import { ErrorBoundary } from '~/components/ui/error-boundary';
+
 function cn(...classes: (string | undefined | null | boolean)[]): string {
   return classes.filter(Boolean).join(' ');
 }
@@ -265,4 +267,17 @@ const RotatingText = forwardRef<{}, RotatingTextProps>(
 );
 
 RotatingText.displayName = 'RotatingText';
-export default RotatingText;
+
+const RotatingTextWithErrorBoundary = forwardRef<{}, RotatingTextProps>(
+  (props, ref) => {
+    return (
+      <ErrorBoundary>
+        <RotatingText {...props} ref={ref} />
+      </ErrorBoundary>
+    );
+  }
+);
+
+RotatingTextWithErrorBoundary.displayName = 'RotatingText';
+
+export default RotatingTextWithErrorBoundary;

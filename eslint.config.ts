@@ -63,6 +63,21 @@ export default [
           fixStyle: 'inline-type-imports',
         },
       ],
+      '@typescript-eslint/ban-types': [
+        'error',
+        {
+          types: {
+            'React.FC': {
+              message:
+                'Use function declarations or arrow functions with explicit return types instead of React.FC',
+            },
+            'React.FunctionComponent': {
+              message:
+                'Use function declarations or arrow functions with explicit return types instead of React.FunctionComponent',
+            },
+          },
+        },
+      ],
 
       // React rules
       'react/react-in-jsx-scope': 'off', // Not needed with React 17+

@@ -1,6 +1,7 @@
-import { memo, useCallback, useEffect, useMemo, useRef } from 'react';
+import { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import { SocialButtons } from '~/components/socials/SocialButtons';
+import { ErrorBoundary } from '~/components/ui/error-boundary';
 import { TITLES } from '~/constants';
 import './ProfileCard.css';
 
@@ -65,6 +66,8 @@ const ProfileCardComponent = ({
   const rafMoveId = useRef<number | null>(null);
   const pendingMove = useRef<{ x: number; y: number } | null>(null);
   const cardDimensions = useRef<{ width: number; height: number } | null>(null);
+  const [isReady, setIsReady] = useState(false);
+  const hasInitialized = useRef(false);
 
   const animationHandlers = useMemo(() => {
     if (!enableTilt) return null;
@@ -223,35 +226,84 @@ const ProfileCardComponent = ({
   );
 
   useEffect(() => {
+    // If tilt is disabled, mark as ready immediately
     if (!enableTilt || !animationHandlers) {
+      requestAnimationFrame(() => {
+        setIsReady(true);
+      });
       return;
     }
+
     const card = cardRef.current;
     const wrap = wrapRef.current;
 
     if (!card || !wrap) {
+      // If refs aren't ready, try again on next frame
+      requestAnimationFrame(() => {
+        setIsReady(true);
+      });
       return;
     }
-    card.addEventListener('pointerenter', handlePointerEnter);
-    card.addEventListener('pointermove', handlePointerMove);
-    card.addEventListener('pointerleave', handlePointerLeave);
 
-    const initialX = wrap.clientWidth - ANIMATION_CONFIG.INITIAL_X_OFFSET;
-    const initialY = ANIMATION_CONFIG.INITIAL_Y_OFFSET;
+    const abortController = new AbortController();
+    const { signal } = abortController;
 
-    animationHandlers.updateCardTransform(initialX, initialY, card, wrap);
-    animationHandlers.createSmoothAnimation(
-      ANIMATION_CONFIG.INITIAL_DURATION,
-      initialX,
-      initialY,
-      card,
-      wrap
-    );
+    card.addEventListener('pointerenter', handlePointerEnter, { signal });
+    card.addEventListener('pointermove', handlePointerMove, { signal });
+    card.addEventListener('pointerleave', handlePointerLeave, { signal });
+
+    // Start at center position (same as after hover/leave) to match final state
+    const centerX = wrap.clientWidth / 2;
+    const centerY = wrap.clientHeight / 2;
+
+    // Set initial position to center immediately without animation
+    animationHandlers.updateCardTransform(centerX, centerY, card, wrap);
+
+    // Mark as ready immediately after setting initial position
+    if (!hasInitialized.current) {
+      hasInitialized.current = true;
+      // Use double RAF to ensure all styles are applied and browser has painted
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          // Force a reflow to ensure styles are applied
+          void wrap.offsetHeight;
+          void card.offsetHeight;
+          // Ensure card dimensions are cached
+          if (!cardDimensions.current) {
+            cardDimensions.current = {
+              width: card.clientWidth,
+              height: card.clientHeight,
+            };
+          }
+          // Update transform one more time to ensure everything is correct
+          animationHandlers.updateCardTransform(centerX, centerY, card, wrap);
+
+          // Temporarily add active class to trigger proper rendering state
+          // This ensures the card renders in the same state as after hover
+          wrap.classList.add('active');
+          card.classList.add('active');
+
+          // Force browser to apply all styles by reading computed styles
+          void window.getComputedStyle(card).transform;
+          void window.getComputedStyle(wrap).getPropertyValue('--pointer-x');
+
+          // Remove active class after a brief moment to match non-hover state
+          // but keep the proper transforms applied
+          setTimeout(() => {
+            wrap.classList.remove('active');
+            card.classList.remove('active');
+            // Final update to center position to ensure transforms are correct
+            animationHandlers.updateCardTransform(centerX, centerY, card, wrap);
+            setIsReady(true);
+          }, 10);
+        });
+      });
+    } else {
+      setIsReady(true);
+    }
 
     return () => {
-      card.removeEventListener('pointerenter', handlePointerEnter);
-      card.removeEventListener('pointermove', handlePointerMove);
-      card.removeEventListener('pointerleave', handlePointerLeave);
+      abortController.abort();
       animationHandlers.cancelAnimation();
       if (rafMoveId.current !== null) {
         cancelAnimationFrame(rafMoveId.current);
@@ -269,6 +321,18 @@ const ProfileCardComponent = ({
 
   const cardStyle = useMemo(
     () => ({
+      // Initialize all CSS custom properties for SSR to prevent FOUC
+      '--pointer-x': '50%',
+      '--pointer-y': '50%',
+      '--pointer-from-center': '0',
+      '--pointer-from-top': '0.5',
+      '--pointer-from-left': '0.5',
+      '--card-opacity': '0',
+      '--rotate-x': '0deg',
+      '--rotate-y': '0deg',
+      '--background-x': '50%',
+      '--background-y': '50%',
+      // Component-specific props
       '--icon': iconUrl ? `url(${iconUrl})` : 'none',
       '--grain': grainUrl ? `url(${grainUrl})` : 'none',
       '--behind-gradient': showBehindGradient
@@ -281,8 +345,11 @@ const ProfileCardComponent = ({
 
   const wrapperClassName = useMemo(
     () =>
-      (className ? `pc-card-wrapper ${className}` : 'pc-card-wrapper').trim(),
-    [className]
+      (className
+        ? `pc-card-wrapper ${isReady ? 'ready' : 'loading'} ${className}`
+        : `pc-card-wrapper ${isReady ? 'ready' : 'loading'}`
+      ).trim(),
+    [className, isReady]
   );
 
   return (
@@ -291,36 +358,78 @@ const ProfileCardComponent = ({
       className={wrapperClassName}
       style={cardStyle as Record<string, string>}
     >
-      <section ref={cardRef} className="pc-card">
+      <section
+        ref={cardRef}
+        className="pc-card"
+        style={{
+          /* Ensure card always has dimensions during SSR */
+          height: '80svh',
+          maxHeight: '540px',
+          aspectRatio: '0.718',
+        }}
+      >
         <div className="pc-inside">
+          {/* Always render these decorative elements to maintain structure */}
           <div className="pc-shine" />
           <div className="pc-glare" />
-          <div className="pc-content pc-avatar-content">
-            <img
-              className="avatar"
-              src={avatarUrl}
-              alt={`${name} avatar`}
-              loading="lazy"
-              fetchPriority="low"
-              onError={(e) => {
-                const target = e.target as HTMLImageElement;
-                target.style.display = 'none';
-              }}
-            />
-            <div className="pc-user-info mx-auto flex w-fit gap-2">
-              <SocialButtons />
+          {/* Always render placeholder structure, then replace with real content when ready */}
+          <div
+            className={`pc-content pc-placeholder ${isReady ? 'hidden' : ''}`}
+            aria-hidden={!isReady}
+          >
+            <div className="pc-avatar-content">
+              <div className="avatar-placeholder" />
+              <div className="pc-user-info-placeholder" />
+            </div>
+            <div className="pc-content">
+              <div className="pc-details">
+                <div className="pc-details-placeholder-title" />
+                <div className="pc-details-placeholder-text" />
+              </div>
             </div>
           </div>
-          <div className="pc-content">
-            <div className="pc-details">
-              <h3>{name}</h3>
-              <p>{title}</p>
-            </div>
-          </div>
+          {isReady && (
+            <>
+              <div className="pc-content pc-avatar-content">
+                <img
+                  className="avatar"
+                  src={avatarUrl}
+                  alt={`${name} avatar`}
+                  loading="eager"
+                  fetchPriority="high"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.style.display = 'none';
+                  }}
+                />
+                <div className="pc-user-info mx-auto flex w-fit gap-2">
+                  <SocialButtons />
+                </div>
+              </div>
+              <div className="pc-content">
+                <div className="pc-details">
+                  <h3>{name}</h3>
+                  <p>{title}</p>
+                </div>
+              </div>
+            </>
+          )}
         </div>
       </section>
     </div>
   );
 };
 
-export const ProfileCard = memo(ProfileCardComponent);
+const ProfileCardComponentWithErrorBoundary = memo(
+  (props: ProfileCardProps) => {
+    return (
+      <ErrorBoundary>
+        <ProfileCardComponent {...props} />
+      </ErrorBoundary>
+    );
+  }
+);
+
+ProfileCardComponentWithErrorBoundary.displayName = 'ProfileCard';
+
+export const ProfileCard = ProfileCardComponentWithErrorBoundary;

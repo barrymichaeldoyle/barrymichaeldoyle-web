@@ -1,4 +1,6 @@
-import React, { useRef } from 'react';
+import { type CSSProperties, type ReactNode, useRef } from 'react';
+
+import { ErrorBoundary } from '~/components/ui/error-boundary';
 
 interface GlareHoverProps {
   width?: string;
@@ -6,7 +8,7 @@ interface GlareHoverProps {
   background?: string;
   borderRadius?: string;
   borderColor?: string;
-  children?: React.ReactNode;
+  children?: ReactNode;
   glareColor?: string;
   glareOpacity?: number;
   glareAngle?: number;
@@ -14,10 +16,10 @@ interface GlareHoverProps {
   transitionDuration?: number;
   playOnce?: boolean;
   className?: string;
-  style?: React.CSSProperties;
+  style?: CSSProperties;
 }
 
-const GlareHover: React.FC<GlareHoverProps> = ({
+const GlareHover = ({
   width = '500px',
   height = '500px',
   background = '#000',
@@ -32,7 +34,7 @@ const GlareHover: React.FC<GlareHoverProps> = ({
   playOnce = false,
   className = '',
   style = {},
-}) => {
+}: GlareHoverProps) => {
   const hex = glareColor.replace('#', '');
   let rgba = glareColor;
   if (/^[\dA-Fa-f]{6}$/.test(hex)) {
@@ -73,7 +75,7 @@ const GlareHover: React.FC<GlareHoverProps> = ({
     }
   };
 
-  const overlayStyle: React.CSSProperties = {
+  const overlayStyle: CSSProperties = {
     position: 'absolute',
     inset: 0,
     background: `linear-gradient(${glareAngle}deg,
@@ -107,4 +109,12 @@ const GlareHover: React.FC<GlareHoverProps> = ({
   );
 };
 
-export default GlareHover;
+const GlareHoverWithErrorBoundary = (props: GlareHoverProps) => {
+  return (
+    <ErrorBoundary>
+      <GlareHover {...props} />
+    </ErrorBoundary>
+  );
+};
+
+export default GlareHoverWithErrorBoundary;

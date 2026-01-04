@@ -4,6 +4,7 @@ import { Color, Mesh, Program, Renderer, Triangle } from 'ogl';
 import { useEffect, useRef } from 'react';
 
 import { ClientOnly } from '~/components/ui/client-only';
+import { ErrorBoundary } from '~/components/ui/error-boundary';
 
 const VERT = `#version 300 es
 in vec2 position;
@@ -121,9 +122,11 @@ interface AuroraProps {
 
 export function Aurora(props: AuroraProps) {
   return (
-    <ClientOnly fallback={null}>
-      <AuroraComponent {...props} />
-    </ClientOnly>
+    <ErrorBoundary>
+      <ClientOnly fallback={null}>
+        <AuroraComponent {...props} />
+      </ClientOnly>
+    </ErrorBoundary>
   );
 }
 
@@ -148,14 +151,14 @@ function AuroraComponent(props: AuroraProps) {
       antialias: true,
     });
     const gl = renderer.gl;
-    
+
     // Check if WebGL context was successfully created
     if (!gl) {
       // WebGL is not available (disabled, not supported, or context creation failed)
       // Silently fail - the component just won't render
       return;
     }
-    
+
     gl.clearColor(0, 0, 0, 0);
     gl.enable(gl.BLEND);
     gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
