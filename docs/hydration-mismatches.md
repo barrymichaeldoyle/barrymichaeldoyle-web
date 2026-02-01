@@ -160,7 +160,7 @@ The Aurora component uses WebGL which is browser-only. It's wrapped with `Client
 ```tsx
 export function Aurora(props: AuroraProps) {
   return (
-    <ClientOnly fallback={<div className="bg-background h-full w-full" />}>
+    <ClientOnly fallback={<div className="h-full w-full bg-background" />}>
       <AuroraComponent {...props} />
     </ClientOnly>
   );

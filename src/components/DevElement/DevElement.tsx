@@ -10,7 +10,7 @@ export function DevElement({ className }: DevElementProps) {
       viewBox="0 0 518 78"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className={cn(`w-full max-w-full h-auto`, className)}
+      className={cn(`h-auto w-full max-w-full`, className)}
     >
       <path
         d="M365.906 38.8347L360.734 44.5531H307.164L283.606 68.0768H374.639L403.927 38.8347H365.906Z"

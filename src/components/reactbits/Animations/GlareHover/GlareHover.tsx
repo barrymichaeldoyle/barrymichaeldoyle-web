@@ -89,7 +89,7 @@ const GlareHover = ({
   };
 
   return (
-    // eslint-disable-next-line jsx-a11y/no-static-element-interactions
+    // eslint-disable-next-line jsx-a11y/no-static-element-interactions -- we want to allow static elements to be interacted with
     <div
       className={`relative grid cursor-pointer place-items-center overflow-hidden border ${className}`}
       style={{

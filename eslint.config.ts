@@ -3,6 +3,7 @@ import tanstackQuery from '@tanstack/eslint-plugin-query';
 import tanstackRouter from '@tanstack/eslint-plugin-router';
 import typescriptEslint from '@typescript-eslint/eslint-plugin';
 import typescriptParser from '@typescript-eslint/parser';
+import eslintComments from 'eslint-plugin-eslint-comments';
 import importPlugin from 'eslint-plugin-import';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
 import react from 'eslint-plugin-react';
@@ -45,6 +46,7 @@ export default [
       import: importPlugin,
       '@tanstack/query': tanstackQuery,
       '@tanstack/router': tanstackRouter,
+      'eslint-comments': eslintComments,
     },
     rules: {
       // TypeScript rules
@@ -63,19 +65,13 @@ export default [
           fixStyle: 'inline-type-imports',
         },
       ],
-      '@typescript-eslint/ban-types': [
+      '@typescript-eslint/ban-ts-comment': [
         'error',
         {
-          types: {
-            'React.FC': {
-              message:
-                'Use function declarations or arrow functions with explicit return types instead of React.FC',
-            },
-            'React.FunctionComponent': {
-              message:
-                'Use function declarations or arrow functions with explicit return types instead of React.FunctionComponent',
-            },
-          },
+          'ts-expect-error': 'allow-with-description',
+          'ts-ignore': true,
+          'ts-nocheck': true,
+          'ts-check': false,
         },
       ],
 
@@ -160,6 +156,14 @@ export default [
       'no-unused-vars': 'off', // Using TypeScript version instead
       'prefer-const': 'error',
       'no-var': 'error',
+
+      // ESLint comments rules - require descriptions when disabling rules
+      'eslint-comments/require-description': [
+        'error',
+        { ignore: ['eslint-enable'] },
+      ],
+      'eslint-comments/disable-enable-pair': 'error',
+      'eslint-comments/no-unused-disable': 'error',
     },
     settings: {
       react: {
@@ -293,6 +297,17 @@ export default [
       'no-debugger': 'error',
       'prefer-const': 'error',
       'no-var': 'error',
+    },
+  },
+
+  // Generated files - disable eslint-comments rules
+  {
+    files: ['**/*.gen.ts', '**/*.gen.tsx'],
+    rules: {
+      'eslint-comments/require-description': 'off',
+      'eslint-comments/disable-enable-pair': 'off',
+      'eslint-comments/no-unused-disable': 'off',
+      '@typescript-eslint/ban-ts-comment': 'off',
     },
   },
 

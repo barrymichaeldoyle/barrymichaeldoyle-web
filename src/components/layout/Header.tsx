@@ -18,11 +18,7 @@ export function Header() {
   const isProjects = hash === sections.projects;
   const isContact = hash === sections.contact;
   const isHome =
-    pathname === '/' &&
-    !isAbout &&
-    !isExperience &&
-    !isProjects &&
-    !isContact;
+    pathname === '/' && !isAbout && !isExperience && !isProjects && !isContact;
 
   const hideHashSections = showLogo;
 

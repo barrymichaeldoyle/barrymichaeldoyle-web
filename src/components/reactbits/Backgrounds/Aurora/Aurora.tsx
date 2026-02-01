@@ -150,7 +150,7 @@ function AuroraComponent(props: AuroraProps) {
       premultipliedAlpha: true,
       antialias: true,
     });
-    const gl = renderer.gl;
+    const gl = renderer?.gl ?? null;
 
     // Check if WebGL context was successfully created
     if (!gl) {
@@ -164,7 +164,7 @@ function AuroraComponent(props: AuroraProps) {
     gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
     gl.canvas.style.backgroundColor = 'transparent';
 
-    // eslint-disable-next-line prefer-const
+    // eslint-disable-next-line prefer-const -- program is used later
     let program: Program | undefined;
 
     function resize() {
@@ -231,8 +231,7 @@ function AuroraComponent(props: AuroraProps) {
       }
       gl.getExtension('WEBGL_lose_context')?.loseContext();
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [amplitude]);
+  }, [amplitude, blend, colorStops]);
 
   return <div ref={ctnDom} className="h-full w-full bg-background" />;
 }

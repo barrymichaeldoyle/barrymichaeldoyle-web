@@ -9,7 +9,7 @@ interface BlogMetaDetailsProps {
 export function BlogMetaDetails({ post }: BlogMetaDetailsProps) {
   const readingTime = calculateReadingTime(post.content);
   return (
-    <div className="flex flex-wrap items-center gap-4 text-muted-foreground text-sm">
+    <div className="text-muted-foreground flex flex-wrap items-center gap-4 text-sm">
       {post.date && (
         <time dateTime={post.date} className="font-medium">
           {new Date(post.date).toLocaleDateString('en-US', {
