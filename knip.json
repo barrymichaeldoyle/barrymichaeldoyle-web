@@ -1,4 +1,8 @@
 {
   "$schema": "https://unpkg.com/knip@5/schema.json",
-  "tags": ["-lintignore"]
+  "entry": ["src/routes/**/*.{ts,tsx}", "scripts/*.ts"],
+  "project": ["src/**/*.{ts,tsx}", "scripts/*.ts"],
+  "ignore": ["**/*.gen.ts"],
+  "ignoreDependencies": ["tailwindcss", "tw-animate-css"],
+  "ignoreBinaries": []
 }

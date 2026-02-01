@@ -7,17 +7,35 @@ interface Experience {
   achievements: string[];
 }
 
+function getValrDuration(): string {
+  const startDate = new Date(2025, 8); // September 2025 (0-indexed)
+  const now = new Date();
+  const totalMonths =
+    (now.getFullYear() - startDate.getFullYear()) * 12 +
+    (now.getMonth() - startDate.getMonth());
+
+  if (totalMonths < 12) {
+    return `${totalMonths} month${totalMonths !== 1 ? 's' : ''}`;
+  }
+
+  const years = totalMonths / 12;
+  if (years % 1 === 0) {
+    return `${years} year${years !== 1 ? 's' : ''}`;
+  }
+  return `${years.toFixed(1)} years`;
+}
+
 export const experiences: Experience[] = [
   {
-    company: 'Crypto Exchange (Confidential)',
-    companyUrl: 'https://www.valr.com/',
+    company: 'VALR (PTY) Ltd',
+    companyUrl: 'https://www.valr.com/en/invite/VAVCTUC7',
     role: 'Senior Software Engineer',
     period: 'Sep 2025 - Present',
-    years: '3 months', // TODO: Calculate months since Sep 2025
+    years: getValrDuration(),
     achievements: [],
   },
   {
-    company: 'SecuritEase International Australia (Pty) Ltd',
+    company: 'SecuritEase International Australia (PTY) Ltd',
     companyUrl: 'https://www.securitease.com/',
     role: 'UI Chapter Lead (Engineer)',
     period: 'Mar 2023 - Aug 2025',
@@ -41,7 +59,7 @@ export const experiences: Experience[] = [
     achievements: [],
   },
   {
-    company: 'Cardinal (Pty) Ltd',
+    company: 'Cardinal (PTY) Ltd',
     companyUrl: 'https://www.cardinal.co.za/',
     role: 'Senior Frontend Engineer',
     period: 'Oct 2017 - Feb 2019',

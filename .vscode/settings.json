@@ -15,5 +15,11 @@
   ],
   "eslint.format.enable": true,
   "eslint.lintTask.enable": true,
-  "typescript.referencesCodeLens.enabled": true
+  "typescript.referencesCodeLens.enabled": true,
+  "cSpell.words": [
+    "barrymichaeldoyle",
+    "neuropsychologists",
+    "reactbits",
+    "VALR"
+  ]
 }

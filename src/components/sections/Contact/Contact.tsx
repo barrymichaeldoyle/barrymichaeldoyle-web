@@ -27,17 +27,16 @@ export function ContactSection({ hideLink }: ContactSectionProps) {
     <section id={sections.contact} className="py-32 text-center">
       <div className="mx-auto flex max-w-lg flex-col gap-2">
         <LinkWrapper>
-          <h2 className="mb-4 text-3xl font-bold">Want to Poach Me?</h2>
+          <h2 className="mb-4 text-3xl font-bold">Let&apos;s Connect</h2>
         </LinkWrapper>
 
         <p>
-          Although I&apos;m currently full-time employed, I&apos;m always open
-          to hearing about new opportunities with the right company.
+          I&apos;m always open to discussing new opportunities, interesting
+          projects, or ways to collaborate.
         </p>
         <br />
-        <p>If you think I&apos;d be a good fit for your team, get in touch.</p>
         <p>
-          The best way to reach me is via email, or hit me up on{' '}
+          Reach out via email or connect with me on{' '}
           <a href={links.linkedin} target="_blank">
             LinkedIn
           </a>

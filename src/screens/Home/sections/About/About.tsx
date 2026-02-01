@@ -1,11 +1,9 @@
 import { Link } from '@tanstack/react-router';
 
 import { ProfileCard } from '~/components/reactbits/Components/ProfileCard/ProfileCard';
-import { sections } from '~/constants';
+import { links, sections, YEARS_EXPERIENCE } from '~/constants';
 
 export function AboutSection() {
-  const programmingYears = new Date().getFullYear() - 2013;
-
   return (
     <section
       id={sections.about}
@@ -16,40 +14,40 @@ export function AboutSection() {
           <h2 className="pb-2 text-center md:text-left">About</h2>
         </Link>
         <p>
-          Hey, I&apos;m Barry! I&apos;ve been programming professionally for
-          over {programmingYears} years. Currently, I&apos;m a Senior Engineer
-          at a Crypto Exchange (Confidential).
+          Hey, I&apos;m Barry! With over {YEARS_EXPERIENCE} years of
+          professional experience, I specialize in building scalable frontend
+          applications using React, React Native, and TypeScript.
         </p>
         <p>
-          I love exploring various technologies, but most of my professional
-          experience has been frontend-focused. ReactJS and React Native are my
-          go-to frameworks for web and mobile applications, with TypeScript as
-          the foundation for everything I build. That said, I&apos;m always
-          happy playing with new technologies when it means building cool things
-          or extending features on existing projects.
-        </p>
-        <p>
-          When I&apos;m not coding for work, you can find me streaming my side
-          projects on{' '}
+          Currently, I&apos;m a Senior Engineer at{' '}
           <a
-            href="https://www.twitch.tv/barrymichaeldoyle"
+            href="https://www.valr.com/en/invite/VAVCTUC7"
             target="_blank"
             rel="noopener noreferrer"
           >
+            VALR
+          </a>
+          , one of Africa&apos;s leading cryptocurrency exchanges. I&apos;m also
+          a contributor to{' '}
+          <a
+            href="https://www.flint.fyi/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Flint
+          </a>
+          , a next-generation JavaScript/TypeScript linter.
+        </p>
+        <p>
+          I share what I learn through my{' '}
+          <a href={links.youtube} target="_blank" rel="noopener noreferrer">
+            YouTube
+          </a>{' '}
+          channel and live-code side projects on{' '}
+          <a href={links.twitch} target="_blank" rel="noopener noreferrer">
             Twitch
           </a>
           .
-        </p>
-        <p>
-          My latest side project is{' '}
-          <a
-            href="https://www.github.com/patch-pulse"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Patch Pulse
-          </a>
-          , a set of developer tools for keeping npm packages up to date.
         </p>
       </div>
       <div className="flex justify-center">

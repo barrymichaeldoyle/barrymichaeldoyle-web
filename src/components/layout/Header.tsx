@@ -15,8 +15,14 @@ export function Header() {
   const showLogo = !hideLogo;
   const isAbout = hash === sections.about;
   const isExperience = hash === sections.experience;
+  const isProjects = hash === sections.projects;
   const isContact = hash === sections.contact;
-  const isHome = pathname === '/' && !isAbout && !isExperience && !isContact;
+  const isHome =
+    pathname === '/' &&
+    !isAbout &&
+    !isExperience &&
+    !isProjects &&
+    !isContact;
 
   const hideHashSections = showLogo;
 
@@ -97,6 +103,18 @@ export function Header() {
             hideOnXs
           >
             Experience
+          </NavLink>
+          <NavLink
+            active={isProjects}
+            to={
+              pathname === '/'
+                ? `#${sections.projects}`
+                : `/#${sections.projects}`
+            }
+            hideOnSm={hideHashSections}
+            hideOnXs
+          >
+            Projects
           </NavLink>
           <NavLink
             active={isContact}

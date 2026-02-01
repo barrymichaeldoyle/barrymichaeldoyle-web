@@ -7,7 +7,7 @@ export function StackOverflowButton() {
   return (
     <Button variant="secondary" size="icon" asChild>
       <a
-        href={links.stackoverflow}
+        href={links.stackOverflow}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="StackOverflow"
