@@ -18,7 +18,7 @@ export function ProjectsSection() {
     <section id={sections.projects} className="px-2 py-10">
       <div className="mb-12 text-center">
         <Link to={`#${sections.projects}` as string} data-slot="button">
-          <h2 className="mb-4 text-3xl font-bold">Projects</h2>
+          <h2 className="mb-4 text-3xl font-bold text-cyan-400">Projects</h2>
         </Link>
         <p className="text-muted-foreground mx-auto max-w-2xl">
           Side projects and open source contributions I&apos;m proud of
@@ -26,11 +26,15 @@ export function ProjectsSection() {
       </div>
       <div className="mx-auto grid max-w-4xl gap-6 md:grid-cols-2">
         {projects.map((project) => (
-          <Card key={project.name} variant="feature" className="flex flex-col">
+          <Card
+            key={project.name}
+            variant="feature"
+            className="flex flex-col border-cyan-400 border-l-cyan-400 shadow-[0_0_12px_rgba(34,211,238,0.2)] transition-shadow hover:shadow-[0_0_16px_rgba(34,211,238,0.35)]"
+          >
             <CardHeader>
               <div className="flex items-start justify-between">
                 <div className="flex-1">
-                  <CardTitle className="mb-1 text-xl text-primary">
+                  <CardTitle className="mb-1 text-xl text-cyan-400">
                     <a
                       href={project.url}
                       target="_blank"
@@ -41,19 +45,23 @@ export function ProjectsSection() {
                       <ExternalLink className="h-4 w-4" />
                     </a>
                   </CardTitle>
-                  <CardDescription className="text-sm">
+                  <CardDescription className="text-sm font-bold">
                     {project.role}
                   </CardDescription>
                 </div>
               </div>
             </CardHeader>
-            <CardContent className="flex flex-1 flex-col justify-between gap-4 pt-0">
+            <CardContent className="flex flex-1 flex-col justify-between gap-4 pt-2">
               <p className="text-muted-foreground text-sm">
                 {project.description}
               </p>
               <div className="flex flex-wrap gap-2">
                 {project.tags.map((tag) => (
-                  <Badge key={tag} variant="secondary" className="text-xs">
+                  <Badge
+                    key={tag}
+                    variant="secondary"
+                    className="bg-cyan-400/90 text-xs text-black"
+                  >
                     {tag}
                   </Badge>
                 ))}

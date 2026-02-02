@@ -40,6 +40,11 @@ const buttonVariants = cva(
           'hover:bg-input/50 accent hover:text-accent-foreground'
         ),
         link: 'border-transparent text-primary underline-offset-4 hover:underline',
+        neon: cn(
+          'border-2 border-cyan-400/80 bg-cyan-400/10 text-cyan-400',
+          'shadow-[0_0_12px_rgba(34,211,238,0.4)]',
+          'hover:bg-cyan-400/20 hover:shadow-[0_0_16px_rgba(34,211,238,0.6)]'
+        ),
       },
       size: {
         default: 'h-9 px-4 py-2 has-[>svg]:px-3',

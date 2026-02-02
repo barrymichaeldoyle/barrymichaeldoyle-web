@@ -6,8 +6,10 @@ export function HeroSection() {
   return (
     <section className="w-full py-10 pt-[25vh] text-center">
       <div className="relative z-10 mx-auto flex w-fit max-w-4xl flex-col gap-5 px-4 text-end">
-        <h1>Barry Michael Doyle</h1>
-        <h2 className="flex flex-1 justify-end gap-2 text-end">
+        <h1 className="text-cyan-400 [text-shadow:0_0_16px_rgba(34,211,238,0.6)]">
+          Barry Michael Doyle
+        </h1>
+        <h2 className="flex flex-1 justify-end gap-2 text-end text-cyan-400 [text-shadow:0_0_12px_rgba(34,211,238,0.6)]">
           <RotatingText
             texts={TITLES.map((title) => title.replaceAll(' Engineer', ''))}
             staggerFrom="random"

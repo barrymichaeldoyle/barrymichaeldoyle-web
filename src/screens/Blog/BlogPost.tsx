@@ -19,10 +19,7 @@ export function BlogPostScreen({ post }: BlogPostScreenProps) {
     <div className="mx-auto w-full max-w-4xl">
       {/* Navigation */}
       <nav className="mb-4">
-        <Link
-          to="/blog"
-          className="link gap-2hover:text-foreground flex items-center"
-        >
+        <Link to="/blog" className="flex items-center gap-2 text-foreground">
           <ArrowLeft className="h-4 w-4" />
           Back to Blog
         </Link>
@@ -30,12 +27,12 @@ export function BlogPostScreen({ post }: BlogPostScreenProps) {
 
       {/* Header */}
       <header className="mb-4 space-y-1 px-1">
-        <h1 className="text-2xl leading-tight font-bold tracking-tight md:text-3xl lg:text-4xl">
+        <h1 className="text-2xl leading-tight font-bold tracking-tight text-cyan-400 md:text-3xl lg:text-4xl">
           {post.title}
         </h1>
 
         {post.description && (
-          <p className="text-muted-foreground text-lg leading-relaxed md:text-xl">
+          <p className="text-lg leading-relaxed font-bold text-foreground md:text-xl">
             {post.description}
           </p>
         )}
@@ -45,7 +42,7 @@ export function BlogPostScreen({ post }: BlogPostScreenProps) {
 
       {/* Content */}
       <article>
-        <Card>
+        <Card className="border-cyan-400/60 shadow-[0_0_12px_rgba(34,211,238,0.2)]">
           <CardContent className="p-0 md:p-1 lg:p-2">
             <div className="prose prose-sm prose-headings:font-bold prose-headings:tracking-tight prose-h1:text-2xl prose-h1:mb-4 prose-h2:text-xl prose-h2:mb-4 prose-h2:mt-8 prose-h3:text-lg prose-h3:mb-3 prose-h3:mt-6 prose-p:leading-relaxed prose-p:mb-4 prose-a:no-underline hover:prose-a:underline prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:font-mono prose-code:text-sm prose-pre:rounded-lg prose-pre:overflow-x-auto prose-pre:border prose-blockquote:border-l-4 prose-blockquote:pl-6 prose-blockquote:py-2 prose-ul:mb-4 prose-ol:mb-4 prose-li:mb-1 max-w-none">
               <ReactMarkdown
@@ -53,17 +50,17 @@ export function BlogPostScreen({ post }: BlogPostScreenProps) {
                 rehypePlugins={[rehypeHighlight]}
                 components={{
                   h1: ({ children }) => (
-                    <h1 className="border-border mt-8 mb-4 border-b pb-3 text-2xl font-bold tracking-tight text-foreground first:mt-0">
+                    <h1 className="mt-8 mb-4 border-b border-cyan-400/40 pb-3 text-2xl font-bold tracking-tight text-cyan-400 first:mt-0">
                       {children}
                     </h1>
                   ),
                   h2: ({ children }) => (
-                    <h2 className="mt-8 mb-4 text-xl font-bold tracking-tight text-foreground">
+                    <h2 className="mt-8 mb-4 text-xl font-bold tracking-tight text-cyan-400">
                       {children}
                     </h2>
                   ),
                   h3: ({ children }) => (
-                    <h3 className="mt-6 mb-3 text-lg font-bold tracking-tight text-foreground">
+                    <h3 className="mt-6 mb-3 text-lg font-bold tracking-tight text-cyan-400/90">
                       {children}
                     </h3>
                   ),
@@ -88,7 +85,7 @@ export function BlogPostScreen({ post }: BlogPostScreenProps) {
                     </li>
                   ),
                   blockquote: ({ children }) => (
-                    <blockquote className="bg-accent/30 text-muted-foreground my-8 rounded-r-md border-l-4 border-primary p-3 italic [&>p:last-child]:mb-0">
+                    <blockquote className="my-8 rounded-r-md border-l-4 border-cyan-400 bg-cyan-400/10 p-3 text-cyan-400/90 italic [&>p:last-child]:mb-0">
                       {children}
                     </blockquote>
                   ),
@@ -100,7 +97,7 @@ export function BlogPostScreen({ post }: BlogPostScreenProps) {
                       </code>
                     ) : (
                       <code
-                        className="bg-muted rounded border px-1.5 py-0.5 font-mono text-sm text-primary"
+                        className="rounded border border-cyan-400/40 bg-cyan-400/10 px-1.5 py-0.5 font-mono text-sm text-cyan-400"
                         {...props}
                       >
                         {children}
@@ -115,7 +112,7 @@ export function BlogPostScreen({ post }: BlogPostScreenProps) {
                   a: ({ href, children }) => (
                     <a
                       href={href}
-                      className="dark:text-accent dark:hover:text-accent/80 font-medium text-primary transition-colors hover:text-primary/80 hover:underline"
+                      className="font-medium text-cyan-400 transition-colors hover:underline"
                       target={href?.startsWith('http') ? '_blank' : undefined}
                       rel={
                         href?.startsWith('http')
@@ -126,7 +123,7 @@ export function BlogPostScreen({ post }: BlogPostScreenProps) {
                       {children}
                     </a>
                   ),
-                  hr: () => <hr className="border-border my-12" />,
+                  hr: () => <hr className="my-12 border-cyan-400/30" />,
                 }}
               >
                 {post.content}

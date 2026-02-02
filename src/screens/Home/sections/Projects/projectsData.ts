@@ -4,7 +4,7 @@ interface Project {
   name: string;
   url: string;
   description: string;
-  role: 'Creator' | 'Contributor';
+  role: string;
   tags: string[];
 }
 
@@ -14,7 +14,7 @@ export const projects: Project[] = [
     url: 'https://report-buddy.com',
     description:
       'Clinical software that helps neuropsychologists save hours on documentation every week by streamlining report generation.',
-    role: 'Creator',
+    role: 'Technical Co-founder',
     tags: ['SaaS', 'Healthcare', 'Closed Source'],
   },
   {
@@ -22,7 +22,7 @@ export const projects: Project[] = [
     url: 'https://www.flint.fyi/',
     description:
       'A fast, friendly linter for JavaScript and TypeScript with intelligent defaults and type-aware rules.',
-    role: 'Contributor',
+    role: 'Contribution Team Member',
     tags: ['Open Source', 'Developer Tools', 'TypeScript'],
   },
   {

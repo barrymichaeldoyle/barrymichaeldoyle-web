@@ -96,7 +96,9 @@ export function ExperienceSection() {
     <section id={sections.experience} className="px-2 py-10">
       <div className="mb-12 text-center">
         <Link to={`#${sections.experience}` as string} data-slot="button">
-          <h2 className="mb-4 text-3xl font-bold">Professional Experience</h2>
+          <h2 className="mb-4 text-3xl font-bold text-cyan-400">
+            Professional Experience
+          </h2>
         </Link>
       </div>
 
@@ -142,10 +144,10 @@ export function ExperienceSection() {
               >
                 {/* Top dot - only show if first job or doesn't overlap with prev */}
                 {(isFirst || !exp.overlapsWithPrev) && (
-                  <div className="absolute -top-1.5 left-1/2 z-10 -translate-x-1/2">
+                  <div className="absolute -top-2 left-1/2 z-10 -translate-x-1/2">
                     <div
-                      className={`rounded-full border-4 border-primary bg-background ${
-                        isFirst ? 'h-3.5 w-3.5' : 'h-2.5 w-2.5'
+                      className={`rounded-full border-4 border-cyan-400 bg-background shadow-[0_0_8px_rgba(34,211,238,0.6)] ${
+                        isFirst ? 'h-5 w-5' : 'h-4 w-4'
                       }`}
                     />
                   </div>
@@ -154,8 +156,8 @@ export function ExperienceSection() {
                 {/* Bottom dot - always show, larger if last job */}
                 <div className="absolute bottom-0 left-1/2 z-10 -translate-x-1/2">
                   <div
-                    className={`relative rounded-full border-4 border-primary bg-background ${
-                      isLast ? 'top-1.5 h-3.5 w-3.5' : 'top-1 h-2.5 w-2.5'
+                    className={`relative rounded-full border-4 border-cyan-400 bg-background shadow-[0_0_8px_rgba(34,211,238,0.6)] ${
+                      isLast ? 'top-2 h-5 w-5' : 'top-1.5 h-4 w-4'
                     }`}
                   />
                 </div>
@@ -204,18 +206,18 @@ export function ExperienceSection() {
                         href={exp.companyUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-lg font-semibold text-primary hover:underline"
+                        className="text-lg font-semibold text-cyan-400 hover:underline"
                       >
                         {exp.company}
                       </a>
-                      <Badge className="shrink-0">
+                      <Badge className="shrink-0 bg-cyan-400/90 text-black">
                         {formatDuration(exp.months)}
                       </Badge>
                     </div>
-                    <p className="text-muted-foreground text-sm italic">
+                    <p className="text-sm text-cyan-400/80 italic">
                       {exp.role}
                     </p>
-                    <p className="text-muted-foreground mt-1 text-xs">
+                    <p className="mt-1 text-xs text-cyan-400/70">
                       {formatPeriod(exp.startDate, exp.endDate)}
                     </p>
                   </div>

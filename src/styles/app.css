@@ -110,12 +110,16 @@
   a {
     text-decoration: none;
     font-weight: 500;
-    color: var(--color-primary);
-    transition: filter 0.2s ease-in-out;
+    color: rgb(34 211 238); /* cyan-400 */
+    text-shadow: 0 0 8px rgba(34, 211, 238, 0.4);
+    transition:
+      filter 0.2s ease-in-out,
+      text-shadow 0.2s ease-in-out;
   }
 
   a:hover {
     filter: brightness(1.2);
+    text-shadow: 0 0 12px rgba(34, 211, 238, 0.7);
   }
 
   a[data-slot='button'] {

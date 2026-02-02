@@ -15,7 +15,7 @@ interface BlogScreenProps {
 export function BlogScreen({ posts }: BlogScreenProps) {
   return (
     <div className="mx-auto flex w-full min-w-full flex-1 flex-col p-4 pb-10">
-      <h1 className="mb-6 text-3xl font-bold">Blog</h1>
+      <h1 className="mb-6 text-3xl font-bold text-cyan-400">Blog</h1>
 
       {Object.values(posts).length === 0 ? (
         <p>No blog posts found.</p>
@@ -26,13 +26,13 @@ export function BlogScreen({ posts }: BlogScreenProps) {
               key={post.slug}
               to="/blog/$slug"
               params={{ slug: post.slug }}
-              className="link mt-2"
+              className="group link mt-2 block"
               data-slot="button"
             >
               <Card
                 key={post.slug}
                 variant="feature"
-                className="flex flex-1 flex-col p-0"
+                className="flex flex-1 flex-col border-cyan-400 border-l-cyan-400 p-0"
               >
                 <GlareHover
                   className="flex flex-1 flex-col p-4"
@@ -43,7 +43,7 @@ export function BlogScreen({ posts }: BlogScreenProps) {
                   borderColor="transparent"
                 >
                   <CardHeader className="w-full pb-1">
-                    <CardTitle className="mb-2 text-2xl font-semibold">
+                    <CardTitle className="mb-2 text-2xl font-semibold text-foreground">
                       {post.title}
                     </CardTitle>
                   </CardHeader>
@@ -53,11 +53,17 @@ export function BlogScreen({ posts }: BlogScreenProps) {
                     </div>
                     <div className="flex flex-row items-center justify-between gap-2">
                       {post.description && (
-                        <p className="text-md leading-tight">
+                        <p className="text-md text-muted-foreground leading-tight">
                           {post.description}
                         </p>
                       )}
-                      <Button tabIndex={-1}>Read more →</Button>
+                      <Button
+                        variant="neon"
+                        tabIndex={-1}
+                        className="group-hover:bg-cyan-400/20 group-hover:shadow-[0_0_16px_rgba(34,211,238,0.6)]"
+                      >
+                        Read more →
+                      </Button>
                     </div>
                   </CardContent>
                 </GlareHover>

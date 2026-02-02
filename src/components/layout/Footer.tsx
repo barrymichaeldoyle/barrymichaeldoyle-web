@@ -10,7 +10,7 @@ import { SocialButtons } from '../socials/SocialButtons';
 export function Footer() {
   return (
     <footer className="relative bg-background-secondary">
-      <div className="relative z-10 w-full p-4 pt-12">
+      <div className="relative z-10 w-full px-4 pt-12 pb-4 sm:px-8">
         {/* Main Footer Content */}
         <div className="mb-8 grid grid-cols-1 items-start gap-8 md:grid-cols-4">
           {/* Professional Info */}

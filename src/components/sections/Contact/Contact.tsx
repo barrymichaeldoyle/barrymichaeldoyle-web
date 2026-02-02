@@ -27,7 +27,9 @@ export function ContactSection({ hideLink }: ContactSectionProps) {
     <section id={sections.contact} className="py-32 text-center">
       <div className="mx-auto flex max-w-lg flex-col gap-2">
         <LinkWrapper>
-          <h2 className="mb-4 text-3xl font-bold">Let&apos;s Connect</h2>
+          <h2 className="mb-4 text-3xl font-bold text-cyan-400">
+            Let&apos;s Connect
+          </h2>
         </LinkWrapper>
 
         <p>
@@ -43,13 +45,13 @@ export function ContactSection({ hideLink }: ContactSectionProps) {
           .
         </p>
         <div className="flex flex-row items-center justify-center gap-4 pt-4 sm:flex-row">
-          <Button size="lg" className="w-fit" asChild>
+          <Button variant="neon" size="lg" className="w-fit" asChild>
             <a href={links.linkedin} target="_blank">
               <LinkedIn />
               LinkedIn
             </a>
           </Button>
-          <Button size="lg" className="w-fit" asChild>
+          <Button variant="neon" size="lg" className="w-fit" asChild>
             <a href={links.email}>
               <Mail />
               Email Me

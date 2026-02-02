@@ -31,7 +31,7 @@ export function Header() {
     >
       <div
         className={cn(
-          'flex w-full items-center justify-between gap-1 rounded-full bg-background/50 px-1 py-1 backdrop-blur-sm transition-all duration-500',
+          'flex w-full items-center justify-between gap-1 rounded-full border border-cyan-400/30 bg-background/50 px-1 py-1 shadow-[0_0_12px_rgba(34,211,238,0.15)] backdrop-blur-sm transition-all duration-500',
           hideLogo && 'w-fit',
           'mx-auto sm:mx-0'
         )}
@@ -41,7 +41,7 @@ export function Header() {
             <div className="relative">
               {/* Loading placeholder */}
               {!imageLoaded && !imageError && (
-                <div className="h-9 w-9 animate-pulse rounded-full border-2 border-primary bg-background-secondary" />
+                <div className="h-9 w-9 animate-pulse rounded-full border-2 border-cyan-400 bg-background-secondary shadow-[0_0_8px_rgba(34,211,238,0.6)]" />
               )}
 
               {/* Fallback image */}
@@ -49,7 +49,7 @@ export function Header() {
                 <img
                   src="/favicon.svg"
                   alt="Barry Michael Doyle"
-                  className="h-9 w-9 rounded-full border-2 border-primary"
+                  className="h-9 w-9 rounded-full border-2 border-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.6)]"
                 />
               )}
 
@@ -61,7 +61,7 @@ export function Header() {
                 width={36}
                 height={36}
                 className={cn(
-                  'h-9 w-9 rounded-full border-2 border-primary object-cover',
+                  'h-9 w-9 rounded-full border-2 border-cyan-400 object-cover shadow-[0_0_8px_rgba(34,211,238,0.6)]',
                   !imageLoaded && !imageError && 'hidden'
                 )}
                 onLoad={() => setImageLoaded(true)}
@@ -69,7 +69,7 @@ export function Header() {
               />
             </div>
             <div className="relative flex flex-col gap-1">
-              <span className="relative -top-1 text-sm font-bold whitespace-nowrap text-primary">
+              <span className="relative -top-1 text-sm font-bold whitespace-nowrap text-cyan-400">
                 Barry Michael Doyle
               </span>
               <DevElement className="absolute top-4.5 left-2.5 w-30 text-white" />
@@ -150,8 +150,10 @@ function NavLink({
     <Link
       to={to}
       className={cn(
-        'rounded-full p-2 px-3 text-sm font-medium text-foreground transition-colors duration-500',
-        active && 'bg-primary text-background opacity-100',
+        'rounded-full p-2 px-3 text-sm font-medium transition-colors duration-500',
+        active
+          ? 'border border-cyan-400/80 bg-cyan-400/20 text-cyan-400'
+          : 'text-foreground hover:bg-cyan-400/10',
         hideOnSm ? 'hidden sm:block' : hideOnXs && 'hidden xs:block'
       )}
       data-slot="button"

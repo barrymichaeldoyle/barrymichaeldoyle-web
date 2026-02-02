@@ -11,7 +11,7 @@ export function AboutSection() {
     >
       <div className="flex flex-2 flex-col gap-4 px-2">
         <Link to={`#${sections.about}` as string} data-slot="button">
-          <h2 className="pb-2 text-center md:text-left">About</h2>
+          <h2 className="pb-2 text-center text-cyan-400 md:text-left">About</h2>
         </Link>
         <p>
           Hey, I&apos;m Barry! With over {YEARS_EXPERIENCE} years of
