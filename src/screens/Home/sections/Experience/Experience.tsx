@@ -93,7 +93,7 @@ export function ExperienceSection() {
   const isLastJob = (index: number) => index === experiences.length - 1;
 
   return (
-    <section id={sections.experience} className="px-4 py-10">
+    <section id={sections.experience} className="px-2 py-10">
       <div className="mb-12 text-center">
         <Link to={`#${sections.experience}` as string} data-slot="button">
           <h2 className="mb-4 text-3xl font-bold">Professional Experience</h2>
@@ -103,7 +103,7 @@ export function ExperienceSection() {
       <div className="mx-auto max-w-3xl py-8">
         <div className="relative">
           {/* Timeline line - centered, extends beyond content */}
-          <div className="absolute -top-4 -bottom-4 left-1/2 w-0.5 -translate-x-1/2 bg-primary/30" />
+          <div className="absolute -top-4 -bottom-4 left-1/2 w-1 -translate-x-1/2 bg-primary/30" />
 
           {/* Year markers */}
           {yearMarkers.map(({ year, position, isRight }) => (
@@ -114,7 +114,7 @@ export function ExperienceSection() {
             >
               {/* Tick mark */}
               <div
-                className={`absolute h-px w-3 bg-primary/20 ${
+                className={`absolute h-0.5 w-3 bg-primary/25 ${
                   isRight ? 'left-1' : 'right-1'
                 }`}
               />
@@ -144,7 +144,7 @@ export function ExperienceSection() {
                 {(isFirst || !exp.overlapsWithPrev) && (
                   <div className="absolute -top-1.5 left-1/2 z-10 -translate-x-1/2">
                     <div
-                      className={`rounded-full border-2 border-primary bg-background ${
+                      className={`rounded-full border-4 border-primary bg-background ${
                         isFirst ? 'h-3.5 w-3.5' : 'h-2.5 w-2.5'
                       }`}
                     />
@@ -154,13 +154,13 @@ export function ExperienceSection() {
                 {/* Bottom dot - always show, larger if last job */}
                 <div className="absolute bottom-0 left-1/2 z-10 -translate-x-1/2">
                   <div
-                    className={`relative rounded-full border-2 border-primary bg-background ${
+                    className={`relative rounded-full border-4 border-primary bg-background ${
                       isLast ? 'top-1.5 h-3.5 w-3.5' : 'top-1 h-2.5 w-2.5'
                     }`}
                   />
                 </div>
 
-                {/* Fork bracket */}
+                {/* Fork bracket - neon path branches */}
                 <div
                   className={`absolute top-0 bottom-0 w-16 ${
                     isLeft ? 'right-1/2' : 'left-1/2'
@@ -168,25 +168,25 @@ export function ExperienceSection() {
                 >
                   {/* Top horizontal line */}
                   <div
-                    className={`absolute top-0 h-0.5 w-4 bg-primary/40 ${
+                    className={`absolute top-0 h-0.5 w-4 bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.6)] ${
                       isLeft ? 'right-0' : 'left-0'
                     }`}
                   />
                   {/* Vertical line */}
                   <div
-                    className={`absolute top-0 bottom-0 w-0.5 bg-primary/40 ${
+                    className={`absolute top-0 bottom-0 w-0.5 bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.6)] ${
                       isLeft ? 'right-4' : 'left-4'
                     }`}
                   />
                   {/* Bottom horizontal line */}
                   <div
-                    className={`absolute bottom-0 h-0.5 w-4 bg-primary/40 ${
+                    className={`absolute bottom-0 h-0.5 w-4 bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.6)] ${
                       isLeft ? 'right-0' : 'left-0'
                     }`}
                   />
                   {/* Line to card */}
                   <div
-                    className={`absolute top-1/2 h-0.5 -translate-y-1/2 bg-primary/40 ${
+                    className={`absolute top-1/2 h-0.5 -translate-y-1/2 bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.6)] ${
                       isLeft ? 'right-4 left-0' : 'right-0 left-4'
                     }`}
                   />
@@ -198,7 +198,7 @@ export function ExperienceSection() {
                     isLeft ? 'left-0' : 'right-0'
                   }`}
                 >
-                  <div className="rounded-lg border border-primary/20 bg-background-secondary/50 p-4 backdrop-blur-sm">
+                  <div className="rounded-lg border-2 border-cyan-400/80 bg-background-secondary/50 p-4 shadow-[0_0_12px_rgba(34,211,238,0.4)] backdrop-blur-sm">
                     <div className="mb-2 flex items-start justify-between gap-2">
                       <a
                         href={exp.companyUrl}

@@ -15,7 +15,7 @@ import { projects } from './projectsData';
 
 export function ProjectsSection() {
   return (
-    <section id={sections.projects} className="px-4">
+    <section id={sections.projects} className="px-2 py-10">
       <div className="mb-12 text-center">
         <Link to={`#${sections.projects}` as string} data-slot="button">
           <h2 className="mb-4 text-3xl font-bold">Projects</h2>
