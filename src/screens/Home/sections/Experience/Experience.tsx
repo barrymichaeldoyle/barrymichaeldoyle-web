@@ -10,72 +10,81 @@ import {
   getMonthsBetween,
 } from './experiences';
 
-const MIN_HEIGHT_PX = 160;
-const PX_PER_MONTH = 8;
+const PX_PER_MONTH = 10;
 
 export function ExperienceSection() {
   const now = new Date();
   const careerStart = experiences.at(-1)?.startDate;
-  const totalMonths = getMonthsBetween(careerStart ?? now, now);
 
   const experiencesWithHeight = experiences.map((exp, index) => {
     const prevExp = experiences[index - 1];
 
-    // If this job's end is close to the previous job's start, use the previous job's start
-    // as this job's end to eliminate gaps
-    let endDate = exp.endDate ?? now;
-    const gapWithPrev = prevExp
-      ? Math.abs(getMonthsBetween(endDate, prevExp.startDate))
-      : Infinity;
-    const overlapsWithPrev = gapWithPrev <= 2;
-
-    if (overlapsWithPrev && prevExp) {
-      endDate = prevExp.startDate;
+    // End dates should be treated as "end of month" - represent as first of next month
+    // Start dates are already "beginning of month" which is correct
+    let effectiveEnd: Date;
+    if (exp.endDate === null) {
+      // Present - first of next month from now
+      effectiveEnd = new Date(now.getFullYear(), now.getMonth() + 1, 1);
+    } else {
+      // First of month after the end month
+      effectiveEnd = new Date(
+        exp.endDate.getFullYear(),
+        exp.endDate.getMonth() + 1,
+        1
+      );
     }
 
-    const months = getMonthsBetween(exp.startDate, endDate);
-    const height = Math.max(MIN_HEIGHT_PX, months * PX_PER_MONTH);
+    // Check if this job's end aligns with the previous (newer) job's start
+    const overlapsWithPrev = prevExp
+      ? Math.abs(getMonthsBetween(effectiveEnd, prevExp.startDate)) <= 1
+      : false;
 
-    return { ...exp, months, height, overlapsWithPrev, endDate };
+    const months = getMonthsBetween(exp.startDate, effectiveEnd);
+    const height = months * PX_PER_MONTH;
+
+    return { ...exp, months, height, overlapsWithPrev, effectiveEnd };
   });
 
-  // Calculate total timeline height
-  const totalHeight = experiencesWithHeight.reduce(
-    (sum, exp) => sum + exp.height,
-    0
-  );
+  // Calculate cumulative heights for positioning
+  let cumulativeHeight = 0;
+  const experiencesWithPosition = experiencesWithHeight.map((exp) => {
+    const startY = cumulativeHeight;
+    cumulativeHeight += exp.height;
+    return { ...exp, startY, endY: cumulativeHeight };
+  });
 
-  // Calculate cumulative heights to know which job each year falls in
-  const cumulativeHeights = experiencesWithHeight.reduce<number[]>(
-    (acc, exp, i) => {
-      const prev = acc[i - 1] ?? 0;
-      acc.push(prev + exp.height);
-      return acc;
-    },
-    []
-  );
-
-  // Generate year markers
+  // Generate year markers by finding where each Jan 1 falls
   const startYear = careerStart?.getFullYear() ?? now.getFullYear();
   const endYear = now.getFullYear();
   const yearMarkers: { year: number; position: number; isRight: boolean }[] =
     [];
 
   for (let year = endYear; year >= startYear; year--) {
-    // Calculate months from "now" to Jan 1st of this year
-    const yearStart = new Date(year, 0, 1);
-    const monthsFromNow = getMonthsBetween(yearStart, now);
-    // Position as percentage of total timeline
-    const position = (monthsFromNow / totalMonths) * totalHeight;
+    const yearDate = new Date(year, 0, 1); // Jan 1 of this year
+
+    // Skip if this date is in the future
+    if (yearDate > now) continue;
 
     // Find which job this year falls within
-    const jobIndex = cumulativeHeights.findIndex((h) => position < h);
-    const actualJobIndex = jobIndex === -1 ? experiences.length - 1 : jobIndex;
+    const jobIndex = experiencesWithPosition.findIndex((exp) => {
+      return yearDate < exp.effectiveEnd && yearDate >= exp.startDate;
+    });
 
-    // Job brackets: even index = left, odd index = right
-    // Year marker should be on opposite side
-    const isJobBracketLeft = actualJobIndex % 2 === 0;
-    const isRight = isJobBracketLeft; // opposite of job bracket
+    if (jobIndex === -1) continue;
+
+    const job = experiencesWithPosition[jobIndex];
+    const jobEnd = job.effectiveEnd;
+    const jobStart = job.startDate;
+    const jobMonths = getMonthsBetween(jobStart, jobEnd);
+    const monthsFromJobEnd = getMonthsBetween(yearDate, jobEnd);
+
+    // Calculate position within this job's visual segment
+    const proportionInJob = jobMonths > 0 ? monthsFromJobEnd / jobMonths : 0;
+    const position = job.startY + proportionInJob * job.height;
+
+    // Year marker should be on opposite side of job bracket
+    const isJobBracketLeft = jobIndex % 2 === 0;
+    const isRight = isJobBracketLeft;
 
     yearMarkers.push({ year, position, isRight });
   }
@@ -89,21 +98,15 @@ export function ExperienceSection() {
         <Link to={`#${sections.experience}` as string} data-slot="button">
           <h2 className="mb-4 text-3xl font-bold">Professional Experience</h2>
         </Link>
-        <p className="text-muted-foreground mx-auto max-w-2xl">
-          {experiences.length} roles over{' '}
-          {formatDuration(
-            getMonthsBetween(experiences.at(-1)?.startDate ?? now, now)
-          )}
-        </p>
       </div>
 
-      <div className="relative mx-auto max-w-3xl py-8">
-        {/* Timeline line - centered, extends beyond content */}
-        <div className="absolute -top-4 -bottom-4 left-1/2 w-0.5 -translate-x-1/2 bg-primary/30" />
+      <div className="mx-auto max-w-3xl py-8">
+        <div className="relative">
+          {/* Timeline line - centered, extends beyond content */}
+          <div className="absolute -top-4 -bottom-4 left-1/2 w-0.5 -translate-x-1/2 bg-primary/30" />
 
-        {/* Year markers */}
-        {yearMarkers.map(({ year, position, isRight }) => {
-          return (
+          {/* Year markers */}
+          {yearMarkers.map(({ year, position, isRight }) => (
             <div
               key={year}
               className="pointer-events-none absolute left-1/2 flex -translate-x-1/2 items-center"
@@ -124,103 +127,103 @@ export function ExperienceSection() {
                 {year}
               </span>
             </div>
-          );
-        })}
+          ))}
 
-        {experiencesWithHeight.map((exp, index) => {
-          const isLeft = index % 2 === 0;
-          const isFirst = isFirstJob(index);
-          const isLast = isLastJob(index);
+          {experiencesWithPosition.map((exp, index) => {
+            const isLeft = index % 2 === 0;
+            const isFirst = isFirstJob(index);
+            const isLast = isLastJob(index);
 
-          return (
-            <div
-              key={exp.company}
-              className="relative"
-              style={{ height: exp.height }}
-            >
-              {/* Top dot - only show if first job or doesn't overlap with prev */}
-              {(isFirst || !exp.overlapsWithPrev) && (
-                <div className="absolute top-0 left-1/2 z-10 -translate-x-1/2">
+            return (
+              <div
+                key={exp.company}
+                className="relative"
+                style={{ height: exp.height }}
+              >
+                {/* Top dot - only show if first job or doesn't overlap with prev */}
+                {(isFirst || !exp.overlapsWithPrev) && (
+                  <div className="absolute -top-1.5 left-1/2 z-10 -translate-x-1/2">
+                    <div
+                      className={`rounded-full border-2 border-primary bg-background ${
+                        isFirst ? 'h-3.5 w-3.5' : 'h-2.5 w-2.5'
+                      }`}
+                    />
+                  </div>
+                )}
+
+                {/* Bottom dot - always show, larger if last job */}
+                <div className="absolute bottom-0 left-1/2 z-10 -translate-x-1/2">
                   <div
-                    className={`rounded-full border-2 border-primary bg-background ${
-                      isFirst ? 'h-3.5 w-3.5' : 'h-2.5 w-2.5'
+                    className={`relative rounded-full border-2 border-primary bg-background ${
+                      isLast ? 'top-1.5 h-3.5 w-3.5' : 'top-1 h-2.5 w-2.5'
                     }`}
                   />
                 </div>
-              )}
 
-              {/* Bottom dot - always show, larger if last job */}
-              <div className="absolute bottom-0 left-1/2 z-10 -translate-x-1/2">
+                {/* Fork bracket */}
                 <div
-                  className={`rounded-full border-2 border-primary bg-background ${
-                    isLast ? 'h-3.5 w-3.5' : 'h-2.5 w-2.5'
+                  className={`absolute top-0 bottom-0 w-16 ${
+                    isLeft ? 'right-1/2' : 'left-1/2'
                   }`}
-                />
-              </div>
+                >
+                  {/* Top horizontal line */}
+                  <div
+                    className={`absolute top-0 h-0.5 w-4 bg-primary/40 ${
+                      isLeft ? 'right-0' : 'left-0'
+                    }`}
+                  />
+                  {/* Vertical line */}
+                  <div
+                    className={`absolute top-0 bottom-0 w-0.5 bg-primary/40 ${
+                      isLeft ? 'right-4' : 'left-4'
+                    }`}
+                  />
+                  {/* Bottom horizontal line */}
+                  <div
+                    className={`absolute bottom-0 h-0.5 w-4 bg-primary/40 ${
+                      isLeft ? 'right-0' : 'left-0'
+                    }`}
+                  />
+                  {/* Line to card */}
+                  <div
+                    className={`absolute top-1/2 h-0.5 -translate-y-1/2 bg-primary/40 ${
+                      isLeft ? 'right-4 left-0' : 'right-0 left-4'
+                    }`}
+                  />
+                </div>
 
-              {/* Fork bracket */}
-              <div
-                className={`absolute top-[5px] bottom-[5px] w-16 ${
-                  isLeft ? 'right-1/2' : 'left-1/2'
-                }`}
-              >
-                {/* Top horizontal line */}
+                {/* Content card */}
                 <div
-                  className={`absolute top-0 h-0.5 w-4 bg-primary/40 ${
-                    isLeft ? 'right-0' : 'left-0'
+                  className={`absolute top-1/2 w-[calc(50%-4rem)] -translate-y-1/2 ${
+                    isLeft ? 'left-0' : 'right-0'
                   }`}
-                />
-                {/* Vertical line */}
-                <div
-                  className={`absolute top-0 bottom-0 w-0.5 bg-primary/40 ${
-                    isLeft ? 'right-4' : 'left-4'
-                  }`}
-                />
-                {/* Bottom horizontal line */}
-                <div
-                  className={`absolute bottom-0 h-0.5 w-4 bg-primary/40 ${
-                    isLeft ? 'right-0' : 'left-0'
-                  }`}
-                />
-                {/* Line to card */}
-                <div
-                  className={`absolute top-1/2 h-0.5 -translate-y-1/2 bg-primary/40 ${
-                    isLeft ? 'right-4 left-0' : 'right-0 left-4'
-                  }`}
-                />
-              </div>
-
-              {/* Content card */}
-              <div
-                className={`absolute top-1/2 w-[calc(50%-4rem)] -translate-y-1/2 ${
-                  isLeft ? 'left-0' : 'right-0'
-                }`}
-              >
-                <div className="rounded-lg border border-primary/20 bg-background-secondary/50 p-4 backdrop-blur-sm">
-                  <div className="mb-2 flex items-start justify-between gap-2">
-                    <a
-                      href={exp.companyUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-lg font-semibold text-primary hover:underline"
-                    >
-                      {exp.company}
-                    </a>
-                    <Badge className="shrink-0">
-                      {formatDuration(exp.months)}
-                    </Badge>
+                >
+                  <div className="rounded-lg border border-primary/20 bg-background-secondary/50 p-4 backdrop-blur-sm">
+                    <div className="mb-2 flex items-start justify-between gap-2">
+                      <a
+                        href={exp.companyUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-lg font-semibold text-primary hover:underline"
+                      >
+                        {exp.company}
+                      </a>
+                      <Badge className="shrink-0">
+                        {formatDuration(exp.months)}
+                      </Badge>
+                    </div>
+                    <p className="text-muted-foreground text-sm italic">
+                      {exp.role}
+                    </p>
+                    <p className="text-muted-foreground mt-1 text-xs">
+                      {formatPeriod(exp.startDate, exp.endDate)}
+                    </p>
                   </div>
-                  <p className="text-muted-foreground text-sm italic">
-                    {exp.role}
-                  </p>
-                  <p className="text-muted-foreground mt-1 text-xs">
-                    {formatPeriod(exp.startDate, exp.endDate)}
-                  </p>
                 </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     </section>
   );
