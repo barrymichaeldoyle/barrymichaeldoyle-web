@@ -96,7 +96,7 @@ export function ExperienceSection() {
     <section id={sections.experience} className="px-2 py-10">
       <div className="mb-12 text-center">
         <Link to={`#${sections.experience}` as string} data-slot="button">
-          <h2 className="mb-4 text-3xl font-bold text-cyan-400">
+          <h2 className="mb-20 text-3xl font-bold text-cyan-400 sm:mb-4">
             Professional Experience
           </h2>
         </Link>
@@ -162,6 +162,25 @@ export function ExperienceSection() {
                   />
                 </div>
 
+                {/* Present indicator - diagonal tick + label for current role */}
+                {isLast && exp.endDate === null && (
+                  <div
+                    className={`absolute bottom-1 left-1/2 z-10 flex items-center gap-1.5 ${
+                      isLeft ? 'origin-bottom-left' : 'origin-bottom-right'
+                    }`}
+                    style={{
+                      transform: isLeft
+                        ? 'translateX(4px) rotate(-40deg)'
+                        : 'translateX(calc(-100% - 4px)) rotate(40deg)',
+                    }}
+                  >
+                    <div className="h-0.5 w-6 shrink-0 bg-cyan-400 shadow-[0_0_6px_rgba(34,211,238,0.5)]" />
+                    <span className="text-xs font-semibold whitespace-nowrap text-cyan-400">
+                      Present
+                    </span>
+                  </div>
+                )}
+
                 {/* Fork bracket - neon path branches */}
                 <div
                   className={`absolute top-0 bottom-0 w-16 ${
@@ -186,22 +205,24 @@ export function ExperienceSection() {
                       isLeft ? 'right-0' : 'left-0'
                     }`}
                   />
-                  {/* Line to card */}
+                  {/* Line to card - shorter on small screens to give card more width */}
                   <div
                     className={`absolute top-1/2 h-0.5 -translate-y-1/2 bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.6)] ${
-                      isLeft ? 'right-4 left-0' : 'right-0 left-4'
+                      isLeft
+                        ? 'right-4 left-8 sm:left-0'
+                        : 'right-8 left-4 sm:right-0'
                     }`}
                   />
                 </div>
 
-                {/* Content card */}
+                {/* Content card - more width on small screens with shorter line to card */}
                 <div
-                  className={`absolute top-1/2 w-[calc(50%-4rem)] -translate-y-1/2 ${
+                  className={`absolute top-1/2 w-[calc(50%-2rem)] -translate-y-1/2 sm:w-[calc(50%-4rem)] ${
                     isLeft ? 'left-0' : 'right-0'
                   }`}
                 >
-                  <div className="rounded-lg border-2 border-cyan-400/80 bg-background-secondary/50 p-4 shadow-[0_0_12px_rgba(34,211,238,0.4)] backdrop-blur-sm">
-                    <div className="mb-2 flex items-start justify-between gap-2">
+                  <div className="rounded-lg border-2 border-cyan-400/80 bg-background-secondary/50 p-2 shadow-[0_0_12px_rgba(34,211,238,0.4)] backdrop-blur-sm sm:p-4">
+                    <div className="mb-2 flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between sm:gap-2">
                       <a
                         href={exp.companyUrl}
                         target="_blank"
@@ -210,11 +231,11 @@ export function ExperienceSection() {
                       >
                         {exp.company}
                       </a>
-                      <Badge className="shrink-0 bg-cyan-400/90 text-black">
+                      <Badge className="w-fit shrink-0 bg-cyan-400/90 text-black">
                         {formatDuration(exp.months)}
                       </Badge>
                     </div>
-                    <p className="text-sm text-cyan-400/80 italic">
+                    <p className="text-sm font-bold text-foreground italic">
                       {exp.role}
                     </p>
                     <p className="mt-1 text-xs text-cyan-400/70">
