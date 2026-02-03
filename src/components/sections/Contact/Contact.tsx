@@ -3,6 +3,7 @@ import { Mail } from 'lucide-react';
 import { type ReactNode } from 'react';
 
 import { LinkedIn } from '~/components/icons/LinkedIn';
+import { X } from '~/components/icons/X';
 import { Button } from '~/components/ui/button';
 import { links, sections } from '~/constants';
 
@@ -39,16 +40,25 @@ export function ContactSection({ hideLink }: ContactSectionProps) {
         <br />
         <p>
           Reach out via email or connect with me on{' '}
-          <a href={links.linkedin} target="_blank">
+          <a href={links.linkedin} target="_blank" rel="noopener noreferrer">
             LinkedIn
+          </a>{' '}
+          or{' '}
+          <a href={links.twitter} target="_blank" rel="noopener noreferrer">
+            X
           </a>
           .
         </p>
         <div className="flex flex-row items-center justify-center gap-4 pt-4 sm:flex-row">
           <Button variant="neon" size="lg" className="w-fit" asChild>
-            <a href={links.linkedin} target="_blank">
+            <a href={links.linkedin} target="_blank" rel="noopener noreferrer">
               <LinkedIn />
               LinkedIn
+            </a>
+          </Button>
+          <Button variant="neon" size="lg" className="w-fit" asChild>
+            <a href={links.twitter} target="_blank" rel="noopener noreferrer">
+              <X />X
             </a>
           </Button>
           <Button variant="neon" size="lg" className="w-fit" asChild>

@@ -43,7 +43,11 @@ export function AboutSection() {
           <a href={links.youtube} target="_blank" rel="noopener noreferrer">
             YouTube
           </a>{' '}
-          channel and live-code side projects on{' '}
+          channel, on{' '}
+          <a href={links.twitter} target="_blank" rel="noopener noreferrer">
+            X
+          </a>
+          , and live-code side projects on{' '}
           <a href={links.twitch} target="_blank" rel="noopener noreferrer">
             Twitch
           </a>

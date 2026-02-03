@@ -4,6 +4,7 @@ import { LinkedInButton } from './LinkedInButton';
 import './SocialButtons.css';
 import { StackOverflowButton } from './StackOverflowButton';
 import { TwitchButton } from './TwitchButton';
+import { TwitterButton } from './TwitterButton';
 import { YouTubeButton } from './YouTubeButton';
 
 /**
@@ -16,6 +17,7 @@ export function SocialButtons() {
       <LinkedInButton />
       <GitHubButton />
       <EmailButton />
+      <TwitterButton />
       <TwitchButton />
       <YouTubeButton />
       <StackOverflowButton />

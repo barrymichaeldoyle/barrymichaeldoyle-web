@@ -15,6 +15,7 @@ export const links: Record<string, string> = {
   email: 'mailto:barry@barrymichaeldoyle.com',
   twitch: 'https://www.twitch.tv/barrymichaeldoyle',
   repo: 'https://github.com/barrymichaeldoyle/barrymichaeldoyle-web',
+  twitter: 'https://x.com/barrymdoyle',
 };
 
 export const sections = {
