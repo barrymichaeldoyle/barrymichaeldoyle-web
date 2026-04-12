@@ -38,7 +38,7 @@ Over time, I started pushing it beyond a personal tool. I wanted it to work for 
 
 There is also now a small Slack app UI so the bot feels more like a product and less like a collection of slash commands.
 
-Here is the direct ask: if you use Slack and this sounds even remotely useful, please install Patch Pulse in your workspace and give it a try. Slack requires at least five active workspace installs before I can submit the app to the Marketplace, so every early install makes a real difference.
+If you use Slack and this sounds useful, install Patch Pulse and try it in your workspace. It helps you stop manually checking for releases and get notified when updates you care about actually land.
 
 [![Add to Slack](https://platform.slack-edge.com/img/add_to_slack.png)](https://grand-yak-92.convex.site/slack/install)
 
@@ -96,8 +96,6 @@ The broader theme is consistent: I do not just want Patch Pulse to tell me that 
 
 ## If this is useful to you
 
-What I need most now is real usage and honest feedback.
+If Patch Pulse sounds relevant to your workflow, try it out and let me know where it helps or where it falls short.
 
-If Patch Pulse sounds relevant to your workflow, try it out, leave a comment on the `dev.to` version of this post, or [open an issue on GitHub](https://github.com/barrymichaeldoyle/patch-pulse/issues) with bugs, feature requests, or product ideas.
-
-That feedback will shape what gets built next far better than my own guesswork will.
+If you want to follow along as I keep building it, follow me on `dev.to` or watch the [GitHub repo](https://github.com/barrymichaeldoyle/patch-pulse). If you have bugs, feature requests, or product ideas, [open an issue on GitHub](https://github.com/barrymichaeldoyle/patch-pulse/issues).
