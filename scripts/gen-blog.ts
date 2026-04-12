@@ -8,7 +8,7 @@ import { type BlogPost } from '~/types/blog';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const contentDir = join(__dirname, '..', 'content', 'blog');
-const genFile = join(__dirname, '..', 'src', 'data', 'blogPosts.gen.ts');
+const genFile = join(__dirname, '..', 'src', 'data', 'blog.gen.ts');
 
 const posts = readdirSync(contentDir)
   .filter((file) => file.endsWith('.md'))

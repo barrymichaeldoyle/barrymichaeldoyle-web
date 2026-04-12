@@ -6,6 +6,8 @@
     "source.fixAll.eslint": "always",
     "source.organizeImports": "always"
   },
+  "editor.wordWrap": "wordWrapColumn",
+  "editor.wordWrapColumn": 80,
   "css.validate": false,
   "eslint.validate": [
     "javascript",
@@ -18,10 +20,12 @@
   "typescript.referencesCodeLens.enabled": true,
   "cSpell.words": [
     "barrymichaeldoyle",
+    "Codecademy",
     "Motorsport",
     "neuropsychologists",
     "reactbits",
     "Securit",
-    "VALR"
+    "VALR",
+    "vinxi"
   ]
 }

@@ -6,4 +6,5 @@ onlyBuiltDependencies:
   - '@tailwindcss/oxide'
   - core-js
   - esbuild
+  - protobufjs
   - sharp
