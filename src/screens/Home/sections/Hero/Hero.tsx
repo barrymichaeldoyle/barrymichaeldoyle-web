@@ -1,5 +1,5 @@
 import { DevElement } from '~/components/DevElement/DevElement';
-import RotatingText from '~/components/reactbits/TextAnimations/RotatingText/RotatingText';
+import { LazyRotatingText } from '~/components/lazy/LazyRotatingText';
 import { TITLES } from '~/constants';
 
 export function HeroSection() {
@@ -10,7 +10,7 @@ export function HeroSection() {
           Barry Michael Doyle
         </h1>
         <h2 className="flex flex-1 justify-end gap-2 text-end text-cyan-400 [text-shadow:0_0_12px_rgba(34,211,238,0.6)]">
-          <RotatingText
+          <LazyRotatingText
             texts={TITLES.map((title) => title.replaceAll(' Engineer', ''))}
             staggerFrom="last"
             transition={{ type: 'spring', damping: 30, stiffness: 400 }}

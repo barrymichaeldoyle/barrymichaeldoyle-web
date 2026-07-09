@@ -6,17 +6,16 @@ import {
   Outlet,
   Scripts,
 } from '@tanstack/react-router';
-import posthog from 'posthog-js';
-import { useEffect } from 'react';
+import { type ReactNode } from 'react';
+import { PostHogInit } from '~/components/analytics/PostHogInit';
 import { Footer } from '~/components/layout/Footer';
 import { Header } from '~/components/layout/Header';
+import { LazyAurora } from '~/components/lazy/LazyAurora';
 import { NotFound } from '~/components/NotFound';
-import { Aurora } from '~/components/reactbits/Backgrounds/Aurora/Aurora';
 import { OG_IMAGE, SITE_URL, TITLES } from '~/constants';
+import { jsonLdScript, personJsonLd, websiteJsonLd } from '~/lib/jsonLd';
 import { seo } from '~/lib/seo';
 import appCss from '~/styles/app.css?url';
-
-import type { ReactNode } from 'react';
 
 const queryClient = new QueryClient();
 
@@ -37,6 +36,7 @@ export const Route = createRootRoute({
       { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
       { rel: 'preload', href: '/profile.png', as: 'image' },
     ],
+    scripts: [jsonLdScript(personJsonLd()), jsonLdScript(websiteJsonLd())],
   }),
   component: RootComponent,
   notFoundComponent: NotFound,
@@ -51,18 +51,6 @@ function RootComponent() {
 }
 
 function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
-  const postHogApiKey = import.meta.env.VITE_PUBLIC_POSTHOG_KEY;
-  const postHogHost = import.meta.env.VITE_PUBLIC_POSTHOG_HOST;
-
-  useEffect(() => {
-    if (postHogApiKey && postHogHost && typeof window !== 'undefined') {
-      posthog.init(postHogApiKey, {
-        api_host: postHogHost,
-        defaults: '2025-11-30',
-      });
-    }
-  }, [postHogApiKey, postHogHost]);
-
   return (
     <html lang="en">
       <head>
@@ -70,6 +58,7 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
       </head>
       <body>
         <QueryClientProvider client={queryClient}>
+          <PostHogInit />
           <Header />
           <main className="mx-auto w-full max-w-4xl flex-1 px-3 pt-20">
             {children}
@@ -81,7 +70,7 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
         </QueryClientProvider>
         <Scripts />
         <div className="absolute -z-1 h-[50vh] w-full bg-background">
-          <Aurora speed={0.5} amplitude={1} />
+          <LazyAurora speed={0.5} amplitude={1} />
         </div>
       </body>
     </html>

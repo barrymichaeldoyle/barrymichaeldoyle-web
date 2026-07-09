@@ -1,6 +1,7 @@
 import { createFileRoute, notFound } from '@tanstack/react-router';
 import { OG_IMAGE, SITE_URL } from '~/constants';
 import { blogPosts } from '~/data/blog.gen';
+import { articleJsonLd, jsonLdScript } from '~/lib/jsonLd';
 import { canonicalLink, seo } from '~/lib/seo';
 import { BlogPostScreen } from '~/screens/Blog/BlogPost';
 
@@ -34,6 +35,7 @@ export const Route = createFileRoute('/blog/$slug')({
         type: 'article',
       }),
       links: [canonicalLink(url)],
+      scripts: [jsonLdScript(articleJsonLd(post))],
     };
   },
   component: BlogPostComponent,

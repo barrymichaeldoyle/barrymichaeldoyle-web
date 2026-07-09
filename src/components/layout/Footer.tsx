@@ -1,9 +1,9 @@
 import { Link } from '@tanstack/react-router';
 import { Code2, MapPin } from 'lucide-react';
+import { LazyParticles } from '~/components/lazy/LazyParticles';
 import { StackOverflowFlair } from '~/components/StackOverflowFlair/StackOverflowFlair';
 import { links, TITLES, YEARS_EXPERIENCE } from '~/constants';
 
-import Particles from '../reactbits/Backgrounds/Particles/Particles';
 import { SocialButtons } from '../socials/SocialButtons';
 
 export function Footer() {
@@ -93,7 +93,7 @@ export function Footer() {
           </div>
         </div>
       </div>
-      <Particles
+      <LazyParticles
         particleSpread={15}
         particleColors={['#46b5ff', '#ffffff']}
         particleCount={100}

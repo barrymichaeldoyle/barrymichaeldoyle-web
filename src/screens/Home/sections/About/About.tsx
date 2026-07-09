@@ -1,5 +1,5 @@
 import { Link } from '@tanstack/react-router';
-import { ProfileCard } from '~/components/reactbits/Components/ProfileCard/ProfileCard';
+import { LazyProfileCard } from '~/components/lazy/LazyProfileCard';
 import { links, sections, YEARS_EXPERIENCE } from '~/constants';
 
 export function AboutSection() {
@@ -54,7 +54,7 @@ export function AboutSection() {
         </p>
       </div>
       <div className="flex justify-center">
-        <ProfileCard />
+        <LazyProfileCard />
       </div>
     </section>
   );
