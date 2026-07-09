@@ -19,9 +19,8 @@
     "**/*.gen.tsx"
   ],
   "jsPlugins": [
-    "@tanstack/eslint-plugin-query",
-    "@tanstack/eslint-plugin-router",
-    "eslint-plugin-eslint-comments"
+    "./node_modules/oxlint-plugin-query/dist/index.js",
+    "./node_modules/oxlint-plugin-router/dist/index.js"
   ],
   "rules": {
     "constructor-super": "error",
@@ -105,18 +104,12 @@
     "jsx-a11y/no-static-element-interactions": "warn",
     "import/newline-after-import": "error",
     "import/no-duplicates": "error",
-    "@tanstack/query/exhaustive-deps": "error",
-    "@tanstack/query/no-rest-destructuring": "warn",
-    "@tanstack/query/stable-query-client": "error",
-    "@tanstack/router/create-route-property-order": "error",
-    "eslint-comments/require-description": [
-      "error",
-      {
-        "ignore": ["eslint-enable"]
-      }
-    ],
-    "eslint-comments/disable-enable-pair": "error",
-    "eslint-comments/no-unused-disable": "error",
+    "oxlint-plugin-query/exhaustive-deps": "error",
+    "oxlint-plugin-query/no-rest-destructuring": "warn",
+    "oxlint-plugin-query/stable-query-client": "error",
+    "oxlint-plugin-query/no-unstable-deps": "error",
+    "oxlint-plugin-router/create-route-property-order": "error",
+    "oxlint-plugin-router/route-param-names": "error",
     "typescript/no-explicit-any": "warn",
     "typescript/explicit-function-return-type": "off",
     "typescript/explicit-module-boundary-types": "off",
