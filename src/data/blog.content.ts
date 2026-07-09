@@ -2,11 +2,15 @@
 // You should NOT make any changes in this file as it will be overwritten.
 
 const contentLoaders: Record<string, () => Promise<string>> = {
-  'patch-pulse-2026-q2': async () => (await import('./blog-content/patch-pulse-2026-q2.gen')).content,
-  'starting-over': async () => (await import('./blog-content/starting-over.gen')).content,
+  'patch-pulse-2026-q2': async () =>
+    (await import('./blog-content/patch-pulse-2026-q2.gen')).content,
+  'starting-over': async () =>
+    (await import('./blog-content/starting-over.gen')).content,
 };
 
-export async function loadBlogContent(slug: string): Promise<string | undefined> {
+export async function loadBlogContent(
+  slug: string
+): Promise<string | undefined> {
   const loader = contentLoaders[slug];
   if (!loader) return undefined;
   return loader();

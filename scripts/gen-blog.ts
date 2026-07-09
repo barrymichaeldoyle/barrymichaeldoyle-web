@@ -70,12 +70,14 @@ const contentLoaders: Record<string, () => Promise<string>> = {
 ${posts
   .map(
     (post) =>
-      `  '${post.slug}': async () => (await import('./blog-content/${post.slug}.gen')).content,`
+      `  '${post.slug}': async () =>\n    (await import('./blog-content/${post.slug}.gen')).content,`
   )
   .join('\n')}
 };
 
-export async function loadBlogContent(slug: string): Promise<string | undefined> {
+export async function loadBlogContent(
+  slug: string
+): Promise<string | undefined> {
   const loader = contentLoaders[slug];
   if (!loader) return undefined;
   return loader();
