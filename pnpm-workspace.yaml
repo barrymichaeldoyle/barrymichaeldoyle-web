@@ -1,10 +1,22 @@
 packages:
   - packages/*
 
-onlyBuiltDependencies:
-  - '@parcel/watcher'
-  - '@tailwindcss/oxide'
-  - core-js
-  - esbuild
-  - protobufjs
-  - sharp
+allowBuilds:
+  '@parcel/watcher': true
+  '@tailwindcss/oxide': true
+  core-js: true
+  esbuild: true
+  protobufjs: true
+  sharp: true
+
+# Keep the 1-day supply-chain default, but allow packages we intentionally track closely.
+minimumReleaseAgeExclude:
+  - typescript
+  - '@typescript/*'
+  - posthog-js
+  - '@posthog/*'
+  - lucide-react
+  - vite
+  - preact
+  - seroval
+  - seroval-plugins
