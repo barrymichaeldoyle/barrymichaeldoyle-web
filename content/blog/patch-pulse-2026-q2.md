@@ -40,7 +40,7 @@ There is also now a small Slack app UI so the bot feels more like a product and 
 
 If you use Slack and this sounds useful, install Patch Pulse and try it in your workspace. It helps you stop manually checking for releases and get notified when updates you care about actually land.
 
-[![Add to Slack](https://platform.slack-edge.com/img/add_to_slack.png)](https://grand-yak-92.convex.site/slack/install)
+[![Add to Slack](/blog/add-to-slack.png)](https://grand-yak-92.convex.site/slack/install)
 
 ## Expanding into a CLI
 

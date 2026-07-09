@@ -121,7 +121,7 @@ export function ExperienceSection() {
               />
               {/* Year label */}
               <span
-                className={`text-muted-foreground/50 absolute text-xs ${
+                className={`absolute text-xs text-muted-foreground/50 ${
                   isRight ? 'left-5' : 'right-5'
                 }`}
               >

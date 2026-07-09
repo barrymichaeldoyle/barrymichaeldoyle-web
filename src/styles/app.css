@@ -15,6 +15,7 @@
   --background: oklch(0.0984 0.0514 304.05); /* #060010 */
   --background-secondary: oklch(0.2649 0.0546 240.78); /* #06283d */
   --foreground: oklch(0.9911 0 0); /* #fcfcfc */
+  --muted-foreground: oklch(0.78 0.02 240);
 
   --color-primary: oklch(0.7422 0.146 242); /* #46b5ff */
 }
@@ -24,6 +25,7 @@
   --color-background: var(--background);
   --color-background-secondary: var(--background-secondary);
   --color-foreground: var(--foreground);
+  --color-muted-foreground: var(--muted-foreground);
 
   --color-primary: var(--color-primary);
   --text-primary: var(--color-primary);
@@ -73,6 +75,29 @@
     margin: 0;
     padding: 0;
     min-height: 100vh;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  .skip-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    padding: 0.75rem 1rem;
+    background: var(--background-secondary);
+    color: var(--color-primary);
+    border: 1px solid color-mix(in oklch, var(--color-primary) 50%, transparent);
+    border-radius: 0 0 0.5rem 0;
+    transform: translateY(-120%);
+    transition: transform 0.15s ease;
+  }
+
+  .skip-link:focus {
+    transform: translateY(0);
   }
 
   #root {

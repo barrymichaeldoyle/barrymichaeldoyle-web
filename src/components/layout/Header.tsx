@@ -53,19 +53,23 @@ export function Header() {
               )}
 
               {/* Main profile image */}
-              <img
-                src="/profile.png"
-                alt="Barry Michael Doyle"
-                fetchPriority="high"
-                width={36}
-                height={36}
-                className={cn(
-                  'h-9 w-9 rounded-full border-2 border-cyan-400 object-cover shadow-[0_0_8px_rgba(34,211,238,0.6)]',
-                  !imageLoaded && !imageError && 'hidden'
-                )}
-                onLoad={() => setImageLoaded(true)}
-                onError={() => setImageError(true)}
-              />
+              <picture>
+                <source srcSet="/profile.webp" type="image/webp" />
+                <img
+                  src="/profile.png"
+                  alt="Barry Michael Doyle"
+                  fetchPriority="high"
+                  width={36}
+                  height={36}
+                  decoding="async"
+                  className={cn(
+                    'h-9 w-9 rounded-full border-2 border-cyan-400 object-cover shadow-[0_0_8px_rgba(34,211,238,0.6)]',
+                    !imageLoaded && !imageError && 'hidden'
+                  )}
+                  onLoad={() => setImageLoaded(true)}
+                  onError={() => setImageError(true)}
+                />
+              </picture>
             </div>
             <div className="relative flex flex-col gap-1">
               <span className="relative -top-1 text-sm font-bold whitespace-nowrap text-cyan-400">

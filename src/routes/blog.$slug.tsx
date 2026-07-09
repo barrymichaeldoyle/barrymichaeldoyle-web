@@ -1,17 +1,24 @@
 import { createFileRoute, notFound } from '@tanstack/react-router';
 import { OG_IMAGE, SITE_URL } from '~/constants';
-import { blogPosts } from '~/data/blog.gen';
+import { loadBlogContent } from '~/data/blog.content';
+import { blogPostsMeta } from '~/data/blog.meta.gen';
 import { articleJsonLd, jsonLdScript } from '~/lib/jsonLd';
 import { canonicalLink, seo } from '~/lib/seo';
 import { BlogPostScreen } from '~/screens/Blog/BlogPost';
 
 export const Route = createFileRoute('/blog/$slug')({
-  loader: ({ params }) => {
-    const post = blogPosts[params.slug];
-    if (!post) {
+  loader: async ({ params }) => {
+    const meta = blogPostsMeta[params.slug];
+    if (!meta) {
       throw notFound();
     }
-    return { post };
+
+    const content = await loadBlogContent(params.slug);
+    if (!content) {
+      throw notFound();
+    }
+
+    return { post: { ...meta, content } };
   },
   head: ({ loaderData }) => {
     const post = loaderData?.post;
@@ -33,6 +40,7 @@ export const Route = createFileRoute('/blog/$slug')({
         image: OG_IMAGE,
         url,
         type: 'article',
+        publishedTime: post.date,
       }),
       links: [canonicalLink(url)],
       scripts: [jsonLdScript(articleJsonLd(post))],

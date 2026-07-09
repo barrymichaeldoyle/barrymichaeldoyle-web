@@ -24,6 +24,7 @@ export const Route = createRootRoute({
     meta: [
       { charSet: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { name: 'theme-color', content: '#060010' },
       ...seo({
         title: 'Barry Michael Doyle - Staff Engineer',
         description: `Barry Michael Doyle - ${TITLES.join(' | ')}`,
@@ -34,7 +35,7 @@ export const Route = createRootRoute({
     links: [
       { rel: 'stylesheet', href: appCss },
       { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
-      { rel: 'preload', href: '/profile.png', as: 'image' },
+      { rel: 'preload', href: '/barry.webp', as: 'image', type: 'image/webp' },
     ],
     scripts: [jsonLdScript(personJsonLd()), jsonLdScript(websiteJsonLd())],
   }),
@@ -57,10 +58,17 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
         <HeadContent />
       </head>
       <body>
+        <a href="#main" className="skip-link">
+          Skip to main content
+        </a>
         <QueryClientProvider client={queryClient}>
           <PostHogInit />
           <Header />
-          <main className="mx-auto w-full max-w-4xl flex-1 px-3 pt-20">
+          <main
+            id="main"
+            tabIndex={-1}
+            className="mx-auto w-full max-w-4xl flex-1 px-3 pt-20 outline-none"
+          >
             {children}
           </main>
           <Footer />

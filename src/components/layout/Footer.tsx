@@ -17,7 +17,7 @@ export function Footer() {
             <h3 className="mb-3 text-lg font-semibold text-foreground">
               Barry Michael Doyle
             </h3>
-            <div className="text-muted-foreground space-y-2 text-sm">
+            <div className="space-y-2 text-sm text-muted-foreground">
               <div className="flex items-center justify-center gap-2 md:justify-start">
                 <MapPin className="h-4 w-4 flex-shrink-0" />
                 <span>Cape Town, South Africa</span>
@@ -54,11 +54,11 @@ export function Footer() {
             <h4 className="mb-3 text-sm font-semibold text-foreground">
               Professional Roles
             </h4>
-            <div className="text-muted-foreground space-y-1 text-sm">
+            <div className="space-y-1 text-sm text-muted-foreground">
               {TITLES.map((title) => (
                 <em
                   key={title}
-                  className="text-muted-foreground block whitespace-nowrap"
+                  className="block whitespace-nowrap text-muted-foreground"
                 >
                   {title}
                 </em>
@@ -84,7 +84,7 @@ export function Footer() {
             </div>
 
             {/* Copyright */}
-            <div className="text-muted-foreground text-center text-sm">
+            <div className="text-center text-sm text-muted-foreground">
               <p>
                 &copy; {new Date().getFullYear()} Barry Michael Doyle. All
                 rights reserved.

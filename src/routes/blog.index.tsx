@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { OG_IMAGE, SITE_URL } from '~/constants';
-import { blogPosts } from '~/data/blog.gen';
+import { blogPostsMeta } from '~/data/blog.meta.gen';
 import { canonicalLink, seo } from '~/lib/seo';
 import { BlogScreen } from '~/screens/Blog/Blog';
 
@@ -19,5 +19,5 @@ export const Route = createFileRoute('/blog/')({
 });
 
 function BlogIndex() {
-  return <BlogScreen posts={Object.values(blogPosts)} />;
+  return <BlogScreen posts={Object.values(blogPostsMeta)} />;
 }

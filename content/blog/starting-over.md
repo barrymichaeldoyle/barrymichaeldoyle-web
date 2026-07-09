@@ -50,7 +50,7 @@ If you haven't already, start using [GitHub](https://github.com/) to store your 
 
 Over time you'll get this nifty looking graph that shows that you know things!
 
-![GitHub Contribution Chart](/blog/github-contribution-chart.png)
+![GitHub Contribution Chart](/blog/github-contribution-chart.webp)
 
 Committing to your own projects isn't the only way to engage on GitHub. You can also create issues and comment on existing issues on other libraries that you've worked with in your personal projects.
 

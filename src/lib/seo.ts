@@ -5,6 +5,7 @@ export function seo({
   image,
   url,
   type = 'website',
+  publishedTime,
 }: {
   title: string;
   description?: string;
@@ -12,6 +13,7 @@ export function seo({
   keywords?: string;
   url?: string;
   type?: 'website' | 'article';
+  publishedTime?: string;
 }) {
   const tags = [
     { title },
@@ -24,12 +26,18 @@ export function seo({
     { name: 'og:type', content: type },
     { name: 'og:title', content: title },
     { name: 'og:description', content: description },
+    { property: 'og:locale', content: 'en_ZA' },
     ...(url ? [{ property: 'og:url', content: url }] : []),
+    ...(publishedTime
+      ? [{ property: 'article:published_time', content: publishedTime }]
+      : []),
     ...(image
       ? [
           { name: 'twitter:image', content: image },
+          { name: 'twitter:image:alt', content: title },
           { name: 'twitter:card', content: 'summary_large_image' },
           { name: 'og:image', content: image },
+          { property: 'og:image:alt', content: title },
         ]
       : []),
   ];

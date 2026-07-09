@@ -1,5 +1,5 @@
 import { OG_IMAGE, SITE_URL, TITLES, links } from '~/constants';
-import { type BlogPost } from '~/types/blog';
+import { type BlogPostMeta } from '~/types/blog';
 
 export function jsonLdScript(data: Record<string, unknown>) {
   return {
@@ -49,7 +49,7 @@ export function websiteJsonLd() {
   };
 }
 
-export function articleJsonLd(post: BlogPost) {
+export function articleJsonLd(post: BlogPostMeta) {
   return {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',

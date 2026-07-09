@@ -2,12 +2,12 @@ import { Link } from '@tanstack/react-router';
 import GlareHover from '~/components/reactbits/Animations/GlareHover/GlareHover';
 import { ContactSection } from '~/components/sections/Contact/Contact';
 import { Card, CardContent, CardHeader, CardTitle } from '~/components/ui/card';
-import { type BlogPost } from '~/types/blog';
+import { type BlogPostMeta } from '~/types/blog';
 
 import { BlogMetaDetails } from './components/BlogMetaDetails';
 
 interface BlogScreenProps {
-  posts: BlogPost[];
+  posts: BlogPostMeta[];
 }
 
 export function BlogScreen({ posts }: BlogScreenProps) {
@@ -51,7 +51,7 @@ export function BlogScreen({ posts }: BlogScreenProps) {
                     </div>
                     <div className="flex flex-row items-center justify-between gap-2">
                       {post.description && (
-                        <p className="text-md text-muted-foreground leading-tight">
+                        <p className="text-md leading-tight text-muted-foreground">
                           {post.description}
                         </p>
                       )}

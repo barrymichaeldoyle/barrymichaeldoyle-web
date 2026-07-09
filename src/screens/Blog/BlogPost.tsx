@@ -40,7 +40,7 @@ export function BlogPostScreen({ post }: BlogPostScreenProps) {
 
       <Suspense
         fallback={
-          <div className="text-muted-foreground min-h-64 animate-pulse rounded-lg border border-cyan-400/30 p-4">
+          <div className="min-h-64 animate-pulse rounded-lg border border-cyan-400/30 p-4 text-muted-foreground">
             Loading article…
           </div>
         }

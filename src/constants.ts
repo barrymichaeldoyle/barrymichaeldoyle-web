@@ -6,7 +6,7 @@ export const TITLES = [
 ];
 
 export const SITE_URL = 'https://barrymichaeldoyle.com';
-export const OG_IMAGE = `${SITE_URL}/profile.png`;
+export const OG_IMAGE = `${SITE_URL}/profile.webp`;
 
 export const YEARS_EXPERIENCE = new Date().getFullYear() - 2013;
 

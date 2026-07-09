@@ -89,6 +89,15 @@ export function BlogPostMarkdown({ content }: BlogPostMarkdownProps) {
                     {children}
                   </a>
                 ),
+                img: ({ src, alt }) => (
+                  <img
+                    src={src}
+                    alt={alt ?? ''}
+                    loading="lazy"
+                    decoding="async"
+                    className="my-4 h-auto max-w-full rounded-md"
+                  />
+                ),
                 hr: () => <hr className="my-12 border-cyan-400/30" />,
               }}
             >

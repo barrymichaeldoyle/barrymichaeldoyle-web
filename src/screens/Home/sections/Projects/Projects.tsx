@@ -19,7 +19,7 @@ export function ProjectsSection() {
         <Link to={`#${sections.projects}` as string} data-slot="button">
           <h2 className="mb-4 text-3xl font-bold text-cyan-400">Projects</h2>
         </Link>
-        <p className="text-muted-foreground mx-auto max-w-2xl">
+        <p className="mx-auto max-w-2xl text-muted-foreground">
           Side projects and open source contributions I&apos;m proud of
         </p>
       </div>
@@ -51,7 +51,7 @@ export function ProjectsSection() {
               </div>
             </CardHeader>
             <CardContent className="flex flex-1 flex-col justify-between gap-4 pt-2">
-              <p className="text-muted-foreground text-sm">
+              <p className="text-sm text-muted-foreground">
                 {project.description}
               </p>
               <div className="flex flex-wrap gap-2">

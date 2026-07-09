@@ -375,17 +375,23 @@ const ProfileCardComponent = ({
           <div className="pc-shine" />
           <div className="pc-glare" />
           <div className="pc-content pc-avatar-content">
-            <img
-              className="avatar"
-              src={avatarUrl}
-              alt={`${name} avatar`}
-              loading="eager"
-              fetchPriority="high"
-              onError={(e) => {
-                const target = e.target as HTMLImageElement;
-                target.style.display = 'none';
-              }}
-            />
+            <picture>
+              <source srcSet="/barry.webp" type="image/webp" />
+              <img
+                className="avatar"
+                src={avatarUrl}
+                alt={`${name} avatar`}
+                width={510}
+                height={690}
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.style.display = 'none';
+                }}
+              />
+            </picture>
             <div className="pc-user-info mx-auto flex w-fit gap-2">
               <SocialButtons />
             </div>
