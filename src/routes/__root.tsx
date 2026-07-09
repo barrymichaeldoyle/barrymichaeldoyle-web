@@ -1,5 +1,3 @@
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import {
   createRootRoute,
   HeadContent,
@@ -16,8 +14,6 @@ import { OG_IMAGE, SITE_URL, TITLES } from '~/constants';
 import { jsonLdScript, personJsonLd, websiteJsonLd } from '~/lib/jsonLd';
 import { seo } from '~/lib/seo';
 import appCss from '~/styles/app.css?url';
-
-const queryClient = new QueryClient();
 
 export const Route = createRootRoute({
   head: () => ({
@@ -67,21 +63,16 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
         <a href="#main" className="skip-link">
           Skip to main content
         </a>
-        <QueryClientProvider client={queryClient}>
-          <PostHogInit />
-          <Header />
-          <main
-            id="main"
-            tabIndex={-1}
-            className="mx-auto w-full max-w-4xl flex-1 px-3 pt-20 outline-none"
-          >
-            {children}
-          </main>
-          <Footer />
-          {import.meta.env.DEV ? (
-            <ReactQueryDevtools initialIsOpen={false} />
-          ) : null}
-        </QueryClientProvider>
+        <PostHogInit />
+        <Header />
+        <main
+          id="main"
+          tabIndex={-1}
+          className="mx-auto w-full max-w-4xl flex-1 px-3 pt-20 outline-none"
+        >
+          {children}
+        </main>
+        <Footer />
         <Scripts />
         <div className="absolute -z-1 h-[50vh] w-full bg-background">
           <LazyAurora speed={0.5} amplitude={1} />

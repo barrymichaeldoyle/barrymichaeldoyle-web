@@ -8,5 +8,5 @@ export const stackOverflowFlair = {
   },
   "displayName": "Barry Michael Doyle",
   "link": "https://stackoverflow.com/users/2111515/barry-michael-doyle",
-  "fetchedAt": "2026-07-09T14:46:45.517Z"
+  "fetchedAt": "2026-07-09T14:53:13.422Z"
 } as const;

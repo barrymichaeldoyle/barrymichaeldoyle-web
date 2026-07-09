@@ -19,12 +19,6 @@ importers:
       '@tailwindcss/vite':
         specifier: 4.3.2
         version: 4.3.2(vite@8.1.4(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.42.0)(tsx@4.23.0)(yaml@2.9.0))
-      '@tanstack/react-query':
-        specifier: 5.101.2
-        version: 5.101.2(react@19.2.7)
-      '@tanstack/react-query-devtools':
-        specifier: 5.101.2
-        version: 5.101.2(@tanstack/react-query@5.101.2(react@19.2.7))(react@19.2.7)
       '@tanstack/react-router':
         specifier: 1.170.17
         version: 1.170.17(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
@@ -116,9 +110,6 @@ importers:
       oxlint:
         specifier: 1.73.0
         version: 1.73.0
-      oxlint-plugin-query:
-        specifier: 0.1.1
-        version: 0.1.1
       oxlint-plugin-router:
         specifier: 0.1.1
         version: 0.1.1
@@ -1753,23 +1744,6 @@ packages:
   '@tanstack/history@1.162.0':
     resolution: {integrity: sha512-79pf/RkhteYZTRgcR4F9kbk84P2N8rugQJswxfIqovlbRiT3yI7eBE+5QorIrZaOKktsgzRlXh1l/du/xpl4iA==}
     engines: {node: '>=20.19'}
-
-  '@tanstack/query-core@5.101.2':
-    resolution: {integrity: sha512-hH5MLoJhF7KaIGd7q3xTXGXvslI+GYlM1Z/35aSHHWaCJWB7XvTSHYuV3eM7tw+aE0mT/xMro4M4Q9rCGHT0lw==}
-
-  '@tanstack/query-devtools@5.101.2':
-    resolution: {integrity: sha512-o+wHcqgN7Pp0s8v1i0UGq/ZrrEKrxdIiMQmKRdYb2w7NPtylYSJ4+wg/tIn71m9DLstwUwdEGAvROdly6HXP6w==}
-
-  '@tanstack/react-query-devtools@5.101.2':
-    resolution: {integrity: sha512-eU7HctdA9gDjqoERoEdzLbw9DiqnBDfh5+Hu0u26gjqoHJezOpQAuiesDL2VvkU+2cPV76zgv0tMZsOrI4LjnQ==}
-    peerDependencies:
-      '@tanstack/react-query': ^5.101.2
-      react: ^18 || ^19
-
-  '@tanstack/react-query@5.101.2':
-    resolution: {integrity: sha512-seDkr6kzGzX1okaaTtZPtgA688CDPlXUz1C6xSg0ESqn04Vuc8tlrYms1s3de+znBqhPVxFRfpAfUf+6XvfPWg==}
-    peerDependencies:
-      react: ^18 || ^19
 
   '@tanstack/react-router@1.170.17':
     resolution: {integrity: sha512-ppLkjCfSMaeug9rmFRYzOd4TIqWV+yTE7tzIny7alJsSnM7w4lzEZm6eqCehG0SPetpZ0R3K+UnanSmBgOAVcQ==}
@@ -3808,10 +3782,6 @@ packages:
         optional: true
       vite-plus:
         optional: true
-
-  oxlint-plugin-query@0.1.1:
-    resolution: {integrity: sha512-d0LGnwXEcMumhXvfq2XndKUM9dWa/epZjg7mn6v2HqRVPNQQU6o9Zr0cEbNtxjVjx/zQ1daN7iMCM+aWzQ0MDA==}
-    engines: {node: '>=18.0.0'}
 
   oxlint-plugin-router@0.1.1:
     resolution: {integrity: sha512-JYRIwmOItmvAl/oyAws85Awx+6Xm1RoT7bDvCxyjwNOXJzDSqxB1A3u7y+bwKyGNFUs+RBeASUq1eFqCB9cveA==}
@@ -6276,21 +6246,6 @@ snapshots:
 
   '@tanstack/history@1.162.0': {}
 
-  '@tanstack/query-core@5.101.2': {}
-
-  '@tanstack/query-devtools@5.101.2': {}
-
-  '@tanstack/react-query-devtools@5.101.2(@tanstack/react-query@5.101.2(react@19.2.7))(react@19.2.7)':
-    dependencies:
-      '@tanstack/query-devtools': 5.101.2
-      '@tanstack/react-query': 5.101.2(react@19.2.7)
-      react: 19.2.7
-
-  '@tanstack/react-query@5.101.2(react@19.2.7)':
-    dependencies:
-      '@tanstack/query-core': 5.101.2
-      react: 19.2.7
-
   '@tanstack/react-router@1.170.17(react-dom@19.2.7(react@19.2.7))(react@19.2.7)':
     dependencies:
       '@tanstack/history': 1.162.0
@@ -8631,8 +8586,6 @@ snapshots:
       '@oxfmt/binding-win32-arm64-msvc': 0.58.0
       '@oxfmt/binding-win32-ia32-msvc': 0.58.0
       '@oxfmt/binding-win32-x64-msvc': 0.58.0
-
-  oxlint-plugin-query@0.1.1: {}
 
   oxlint-plugin-router@0.1.1: {}
 

@@ -18,10 +18,7 @@
     "**/*.gen.ts",
     "**/*.gen.tsx"
   ],
-  "jsPlugins": [
-    "./node_modules/oxlint-plugin-query/dist/index.js",
-    "./node_modules/oxlint-plugin-router/dist/index.js"
-  ],
+  "jsPlugins": ["./node_modules/oxlint-plugin-router/dist/index.js"],
   "rules": {
     "constructor-super": "error",
     "for-direction": "error",
@@ -104,10 +101,6 @@
     "jsx-a11y/no-static-element-interactions": "warn",
     "import/newline-after-import": "error",
     "import/no-duplicates": "error",
-    "oxlint-plugin-query/exhaustive-deps": "error",
-    "oxlint-plugin-query/no-rest-destructuring": "warn",
-    "oxlint-plugin-query/stable-query-client": "error",
-    "oxlint-plugin-query/no-unstable-deps": "error",
     "oxlint-plugin-router/create-route-property-order": "error",
     "oxlint-plugin-router/route-param-names": "error",
     "typescript/no-explicit-any": "warn",
