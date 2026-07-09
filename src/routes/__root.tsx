@@ -12,7 +12,7 @@ import { Footer } from '~/components/layout/Footer';
 import { Header } from '~/components/layout/Header';
 import { NotFound } from '~/components/NotFound';
 import { Aurora } from '~/components/reactbits/Backgrounds/Aurora/Aurora';
-import { TITLES } from '~/constants';
+import { OG_IMAGE, SITE_URL, TITLES } from '~/constants';
 import { seo } from '~/lib/seo';
 import appCss from '~/styles/app.css?url';
 
@@ -26,8 +26,10 @@ export const Route = createRootRoute({
       { charSet: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       ...seo({
-        title: 'Barry Michael Doyle - Staff Frontend Engineer',
+        title: 'Barry Michael Doyle - Staff Engineer',
         description: `Barry Michael Doyle - ${TITLES.join(' | ')}`,
+        image: OG_IMAGE,
+        url: SITE_URL,
       }),
     ],
     links: [
@@ -73,7 +75,9 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
             {children}
           </main>
           <Footer />
-          <ReactQueryDevtools initialIsOpen={false} />
+          {import.meta.env.DEV ? (
+            <ReactQueryDevtools initialIsOpen={false} />
+          ) : null}
         </QueryClientProvider>
         <Scripts />
         <div className="absolute -z-1 h-[50vh] w-full bg-background">

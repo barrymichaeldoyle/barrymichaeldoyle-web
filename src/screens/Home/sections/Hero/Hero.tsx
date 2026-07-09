@@ -12,7 +12,7 @@ export function HeroSection() {
         <h2 className="flex flex-1 justify-end gap-2 text-end text-cyan-400 [text-shadow:0_0_12px_rgba(34,211,238,0.6)]">
           <RotatingText
             texts={TITLES.map((title) => title.replaceAll(' Engineer', ''))}
-            staggerFrom="random"
+            staggerFrom="last"
             transition={{ type: 'spring', damping: 30, stiffness: 400 }}
             staggerDuration={0.025}
             rotationInterval={2500}

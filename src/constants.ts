@@ -5,6 +5,9 @@ export const TITLES = [
   'Software Engineer',
 ];
 
+export const SITE_URL = 'https://barrymichaeldoyle.com';
+export const OG_IMAGE = `${SITE_URL}/profile.png`;
+
 export const YEARS_EXPERIENCE = new Date().getFullYear() - 2013;
 
 export const links: Record<string, string> = {
@@ -15,7 +18,10 @@ export const links: Record<string, string> = {
   email: 'mailto:barry@barrymichaeldoyle.com',
   twitch: 'https://www.twitch.tv/barrymichaeldoyle',
   repo: 'https://github.com/barrymichaeldoyle/barrymichaeldoyle-web',
+  site: SITE_URL,
   twitter: 'https://x.com/barrymdoyle',
+  patchPulse: 'https://github.com/barrymichaeldoyle/patch-pulse',
+  devTo: 'https://dev.to/barrymichaeldoyle',
 };
 
 export const sections = {

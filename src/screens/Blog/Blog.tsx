@@ -1,7 +1,6 @@
 import { Link } from '@tanstack/react-router';
 import GlareHover from '~/components/reactbits/Animations/GlareHover/GlareHover';
 import { ContactSection } from '~/components/sections/Contact/Contact';
-import { Button } from '~/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '~/components/ui/card';
 import { type BlogPost } from '~/types/blog';
 
@@ -56,13 +55,9 @@ export function BlogScreen({ posts }: BlogScreenProps) {
                           {post.description}
                         </p>
                       )}
-                      <Button
-                        variant="neon"
-                        tabIndex={-1}
-                        className="group-hover:bg-cyan-400/20 group-hover:shadow-[0_0_16px_rgba(34,211,238,0.6)]"
-                      >
+                      <span className="inline-flex shrink-0 items-center rounded-md border border-cyan-400/60 bg-cyan-400/10 px-3 py-1.5 text-sm font-medium text-cyan-400 transition-colors group-hover:bg-cyan-400/20 group-hover:shadow-[0_0_16px_rgba(34,211,238,0.6)]">
                         Read more →
-                      </Button>
+                      </span>
                     </div>
                   </CardContent>
                 </GlareHover>

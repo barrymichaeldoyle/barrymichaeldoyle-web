@@ -4,17 +4,15 @@ interface Experience {
   role: string;
   startDate: Date;
   endDate: Date | null; // null = present
-  achievements: string[];
 }
 
 export const experiences: Experience[] = [
   {
     company: 'VALR (PTY) Ltd',
     companyUrl: 'https://www.valr.com/en/invite/VAVCTUC7',
-    role: 'Senior Software Engineer',
+    role: 'Staff Engineer',
     startDate: new Date(2025, 8), // Sep 2025
     endDate: null,
-    achievements: [],
   },
   {
     company: 'SecuritEase International Australia (PTY) Ltd',
@@ -22,7 +20,6 @@ export const experiences: Experience[] = [
     role: 'UI Chapter Lead (Engineer)',
     startDate: new Date(2023, 2), // Mar 2023
     endDate: new Date(2025, 7), // Aug 2025
-    achievements: [],
   },
   {
     company: 'Join Odin Limited',
@@ -30,7 +27,6 @@ export const experiences: Experience[] = [
     role: 'Design Engineer',
     startDate: new Date(2022, 3), // Apr 2022
     endDate: new Date(2023, 1), // Feb 2023
-    achievements: [],
   },
   {
     company: 'Universal Healthcare Group',
@@ -38,7 +34,6 @@ export const experiences: Experience[] = [
     role: 'Head of Frontend Engineering',
     startDate: new Date(2019, 2), // Mar 2019
     endDate: new Date(2022, 2), // Mar 2022
-    achievements: [],
   },
   {
     company: 'Cardinal (PTY) Ltd',
@@ -46,7 +41,6 @@ export const experiences: Experience[] = [
     role: 'Senior Frontend Engineer',
     startDate: new Date(2017, 9), // Oct 2017
     endDate: new Date(2019, 1), // Feb 2019
-    achievements: [],
   },
   {
     company: 'Barry-Dean IT Solutions (B1TS)',
@@ -54,7 +48,6 @@ export const experiences: Experience[] = [
     role: 'Software Engineer',
     startDate: new Date(2013, 0), // Jan 2013
     endDate: new Date(2017, 8), // Sep 2017
-    achievements: [],
   },
 ];
 

@@ -49,9 +49,9 @@ export function BlogPostScreen({ post }: BlogPostScreenProps) {
                 rehypePlugins={[rehypeHighlight]}
                 components={{
                   h1: ({ children }) => (
-                    <h1 className="mt-8 mb-4 border-b border-cyan-400/40 pb-3 text-2xl font-bold tracking-tight text-cyan-400 first:mt-0">
+                    <h2 className="mt-8 mb-4 border-b border-cyan-400/40 pb-3 text-2xl font-bold tracking-tight text-cyan-400 first:mt-0">
                       {children}
-                    </h1>
+                    </h2>
                   ),
                   h2: ({ children }) => (
                     <h2 className="mt-8 mb-4 text-xl font-bold tracking-tight text-cyan-400">

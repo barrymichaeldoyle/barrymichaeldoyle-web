@@ -98,4 +98,4 @@ The broader theme is consistent: I do not just want Patch Pulse to tell me that 
 
 If Patch Pulse sounds relevant to your workflow, try it out and let me know where it helps or where it falls short.
 
-If you want to follow along as I keep building it, follow me on `dev.to` or watch the [GitHub repo](https://github.com/barrymichaeldoyle/patch-pulse). If you have bugs, feature requests, or product ideas, [open an issue on GitHub](https://github.com/barrymichaeldoyle/patch-pulse/issues).
+If you want to follow along as I keep building it, follow me on [dev.to](https://dev.to/barrymichaeldoyle) or watch the [GitHub repo](https://github.com/barrymichaeldoyle/patch-pulse). If you have bugs, feature requests, or product ideas, [open an issue on GitHub](https://github.com/barrymichaeldoyle/patch-pulse/issues).

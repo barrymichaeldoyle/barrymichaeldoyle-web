@@ -34,7 +34,7 @@ export const projects: Project[] = [
   },
   {
     name: 'Patch Pulse',
-    url: 'https://github.com/patch-pulse',
+    url: links.patchPulse,
     description:
       'Developer tools for keeping npm packages up to date, including a Slack bot and CLI tool.',
     role: 'Creator',
@@ -42,7 +42,7 @@ export const projects: Project[] = [
   },
   {
     name: 'barrymichaeldoyle.com',
-    url: links.repo,
+    url: links.site,
     description:
       'This website! A modern portfolio built with React, TanStack Router, and Tailwind CSS.',
     role: 'Creator',

@@ -18,7 +18,7 @@ export function AboutSection() {
           applications using React, React Native, and TypeScript.
         </p>
         <p>
-          Currently, I&apos;m a Senior Engineer at{' '}
+          Currently, I&apos;m a Staff Engineer at{' '}
           <a
             href="https://www.valr.com/en/invite/VAVCTUC7"
             target="_blank"

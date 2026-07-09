@@ -82,6 +82,6 @@ In today's world, a Computer Science degree is not a mandate. There are many onl
 
 ## Conclusion
 
-I hope you've found these tips useful! If you think I've missed any useful tips please share them with others and continue the discussion in the comments!
+I hope you've found these tips useful! If you think I've missed any useful tips, share them with others and keep the conversation going.
 
 I intend to go more in depth with some of these topics in future posts.
