@@ -20,8 +20,7 @@ export const projects: Project[] = [
   {
     name: 'Grand Prix Picks',
     url: 'https://grandprixpicks.com',
-    description:
-      'Formula 1 picks and predictions for race weekends.',
+    description: 'Formula 1 picks and predictions for race weekends.',
     role: 'Creator',
     tags: ['Web App', 'Motorsport', 'F1'],
   },

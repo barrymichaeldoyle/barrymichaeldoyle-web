@@ -18,18 +18,16 @@ import React, {
   useMemo,
   useState,
 } from 'react';
-
 import { ErrorBoundary } from '~/components/ui/error-boundary';
 
 function cn(...classes: (string | undefined | null | boolean)[]): string {
   return classes.filter(Boolean).join(' ');
 }
 
-interface RotatingTextProps
-  extends Omit<
-    React.ComponentPropsWithoutRef<typeof motion.span>,
-    'children' | 'transition' | 'initial' | 'animate' | 'exit'
-  > {
+interface RotatingTextProps extends Omit<
+  React.ComponentPropsWithoutRef<typeof motion.span>,
+  'children' | 'transition' | 'initial' | 'animate' | 'exit'
+> {
   texts: string[];
   transition?: Transition;
   initial?: boolean | Target | VariantLabels;

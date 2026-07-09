@@ -1,9 +1,7 @@
 import { readFileSync, readdirSync, writeFileSync } from 'fs';
+import matter from 'gray-matter';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
-
-import matter from 'gray-matter';
-
 import { type BlogPost } from '~/types/blog';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));

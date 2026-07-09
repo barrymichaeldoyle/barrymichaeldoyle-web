@@ -1,5 +1,4 @@
 import { createFileRoute } from '@tanstack/react-router';
-
 import { blogPosts } from '~/data/blog.gen';
 import { BlogPostScreen } from '~/screens/Blog/BlogPost';
 

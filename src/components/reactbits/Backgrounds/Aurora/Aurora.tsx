@@ -2,7 +2,6 @@
 
 import { Color, Mesh, Program, Renderer, Triangle } from 'ogl';
 import { useEffect, useRef } from 'react';
-
 import { ClientOnly } from '~/components/ui/client-only';
 import { ErrorBoundary } from '~/components/ui/error-boundary';
 
@@ -164,7 +163,7 @@ function AuroraComponent(props: AuroraProps) {
     gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
     gl.canvas.style.backgroundColor = 'transparent';
 
-    // eslint-disable-next-line prefer-const -- program is used later
+    // oxlint-disable-next-line prefer-const -- program is used later
     let program: Program | undefined;
 
     function resize() {

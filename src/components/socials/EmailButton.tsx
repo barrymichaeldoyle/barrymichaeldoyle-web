@@ -1,5 +1,4 @@
 import { Mail } from 'lucide-react';
-
 import { links } from '~/constants';
 
 import { Button } from '../ui/button';

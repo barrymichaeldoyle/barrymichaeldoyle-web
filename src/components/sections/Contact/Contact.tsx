@@ -1,7 +1,6 @@
 import { Link } from '@tanstack/react-router';
 import { Mail } from 'lucide-react';
 import { type ReactNode } from 'react';
-
 import { LinkedIn } from '~/components/icons/LinkedIn';
 import { X } from '~/components/icons/X';
 import { Button } from '~/components/ui/button';

@@ -1,6 +1,5 @@
 import { type VariantProps, cva } from 'class-variance-authority';
 import { type ComponentProps } from 'react';
-
 import { cn } from '~/lib/utils';
 
 const cardVariants = cva(
@@ -19,8 +18,7 @@ const cardVariants = cva(
 );
 
 interface CardProps
-  extends ComponentProps<'div'>,
-    VariantProps<typeof cardVariants> {}
+  extends ComponentProps<'div'>, VariantProps<typeof cardVariants> {}
 
 function Card({ className, variant, ...props }: CardProps) {
   return (

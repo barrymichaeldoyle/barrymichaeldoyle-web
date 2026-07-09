@@ -1,5 +1,4 @@
 import { Link } from '@tanstack/react-router';
-
 import GlareHover from '~/components/reactbits/Animations/GlareHover/GlareHover';
 import { ContactSection } from '~/components/sections/Contact/Contact';
 import { Button } from '~/components/ui/button';

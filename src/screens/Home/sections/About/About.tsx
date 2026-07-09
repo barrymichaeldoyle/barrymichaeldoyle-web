@@ -1,5 +1,4 @@
 import { Link } from '@tanstack/react-router';
-
 import { ProfileCard } from '~/components/reactbits/Components/ProfileCard/ProfileCard';
 import { links, sections, YEARS_EXPERIENCE } from '~/constants';
 

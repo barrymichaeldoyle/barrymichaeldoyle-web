@@ -1,5 +1,4 @@
 import { Clock } from 'lucide-react';
-
 import { type BlogPost } from '~/types/blog';
 
 interface BlogMetaDetailsProps {

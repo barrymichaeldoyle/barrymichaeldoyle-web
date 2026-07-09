@@ -8,3 +8,5 @@ dist
 .nitro
 .output
 .tanstack
+.agents
+skills-lock.json

@@ -1,28 +1,23 @@
 {
   "editor.tabSize": 2,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.defaultFormatter": "oxc.oxc-vscode",
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "always",
-    "source.organizeImports": "always"
+    "source.fixAll.oxc": "always",
+    "source.organizeImports": "never"
   },
+  "oxc.fmt.configPath": ".oxfmtrc.json",
   "editor.wordWrap": "wordWrapColumn",
   "editor.wordWrapColumn": 80,
   "css.validate": false,
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact"
-  ],
-  "eslint.format.enable": true,
-  "eslint.lintTask.enable": true,
   "typescript.referencesCodeLens.enabled": true,
   "cSpell.words": [
     "barrymichaeldoyle",
     "Codecademy",
     "Motorsport",
     "neuropsychologists",
+    "oxfmt",
+    "oxlint",
     "reactbits",
     "Securit",
     "VALR",

@@ -1,8 +1,8 @@
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
-
 import { SocialButtons } from '~/components/socials/SocialButtons';
 import { ErrorBoundary } from '~/components/ui/error-boundary';
 import { TITLES } from '~/constants';
+
 import './ProfileCard.css';
 
 interface ProfileCardProps {

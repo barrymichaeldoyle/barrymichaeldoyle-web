@@ -7,9 +7,7 @@ import {
   Scripts,
 } from '@tanstack/react-router';
 import posthog from 'posthog-js';
-import type { ReactNode } from 'react';
 import { useEffect } from 'react';
-
 import { Footer } from '~/components/layout/Footer';
 import { Header } from '~/components/layout/Header';
 import { NotFound } from '~/components/NotFound';
@@ -17,6 +15,8 @@ import { Aurora } from '~/components/reactbits/Backgrounds/Aurora/Aurora';
 import { TITLES } from '~/constants';
 import { seo } from '~/lib/seo';
 import appCss from '~/styles/app.css?url';
+
+import type { ReactNode } from 'react';
 
 const queryClient = new QueryClient();
 

@@ -3,7 +3,6 @@ import { ArrowLeft } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import rehypeHighlight from 'rehype-highlight';
 import remarkGfm from 'remark-gfm';
-
 import { ContactSection } from '~/components/sections/Contact/Contact';
 import { Card, CardContent } from '~/components/ui/card';
 import { type BlogPost } from '~/types/blog';

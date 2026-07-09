@@ -1,6 +1,5 @@
 import { Link, useLocation } from '@tanstack/react-router';
 import { type ReactNode, useState } from 'react';
-
 import { sections } from '~/constants';
 import { cn } from '~/lib/utils';
 

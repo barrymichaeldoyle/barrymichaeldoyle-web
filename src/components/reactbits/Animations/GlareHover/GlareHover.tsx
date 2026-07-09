@@ -1,5 +1,4 @@
 import { type CSSProperties, type ReactNode, useRef } from 'react';
-
 import { ErrorBoundary } from '~/components/ui/error-boundary';
 
 interface GlareHoverProps {
@@ -89,7 +88,7 @@ const GlareHover = ({
   };
 
   return (
-    // eslint-disable-next-line jsx-a11y/no-static-element-interactions -- we want to allow static elements to be interacted with
+    // oxlint-disable-next-line jsx-a11y/no-static-element-interactions -- we want to allow static elements to be interacted with
     <div
       className={`relative grid cursor-pointer place-items-center overflow-hidden border ${className}`}
       style={{

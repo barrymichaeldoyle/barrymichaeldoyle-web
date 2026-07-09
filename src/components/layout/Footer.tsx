@@ -1,6 +1,5 @@
 import { Link } from '@tanstack/react-router';
 import { Code2, MapPin } from 'lucide-react';
-
 import { StackOverflowFlair } from '~/components/StackOverflowFlair/StackOverflowFlair';
 import { links, TITLES, YEARS_EXPERIENCE } from '~/constants';
 

@@ -1,6 +1,5 @@
 import { Camera, Geometry, Mesh, Program, Renderer } from 'ogl';
 import { useEffect, useRef } from 'react';
-
 import { ClientOnly } from '~/components/ui/client-only';
 import { ErrorBoundary } from '~/components/ui/error-boundary';
 import { cn } from '~/lib/utils';
