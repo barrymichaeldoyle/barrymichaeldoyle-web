@@ -1,5 +1,5 @@
 [build]
-command = "vite build"
+command = "pnpm build"
 publish = "dist/client"
 
 # Security headers

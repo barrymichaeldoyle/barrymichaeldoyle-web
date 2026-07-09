@@ -38,7 +38,7 @@ Here are some platforms that I believe you should be active on, I personally hav
 
 ### X (formerly Twitter)
 
-Though not very active on [X/Twitter](https://twitter.com), I find it beneficial to follow companies and developers in spaces that interest me. Engaging with industry leaders can provide you with valuable insights and learning opportunities. If you feel like following me for my infrequent posts there you can [follow me here](https://twitter.com/barrymdoyle).
+Though not very active on [X/Twitter](https://x.com), I find it beneficial to follow companies and developers in spaces that interest me. Engaging with industry leaders can provide you with valuable insights and learning opportunities. If you feel like following me for my infrequent posts there you can [follow me here](https://x.com/barrymdoyle).
 
 ### StackOverflow
 
@@ -50,7 +50,7 @@ If you haven't already, start using [GitHub](https://github.com/) to store your 
 
 Over time you'll get this nifty looking graph that shows that you know things!
 
-![GitHub Contribution Chart](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/wdqutea1ebrabq2ympbg.png)
+![GitHub Contribution Chart](/blog/github-contribution-chart.png)
 
 Committing to your own projects isn't the only way to engage on GitHub. You can also create issues and comment on existing issues on other libraries that you've worked with in your personal projects.
 

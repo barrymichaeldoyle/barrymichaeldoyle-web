@@ -2,6 +2,7 @@ import { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { SocialButtons } from '~/components/socials/SocialButtons';
 import { ErrorBoundary } from '~/components/ui/error-boundary';
 import { TITLES } from '~/constants';
+import { usePrefersReducedMotion } from '~/hooks/usePrefersReducedMotion';
 
 import './ProfileCard.css';
 
@@ -68,9 +69,11 @@ const ProfileCardComponent = ({
   const cardDimensions = useRef<{ width: number; height: number } | null>(null);
   const [isReady, setIsReady] = useState(false);
   const hasInitialized = useRef(false);
+  const prefersReducedMotion = usePrefersReducedMotion();
+  const tiltEnabled = enableTilt && !prefersReducedMotion;
 
   const animationHandlers = useMemo(() => {
-    if (!enableTilt) return null;
+    if (!tiltEnabled) return null;
 
     let rafId: number | null = null;
 
@@ -160,7 +163,7 @@ const ProfileCardComponent = ({
         }
       },
     };
-  }, [enableTilt]);
+  }, [tiltEnabled]);
 
   const handlePointerMove = useCallback(
     (event: PointerEvent) => {
@@ -227,7 +230,7 @@ const ProfileCardComponent = ({
 
   useEffect(() => {
     // If tilt is disabled, mark as ready immediately
-    if (!enableTilt || !animationHandlers) {
+    if (!tiltEnabled || !animationHandlers) {
       requestAnimationFrame(() => {
         setIsReady(true);
       });
@@ -312,7 +315,7 @@ const ProfileCardComponent = ({
       pendingMove.current = null;
     };
   }, [
-    enableTilt,
+    tiltEnabled,
     animationHandlers,
     handlePointerMove,
     handlePointerEnter,
@@ -346,8 +349,8 @@ const ProfileCardComponent = ({
   const wrapperClassName = useMemo(
     () =>
       (className
-        ? `pc-card-wrapper ${isReady ? 'ready' : 'loading'} ${className}`
-        : `pc-card-wrapper ${isReady ? 'ready' : 'loading'}`
+        ? `pc-card-wrapper ${isReady ? 'ready' : ''} ${className}`
+        : `pc-card-wrapper ${isReady ? 'ready' : ''}`
       ).trim(),
     [className, isReady]
   );
@@ -369,51 +372,30 @@ const ProfileCardComponent = ({
         }}
       >
         <div className="pc-inside">
-          {/* Always render these decorative elements to maintain structure */}
           <div className="pc-shine" />
           <div className="pc-glare" />
-          {/* Always render placeholder structure, then replace with real content when ready */}
-          <div
-            className={`pc-content pc-placeholder ${isReady ? 'hidden' : ''}`}
-            aria-hidden={!isReady}
-          >
-            <div className="pc-avatar-content">
-              <div className="avatar-placeholder" />
-              <div className="pc-user-info-placeholder" />
-            </div>
-            <div className="pc-content">
-              <div className="pc-details">
-                <div className="pc-details-placeholder-title" />
-                <div className="pc-details-placeholder-text" />
-              </div>
+          <div className="pc-content pc-avatar-content">
+            <img
+              className="avatar"
+              src={avatarUrl}
+              alt={`${name} avatar`}
+              loading="eager"
+              fetchPriority="high"
+              onError={(e) => {
+                const target = e.target as HTMLImageElement;
+                target.style.display = 'none';
+              }}
+            />
+            <div className="pc-user-info mx-auto flex w-fit gap-2">
+              <SocialButtons />
             </div>
           </div>
-          {isReady && (
-            <>
-              <div className="pc-content pc-avatar-content">
-                <img
-                  className="avatar"
-                  src={avatarUrl}
-                  alt={`${name} avatar`}
-                  loading="eager"
-                  fetchPriority="high"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.style.display = 'none';
-                  }}
-                />
-                <div className="pc-user-info mx-auto flex w-fit gap-2">
-                  <SocialButtons />
-                </div>
-              </div>
-              <div className="pc-content">
-                <div className="pc-details">
-                  <h3>{name}</h3>
-                  <p>{title}</p>
-                </div>
-              </div>
-            </>
-          )}
+          <div className="pc-content">
+            <div className="pc-details">
+              <h3>{name}</h3>
+              <p>{title}</p>
+            </div>
+          </div>
         </div>
       </section>
     </div>

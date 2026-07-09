@@ -4,6 +4,7 @@ import { Color, Mesh, Program, Renderer, Triangle } from 'ogl';
 import { useEffect, useRef } from 'react';
 import { ClientOnly } from '~/components/ui/client-only';
 import { ErrorBoundary } from '~/components/ui/error-boundary';
+import { usePrefersReducedMotion } from '~/hooks/usePrefersReducedMotion';
 
 const VERT = `#version 300 es
 in vec2 position;
@@ -120,6 +121,12 @@ interface AuroraProps {
 }
 
 export function Aurora(props: AuroraProps) {
+  const prefersReducedMotion = usePrefersReducedMotion();
+
+  if (prefersReducedMotion) {
+    return <div className="h-full w-full bg-background" aria-hidden="true" />;
+  }
+
   return (
     <ErrorBoundary>
       <ClientOnly fallback={null}>

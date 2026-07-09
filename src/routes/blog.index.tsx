@@ -1,7 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { OG_IMAGE, SITE_URL } from '~/constants';
 import { blogPosts } from '~/data/blog.gen';
-import { seo } from '~/lib/seo';
+import { canonicalLink, seo } from '~/lib/seo';
 import { BlogScreen } from '~/screens/Blog/Blog';
 
 export const Route = createFileRoute('/blog/')({
@@ -13,6 +13,7 @@ export const Route = createFileRoute('/blog/')({
       image: OG_IMAGE,
       url: `${SITE_URL}/blog`,
     }),
+    links: [canonicalLink(`${SITE_URL}/blog`)],
   }),
   component: BlogIndex,
 });

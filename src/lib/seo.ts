@@ -4,12 +4,14 @@ export function seo({
   keywords,
   image,
   url,
+  type = 'website',
 }: {
   title: string;
   description?: string;
   image?: string;
   keywords?: string;
   url?: string;
+  type?: 'website' | 'article';
 }) {
   const tags = [
     { title },
@@ -19,7 +21,7 @@ export function seo({
     { name: 'twitter:description', content: description },
     { name: 'twitter:creator', content: '@barrymdoyle' },
     { name: 'twitter:site', content: '@barrymdoyle' },
-    { name: 'og:type', content: 'website' },
+    { name: 'og:type', content: type },
     { name: 'og:title', content: title },
     { name: 'og:description', content: description },
     ...(url ? [{ property: 'og:url', content: url }] : []),
@@ -33,4 +35,8 @@ export function seo({
   ];
 
   return tags;
+}
+
+export function canonicalLink(url: string) {
+  return { rel: 'canonical', href: url };
 }

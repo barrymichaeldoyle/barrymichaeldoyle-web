@@ -19,6 +19,7 @@ import React, {
   useState,
 } from 'react';
 import { ErrorBoundary } from '~/components/ui/error-boundary';
+import { usePrefersReducedMotion } from '~/hooks/usePrefersReducedMotion';
 
 function cn(...classes: (string | undefined | null | boolean)[]): string {
   return classes.filter(Boolean).join(' ');
@@ -72,6 +73,8 @@ const RotatingText = forwardRef<{}, RotatingTextProps>(
     ref
   ) => {
     const [currentTextIndex, setCurrentTextIndex] = useState<number>(0);
+    const prefersReducedMotion = usePrefersReducedMotion();
+    const shouldAnimate = auto && !prefersReducedMotion;
 
     const splitIntoCharacters = (text: string): string[] => {
       if (typeof Intl !== 'undefined' && Intl.Segmenter) {
@@ -191,10 +194,23 @@ const RotatingText = forwardRef<{}, RotatingTextProps>(
     );
 
     useEffect(() => {
-      if (!auto) return;
+      if (!shouldAnimate) return;
       const intervalId = setInterval(next, rotationInterval);
       return () => clearInterval(intervalId);
-    }, [next, rotationInterval, auto]);
+    }, [next, rotationInterval, shouldAnimate]);
+
+    if (prefersReducedMotion) {
+      return (
+        <span
+          className={cn(
+            'relative flex flex-wrap whitespace-pre-wrap',
+            mainClassName
+          )}
+        >
+          {texts[currentTextIndex]}
+        </span>
+      );
+    }
 
     return (
       <motion.span

@@ -44,25 +44,30 @@
   aspect-ratio: 0.718;
 }
 
-.pc-card-wrapper.loading {
-  opacity: 0;
-  pointer-events: none;
-}
-
-.pc-card-wrapper.loading .pc-card {
-  /* Ensure card maintains dimensions even when loading */
-  visibility: visible;
-  opacity: 0.3;
+.pc-card-wrapper {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .pc-card-wrapper.ready {
-  opacity: 1;
-  pointer-events: auto;
   transition: opacity 0.2s ease-in-out;
 }
 
-.pc-card-wrapper.ready .pc-card {
-  opacity: 1;
+@media (prefers-reduced-motion: reduce) {
+  .pc-card,
+  .pc-shine {
+    animation: none !important;
+  }
+
+  .pc-card-wrapper {
+    perspective: none;
+    transform: none;
+    touch-action: auto;
+  }
+
+  .pc-card {
+    transform: none !important;
+  }
 }
 
 /* Placeholder styles to maintain layout */

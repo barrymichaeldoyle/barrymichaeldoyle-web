@@ -7,6 +7,8 @@ import { type BlogPost } from '~/types/blog';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const contentDir = join(__dirname, '..', 'content', 'blog');
 const genFile = join(__dirname, '..', 'src', 'data', 'blog.gen.ts');
+const publicDir = join(__dirname, '..', 'public');
+const siteUrl = 'https://barrymichaeldoyle.com';
 
 const posts = readdirSync(contentDir)
   .filter((file) => file.endsWith('.md'))
@@ -42,3 +44,38 @@ export const blogPosts: Record<string, BlogPost> = ${JSON.stringify(normalizedPo
 `;
 
 writeFileSync(genFile, tsContent);
+
+const staticPages = [
+  { path: '/', changefreq: 'weekly', priority: '1.0' },
+  { path: '/blog', changefreq: 'weekly', priority: '0.8' },
+];
+
+const urls = [
+  ...staticPages.map(
+    (page) => `  <url>
+    <loc>${siteUrl}${page.path}</loc>
+    <changefreq>${page.changefreq}</changefreq>
+    <priority>${page.priority}</priority>
+  </url>`
+  ),
+  ...posts.map(
+    (post) => `  <url>
+    <loc>${siteUrl}/blog/${post.slug}</loc>
+    ${post.date ? `<lastmod>${post.date}</lastmod>` : ''}
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>`
+  ),
+].join('\n');
+
+const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${urls}
+</urlset>
+`;
+
+writeFileSync(join(publicDir, 'sitemap.xml'), sitemap);
+writeFileSync(
+  join(publicDir, 'robots.txt'),
+  `User-agent: *\nAllow: /\nSitemap: ${siteUrl}/sitemap.xml\n`
+);

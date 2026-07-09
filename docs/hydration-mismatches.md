@@ -169,23 +169,7 @@ export function Aurora(props: AuroraProps) {
 
 ### ProfileCard Component
 
-The ProfileCard component uses browser APIs like `getBoundingClientRect()` and `requestAnimationFrame()`. It's wrapped with `ClientOnly`:
-
-```tsx
-export default function ProfileCardWrapper(props: ProfileCardProps) {
-  return (
-    <ClientOnly
-      fallback={
-        <div className="pc-card-wrapper">
-          <section className="pc-card">{/* Static fallback content */}</section>
-        </div>
-      }
-    >
-      <ProfileCardComponent {...props} />
-    </ClientOnly>
-  );
-}
-```
+The ProfileCard renders its content on the server so the About section stays visible without JS. Tilt interactions attach in `useEffect` after mount, and `prefers-reduced-motion` disables tilt/CSS animations without hiding the card.
 
 ### StackOverflow Flair
 

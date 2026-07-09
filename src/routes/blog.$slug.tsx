@@ -1,7 +1,7 @@
 import { createFileRoute, notFound } from '@tanstack/react-router';
 import { OG_IMAGE, SITE_URL } from '~/constants';
 import { blogPosts } from '~/data/blog.gen';
-import { seo } from '~/lib/seo';
+import { canonicalLink, seo } from '~/lib/seo';
 import { BlogPostScreen } from '~/screens/Blog/BlogPost';
 
 export const Route = createFileRoute('/blog/$slug')({
@@ -14,15 +14,26 @@ export const Route = createFileRoute('/blog/$slug')({
   },
   head: ({ loaderData }) => {
     const post = loaderData?.post;
-    if (!post) return {};
+    if (!post) {
+      return {
+        meta: [
+          { title: 'Page Not Found | Barry Michael Doyle' },
+          { name: 'robots', content: 'noindex' },
+        ],
+      };
+    }
+
+    const url = `${SITE_URL}/blog/${post.slug}`;
 
     return {
       meta: seo({
         title: `${post.title} | Barry Michael Doyle`,
         description: post.description,
         image: OG_IMAGE,
-        url: `${SITE_URL}/blog/${post.slug}`,
+        url,
+        type: 'article',
       }),
+      links: [canonicalLink(url)],
     };
   },
   component: BlogPostComponent,
