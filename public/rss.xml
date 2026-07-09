@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Barry Michael Doyle</title>
+    <link>https://barrymichaeldoyle.com/blog</link>
+    <description>Writing from Barry Michael Doyle on software engineering, open source, and building products.</description>
+    <language>en-za</language>
+    <atom:link href="https://barrymichaeldoyle.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Why I Built Patch Pulse</title>
+      <link>https://barrymichaeldoyle.com/blog/patch-pulse-2026-q2</link>
+      <guid isPermaLink="true">https://barrymichaeldoyle.com/blog/patch-pulse-2026-q2</guid>
+      <pubDate>Sun, 12 Apr 2026 00:00:00 GMT</pubDate>
+      <description>The problem that led me to build Patch Pulse, from Slack notifications to a monorepo-aware CLI and an in-progress VS Code extension.</description>
+    </item>
+    <item>
+      <title>If I could start my dev career again: Tips for Newbies</title>
+      <link>https://barrymichaeldoyle.com/blog/starting-over</link>
+      <guid isPermaLink="true">https://barrymichaeldoyle.com/blog/starting-over</guid>
+      <pubDate>Mon, 11 Sep 2023 00:00:00 GMT</pubDate>
+      <description>A look at what I would do differently if I were to start over in my career</description>
+    </item>
+  </channel>
+</rss>
