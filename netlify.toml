@@ -66,6 +66,11 @@ for = "/app-ads.txt"
 Cache-Control = "public, max-age=86400"
 Content-Type = "text/plain; charset=utf-8"
 
+[[headers]]
+for = "/sudoku-og.png"
+[headers.values]
+Cache-Control = "public, max-age=2592000, stale-while-revalidate=86400"
+
 # Force HTTPS redirects
 [[redirects]]
 from = "http://barrymichaeldoyle.com/*"

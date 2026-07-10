@@ -7,6 +7,7 @@ export const TITLES = [
 
 export const SITE_URL = 'https://barrymichaeldoyle.com';
 export const OG_IMAGE = `${SITE_URL}/og.webp`;
+export const SUDOKU_OG_IMAGE = `${SITE_URL}/sudoku-og.png`;
 
 export const YEARS_EXPERIENCE = new Date().getFullYear() - 2013;
 
@@ -22,6 +23,10 @@ export const links: Record<string, string> = {
   twitter: 'https://x.com/barrymdoyle',
   patchPulse: 'https://github.com/barrymichaeldoyle/patch-pulse',
   devTo: 'https://dev.to/barrymichaeldoyle',
+  sudoku: `${SITE_URL}/sudoku`,
+  sudokuAppStore: 'https://apps.apple.com/app/offline-sudoku/id6782209083',
+  sudokuSite: 'https://barrymichaeldoyle.github.io/sudoku-offline/',
+  sudokuRepo: 'https://github.com/barrymichaeldoyle/sudoku-offline',
 };
 
 export const sections = {

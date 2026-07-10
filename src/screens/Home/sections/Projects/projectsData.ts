@@ -10,6 +10,14 @@ interface Project {
 
 export const projects: Project[] = [
   {
+    name: 'Offline Sudoku',
+    url: links.sudoku,
+    description:
+      'Classic Sudoku for iPhone. Works offline. No ads during puzzles.',
+    role: 'Creator',
+    tags: ['iOS', 'Expo', 'Puzzle'],
+  },
+  {
     name: 'Report Buddy',
     url: 'https://report-buddy.com',
     description:

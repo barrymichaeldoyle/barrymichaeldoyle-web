@@ -36,7 +36,12 @@ export default defineConfig({
         failOnError: true,
         filter: ({ path }) => !path.includes('#'),
       },
-      pages: [{ path: '/' }, { path: '/blog' }, ...blogPages],
+      pages: [
+        { path: '/' },
+        { path: '/blog' },
+        { path: '/sudoku' },
+        ...blogPages,
+      ],
     }),
     netlify(),
     viteReact(),
