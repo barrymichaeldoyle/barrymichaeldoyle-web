@@ -1,3 +1,6 @@
+User-agent: Google-adstxt
+Allow: /app-ads.txt
+
 User-agent: *
 Allow: /
 Sitemap: https://barrymichaeldoyle.com/sitemap.xml

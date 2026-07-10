@@ -60,6 +60,12 @@ for = "/robots.txt"
 [headers.values]
 Cache-Control = "public, max-age=86400"
 
+[[headers]]
+for = "/app-ads.txt"
+[headers.values]
+Cache-Control = "public, max-age=86400"
+Content-Type = "text/plain; charset=utf-8"
+
 # Force HTTPS redirects
 [[redirects]]
 from = "http://barrymichaeldoyle.com/*"

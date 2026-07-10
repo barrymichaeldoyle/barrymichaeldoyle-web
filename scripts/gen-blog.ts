@@ -164,7 +164,13 @@ ${rssItems}
 
 writeFileSync(
   join(publicDir, 'robots.txt'),
-  `User-agent: *\nAllow: /\nSitemap: ${siteUrl}/sitemap.xml\n`
+  `User-agent: Google-adstxt
+Allow: /app-ads.txt
+
+User-agent: *
+Allow: /
+Sitemap: ${siteUrl}/sitemap.xml
+`
 );
 
 async function generateStackOverflowFlair() {
