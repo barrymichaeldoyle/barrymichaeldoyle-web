@@ -11,9 +11,9 @@ export const Route = createFileRoute('/blog/')({
       description:
         'Writing from Barry Michael Doyle on software engineering, open source, and building products.',
       image: OG_IMAGE,
-      url: `${SITE_URL}/blog`,
+      url: `${SITE_URL}/blog/`,
     }),
-    links: [canonicalLink(`${SITE_URL}/blog`)],
+    links: [canonicalLink(`${SITE_URL}/blog/`)],
   }),
   component: BlogIndex,
 });

@@ -1,20 +1,14 @@
 import { OG_IMAGE, SITE_URL, TITLES, links } from '~/constants';
 import { type BlogPostMeta } from '~/types/blog';
 
-export function jsonLdScript(data: Record<string, unknown>) {
+function personEntityJsonLd() {
   return {
-    type: 'application/ld+json',
-    children: JSON.stringify(data),
-  };
-}
-
-export function personJsonLd() {
-  return {
-    '@context': 'https://schema.org',
     '@type': 'Person',
+    '@id': `${SITE_URL}/#person`,
     name: 'Barry Michael Doyle',
-    url: SITE_URL,
-    image: OG_IMAGE,
+    alternateName: 'barrymdoyle',
+    url: `${SITE_URL}/`,
+    image: `${SITE_URL}/barry.webp`,
     jobTitle: TITLES[0],
     description: `Barry Michael Doyle - ${TITLES.join(' | ')}`,
     address: {
@@ -34,10 +28,18 @@ export function personJsonLd() {
   };
 }
 
+export function personJsonLd() {
+  return {
+    '@context': 'https://schema.org',
+    ...personEntityJsonLd(),
+  };
+}
+
 export function websiteJsonLd() {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
+    '@id': `${SITE_URL}/#website`,
     name: 'Barry Michael Doyle',
     url: SITE_URL,
     description: `Barry Michael Doyle - ${TITLES.join(' | ')}`,
@@ -49,18 +51,64 @@ export function websiteJsonLd() {
   };
 }
 
+export function profilePageJsonLd() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ProfilePage',
+    '@id': `${SITE_URL}/#profile-page`,
+    url: `${SITE_URL}/`,
+    name: 'Barry Michael Doyle - Staff Engineer',
+    mainEntity: personEntityJsonLd(),
+    isPartOf: {
+      '@id': `${SITE_URL}/#website`,
+    },
+  };
+}
+
+export function articleBreadcrumbJsonLd(post: BlogPostMeta) {
+  const articleUrl = `${SITE_URL}/blog/${post.slug}/`;
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: `${SITE_URL}/`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Blog',
+        item: `${SITE_URL}/blog/`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: post.title,
+        item: articleUrl,
+      },
+    ],
+  };
+}
+
 export function articleJsonLd(post: BlogPostMeta) {
+  const articleUrl = `${SITE_URL}/blog/${post.slug}/`;
+  const datePublished = `${post.date}T00:00:00+02:00`;
+
   return {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
     headline: post.title,
     description: post.description,
-    datePublished: post.date,
+    datePublished,
     image: OG_IMAGE,
-    url: `${SITE_URL}/blog/${post.slug}`,
+    url: articleUrl,
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `${SITE_URL}/blog/${post.slug}`,
+      '@id': articleUrl,
     },
     author: {
       '@type': 'Person',

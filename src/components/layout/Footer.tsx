@@ -35,7 +35,7 @@ export function Footer() {
               <Link to="/" className="link block">
                 Home
               </Link>
-              <Link to="/blog" className="link block">
+              <Link to="/blog/" className="link block">
                 Blog
               </Link>
             </div>

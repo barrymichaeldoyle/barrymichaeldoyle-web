@@ -1,0 +1,33 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "barrymichaeldoyle",
+  "compatibility_date": "2026-08-18",
+  "compatibility_flags": ["nodejs_compat"],
+  "main": "src/server.ts",
+  "routes": [
+    {
+      "pattern": "barrymichaeldoyle.com",
+      "custom_domain": true,
+    },
+    {
+      "pattern": "www.barrymichaeldoyle.com",
+      "custom_domain": true,
+    },
+  ],
+  "assets": {
+    "run_worker_first": [
+      "/*",
+      "!/assets/*",
+      "!/*.png",
+      "!/*.webp",
+      "!/*.svg",
+      "!/app-ads.txt",
+      "!/robots.txt",
+      "!/rss.xml",
+      "!/sitemap.xml",
+    ],
+  },
+  "observability": {
+    "enabled": true,
+  },
+}

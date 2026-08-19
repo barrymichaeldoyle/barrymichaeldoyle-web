@@ -99,7 +99,8 @@ writeFileSync(join(dataDir, 'blog.content.ts'), loaderFile);
 
 const staticPages = [
   { path: '/', changefreq: 'weekly', priority: '1.0' },
-  { path: '/blog', changefreq: 'weekly', priority: '0.8' },
+  { path: '/blog/', changefreq: 'weekly', priority: '0.8' },
+  { path: '/sudoku/', changefreq: 'monthly', priority: '0.6' },
 ];
 
 const urls = [
@@ -112,7 +113,7 @@ const urls = [
   ),
   ...posts.map(
     (post) => `  <url>
-    <loc>${siteUrl}/blog/${post.slug}</loc>
+    <loc>${siteUrl}/blog/${post.slug}/</loc>
     ${post.date ? `<lastmod>${post.date}</lastmod>` : ''}
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -131,7 +132,7 @@ ${urls}
 
 const rssItems = posts
   .map((post) => {
-    const link = `${siteUrl}/blog/${post.slug}`;
+    const link = `${siteUrl}/blog/${post.slug}/`;
     const pubDate = post.date
       ? new Date(`${post.date}T00:00:00.000Z`).toUTCString()
       : new Date().toUTCString();
@@ -152,7 +153,7 @@ writeFileSync(
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Barry Michael Doyle</title>
-    <link>${siteUrl}/blog</link>
+    <link>${siteUrl}/blog/</link>
     <description>Writing from Barry Michael Doyle on software engineering, open source, and building products.</description>
     <language>en-za</language>
     <atom:link href="${siteUrl}/rss.xml" rel="self" type="application/rss+xml" />

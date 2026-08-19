@@ -17,15 +17,19 @@ export function seo({
 }) {
   const tags = [
     { title },
-    { name: 'description', content: description },
-    { name: 'keywords', content: keywords },
+    ...(description ? [{ name: 'description', content: description }] : []),
+    ...(keywords ? [{ name: 'keywords', content: keywords }] : []),
     { name: 'twitter:title', content: title },
-    { name: 'twitter:description', content: description },
+    ...(description
+      ? [{ name: 'twitter:description', content: description }]
+      : []),
     { name: 'twitter:creator', content: '@barrymdoyle' },
     { name: 'twitter:site', content: '@barrymdoyle' },
-    { name: 'og:type', content: type },
-    { name: 'og:title', content: title },
-    { name: 'og:description', content: description },
+    { property: 'og:type', content: type },
+    { property: 'og:title', content: title },
+    ...(description
+      ? [{ property: 'og:description', content: description }]
+      : []),
     { property: 'og:locale', content: 'en_ZA' },
     ...(url ? [{ property: 'og:url', content: url }] : []),
     ...(publishedTime
@@ -36,7 +40,7 @@ export function seo({
           { name: 'twitter:image', content: image },
           { name: 'twitter:image:alt', content: title },
           { name: 'twitter:card', content: 'summary_large_image' },
-          { name: 'og:image', content: image },
+          { property: 'og:image', content: image },
           { property: 'og:image:alt', content: title },
         ]
       : []),

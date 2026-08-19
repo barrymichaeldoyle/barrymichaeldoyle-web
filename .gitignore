@@ -2,6 +2,7 @@
 .env
 app.config.timestamp_*.js
 .netlify
+.wrangler
 .vinxi
 dist
 

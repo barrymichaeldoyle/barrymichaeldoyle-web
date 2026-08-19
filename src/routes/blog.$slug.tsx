@@ -1,8 +1,9 @@
 import { createFileRoute, notFound } from '@tanstack/react-router';
+import { JsonLd } from '~/components/JsonLd';
 import { OG_IMAGE, SITE_URL } from '~/constants';
 import { loadBlogContent } from '~/data/blog.content';
 import { blogPostsMeta } from '~/data/blog.meta.gen';
-import { articleJsonLd, jsonLdScript } from '~/lib/jsonLd';
+import { articleBreadcrumbJsonLd, articleJsonLd } from '~/lib/jsonLd';
 import { canonicalLink, seo } from '~/lib/seo';
 import { BlogPostScreen } from '~/screens/Blog/BlogPost';
 
@@ -31,7 +32,7 @@ export const Route = createFileRoute('/blog/$slug')({
       };
     }
 
-    const url = `${SITE_URL}/blog/${post.slug}`;
+    const url = `${SITE_URL}/blog/${post.slug}/`;
 
     return {
       meta: seo({
@@ -40,10 +41,9 @@ export const Route = createFileRoute('/blog/$slug')({
         image: OG_IMAGE,
         url,
         type: 'article',
-        publishedTime: post.date,
+        publishedTime: `${post.date}T00:00:00+02:00`,
       }),
       links: [canonicalLink(url)],
-      scripts: [jsonLdScript(articleJsonLd(post))],
     };
   },
   component: BlogPostComponent,
@@ -51,5 +51,11 @@ export const Route = createFileRoute('/blog/$slug')({
 
 function BlogPostComponent() {
   const { post } = Route.useLoaderData();
-  return <BlogPostScreen post={post} />;
+  return (
+    <>
+      <JsonLd data={articleJsonLd(post)} />
+      <JsonLd data={articleBreadcrumbJsonLd(post)} />
+      <BlogPostScreen post={post} />
+    </>
+  );
 }

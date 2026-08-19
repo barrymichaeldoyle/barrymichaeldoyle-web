@@ -127,7 +127,7 @@ export function Header() {
           >
             Contact
           </NavLink>
-          <NavLink active={pathname.includes('/blog')} to="/blog">
+          <NavLink active={pathname.includes('/blog')} to="/blog/">
             Blog
           </NavLink>
         </nav>

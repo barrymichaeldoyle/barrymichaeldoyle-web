@@ -11,7 +11,6 @@ import { Header } from '~/components/layout/Header';
 import { LazyAurora } from '~/components/lazy/LazyAurora';
 import { NotFound } from '~/components/NotFound';
 import { OG_IMAGE, SITE_URL, TITLES } from '~/constants';
-import { jsonLdScript, personJsonLd, websiteJsonLd } from '~/lib/jsonLd';
 import { seo } from '~/lib/seo';
 import appCss from '~/styles/app.css?url';
 
@@ -39,7 +38,6 @@ export const Route = createRootRoute({
         href: '/rss.xml',
       },
     ],
-    scripts: [jsonLdScript(personJsonLd()), jsonLdScript(websiteJsonLd())],
   }),
   component: RootComponent,
   notFoundComponent: NotFound,

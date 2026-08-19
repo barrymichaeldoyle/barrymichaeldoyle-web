@@ -8,6 +8,7 @@ allowBuilds:
   esbuild: true
   protobufjs: true
   sharp: true
+  workerd: true
 
 overrides:
   rollup: '>=4.59.0'

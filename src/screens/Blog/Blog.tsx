@@ -22,7 +22,7 @@ export function BlogScreen({ posts }: BlogScreenProps) {
           {Object.values(posts).map((post) => (
             <Link
               key={post.slug}
-              to="/blog/$slug"
+              to="/blog/$slug/"
               params={{ slug: post.slug }}
               className="group link mt-2 block"
               data-slot="button"

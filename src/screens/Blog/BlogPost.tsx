@@ -18,7 +18,7 @@ export function BlogPostScreen({ post }: BlogPostScreenProps) {
   return (
     <div className="mx-auto w-full max-w-4xl">
       <nav className="mb-4">
-        <Link to="/blog" className="flex items-center gap-2 text-foreground">
+        <Link to="/blog/" className="flex items-center gap-2 text-foreground">
           <ArrowLeft className="h-4 w-4" />
           Back to Blog
         </Link>
